@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-base text-ink font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    background-color: #2B4C82;
+    color: #E6EDF3;
+  }
+
+  /* Visible keyboard-only focus ring, site-wide. Mouse/touch clicks don't
+     trigger :focus-visible, so this stays invisible for pointer users while
+     remaining fully accessible for keyboard navigation. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #4C8DFF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]
+      focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-md
+      focus:text-sm focus:font-semibold;
+  }
+
+  .panel {
+    @apply bg-surface border border-line rounded-lg;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  .panel-interactive {
+    @apply transition-all duration-150 ease-out
+      hover:border-accent-dim hover:-translate-y-0.5;
+  }
+  .panel-interactive:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+  }
+
+  .terminal-grid {
+    background-image: linear-gradient(to right, #1A2029 1px, transparent 1px),
+      linear-gradient(to bottom, #1A2029 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .field-input {
+    @apply w-full bg-raised border border-line rounded-md px-3 py-2.5
+      font-mono text-sm tracking-tight
+      focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent
+      placeholder:text-faint transition-colors duration-150;
+    color: #E6EDF3 !important;
+    -webkit-text-fill-color: #E6EDF3 !important;
+    caret-color: #4C8DFF;
+    color-scheme: dark;
+  }
+
+  .field-input:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .field-input-error {
+    @apply border-loss focus:border-loss focus:ring-loss;
+  }
+
+  .field-input-success {
+    @apply border-gain focus:border-gain focus:ring-gain;
+  }
+
+  .field-label {
+    @apply text-xs font-body font-medium text-muted uppercase tracking-wider mb-1.5 block;
+  }
+
+  /* Button system: three self-contained variants sharing the same base
+     shape/motion values, so every CTA on the site is visually consistent. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-5 py-2.5
+      text-sm font-semibold transition-all duration-150 ease-out
+      active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none
+      bg-accent text-white
+      hover:bg-[#3D7AE0] hover:shadow-[0_4px_16px_rgba(76,141,255,0.35)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-5 py-2.5
+      text-sm font-semibold transition-all duration-150 ease-out
+      active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none
+      bg-raised border border-line text-ink
+      hover:border-accent-dim hover:bg-surface;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-5 py-2.5
+      text-sm font-semibold transition-all duration-150 ease-out
+      active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none
+      bg-transparent text-muted
+      hover:text-ink hover:bg-raised;
+  }
+
+  .eyebrow {
+    @apply text-xs font-mono uppercase tracking-[0.2em] text-accent;
+  }
+
+  /* Typography scale — used instead of repeating the same utility string
+     across 40+ pages. h1-page is the standard tool/blog/guide H1; h1-hero
+     is reserved for the homepage; h2-section is for in-page subheadings
+     like "Frequently asked questions". */
+  .h1-hero {
+    @apply text-4xl md:text-5xl font-display font-semibold text-ink
+      tracking-tight leading-[1.1];
+  }
+
+  .h1-page {
+    @apply text-3xl md:text-4xl font-display font-semibold text-ink tracking-tight;
+  }
+
+  .h2-section {
+    @apply text-xl font-display font-semibold text-ink;
+  }
+
+  .readout {
+    @apply font-mono tabular-nums;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border border-line-soft bg-raised
+      px-2.5 py-0.5 text-[11px] font-mono uppercase tracking-wider text-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
