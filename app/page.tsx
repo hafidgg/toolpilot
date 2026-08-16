@@ -43,7 +43,7 @@ export default function Home() {
       {categories.map((cat) => (
         <section key={cat.slug} className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex items-baseline justify-between">
-            <span className="eyebrow">{cat.label}</span>
+            <h2 className="eyebrow">{cat.label}</h2>
             <Link
               href={`/categories/${cat.slug}`}
               className="text-xs font-mono text-faint hover:text-ink transition-colors"
@@ -67,7 +67,7 @@ export default function Home() {
 
       <section className="max-w-6xl mx-auto px-6 pt-8 pb-24">
         <div className="panel p-8 md:p-10">
-          <span className="eyebrow">Why these tools</span>
+          <h2 className="eyebrow">Why these tools</h2>
           <div className="mt-4 grid md:grid-cols-3 gap-8 text-sm text-muted leading-relaxed">
             <p>
               No account, no email, no tracking. Every calculation runs in
