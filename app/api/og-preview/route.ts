@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const res = await fetch(parsed.toString(), {
-      headers: { "User-Agent": "ToolPilotBot/1.0 (+https://your-domain.com)" },
+      headers: { "User-Agent": "ToolPilotBot/1.0 (+https://www.usetoolpilot.com)" },
       signal: AbortSignal.timeout(8000),
       redirect: "follow",
     });

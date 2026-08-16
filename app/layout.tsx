@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://www.usetoolpilot.com"),
   title: {
     default: "ToolPilot — Free Tools for Content Creators",
     template: "%s | ToolPilot",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://your-domain.com/rss.xml",
+      "application/rss+xml": "https://www.usetoolpilot.com/rss.xml",
     },
   },
 };
@@ -55,7 +55,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "ToolPilot",
-  url: "https://your-domain.com",
+  url: "https://www.usetoolpilot.com",
   description:
     "Free, browser-based tools for content creators — character counters, YouTube helpers, hashtag formatters, and SEO utilities.",
 };
