@@ -638,6 +638,10 @@ export const blogPosts: BlogPost[] = [
       label: "Thumbnail Size Checker",
     },
     content: [
+      h("Quick answer"),
+      p(
+        "1280×720 resolution · 16:9 aspect ratio · 2MB maximum file size — those three numbers cover it, but each one fails independently for a different reason. Here's what each actually affects."
+      ),
       p(
         "\"What size should a YouTube thumbnail be\" has a simple headline answer — 1280×720 — but that single number actually bundles together three separate requirements that fail independently: resolution, aspect ratio, and file size."
       ),
