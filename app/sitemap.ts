@@ -3,7 +3,7 @@ import { blogPosts } from "@/lib/blog-posts";
 import { categories, getAllTools } from "@/lib/tools-data";
 import { guides } from "@/lib/guides";
 
-const BASE_URL = "https://www.usetoolpilot.com";
+const BASE_URL = "https://usetoolpilot.com";
 
 const COMPARE_SLUGS = [
   "character-counter-vs-word-counter",

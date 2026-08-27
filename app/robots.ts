@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.usetoolpilot.com/sitemap.xml",
+    sitemap: "https://usetoolpilot.com/sitemap.xml",
   };
 }

@@ -1,6 +1,6 @@
 import { blogPosts } from "@/lib/blog-posts";
 
-const BASE_URL = "https://www.usetoolpilot.com";
+const BASE_URL = "https://usetoolpilot.com";
 
 function escapeXml(str: string): string {
   return str
