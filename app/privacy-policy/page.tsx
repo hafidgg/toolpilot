@@ -71,8 +71,8 @@ export default function PrivacyPolicyPage() {
           </h2>
           <p>
             Questions about this policy can be sent to{" "}
-            <a href="mailto:hello@your-domain.com" className="text-accent hover:underline">
-              hello@your-domain.com
+            <a href="mailto:contact@usetoolpilot.com" className="text-accent hover:underline">
+              contact@usetoolpilot.com
             </a>
             .
           </p>

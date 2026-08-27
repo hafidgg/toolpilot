@@ -28,10 +28,10 @@ export default function ContactPage() {
             Email
           </div>
           <a
-            href="mailto:hello@your-domain.com"
+            href="mailto:contact@usetoolpilot.com"
             className="text-sm text-ink hover:text-accent transition-colors"
           >
-            hello@your-domain.com
+            contact@usetoolpilot.com
           </a>
           <p className="mt-1 text-xs text-faint">
             [Placeholder — replace with your real contact address before publishing]
