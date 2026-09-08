@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { categories, getAllTools } from "@/lib/tools-data";
 import PopularTools from "@/components/PopularTools";
 import RecentlyUsedTools from "@/components/RecentlyUsedTools";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   const toolCount = getAllTools().length;

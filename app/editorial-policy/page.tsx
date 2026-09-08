@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Editorial Policy",
   description: "How ToolPilot decides what to publish and how accuracy is maintained.",
+  alternates: { canonical: "/editorial-policy" },
   twitter: {
     card: "summary_large_image",
     title: "Editorial Policy",

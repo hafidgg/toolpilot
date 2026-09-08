@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "How We Test Our Tools",
   description: "How each tool on ToolPilot is verified before and after publishing.",
+  alternates: { canonical: "/how-we-test" },
   twitter: {
     card: "summary_large_image",
     title: "How We Test Our Tools",

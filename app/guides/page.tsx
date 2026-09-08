@@ -5,6 +5,7 @@ import { guides } from "@/lib/guides";
 export const metadata: Metadata = {
   title: "Guides",
   description: "In-depth guides covering every tool category on ToolPilot.",
+  alternates: { canonical: "/guides" },
   twitter: {
     card: "summary_large_image",
     title: "Guides",

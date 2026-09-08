@@ -5,6 +5,7 @@ import { blogPosts } from "@/lib/blog-posts";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Articles on character limits, YouTube metadata, SEO fundamentals, and content formatting for creators.",
+  alternates: { canonical: "/blog" },
   twitter: {
     card: "summary_large_image",
     title: "Blog",

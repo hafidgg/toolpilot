@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Changelog",
   description: "What's new on ToolPilot — tools added, articles published, and site updates.",
+  alternates: { canonical: "/changelog" },
   twitter: {
     card: "summary_large_image",
     title: "Changelog",

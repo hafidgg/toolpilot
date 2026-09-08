@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How ToolPilot handles data and cookies.",
+  alternates: { canonical: "/privacy-policy" },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy",
