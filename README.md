@@ -1,68 +1,46 @@
-# Trading Calculators
+# ToolPilot
 
-Next.js 15 + TypeScript + Tailwind site with two client-side trading tools:
-Position Size Calculator and DCA Calculator. No backend, no database —
-every calculation runs in the browser.
+Small tools for creators, done properly. Live at https://usetoolpilot.com.
 
-## Stack
+A Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS content site.
+Pages are statically generated and tools run in the browser.
 
-- Next.js 15 (App Router)
-- TypeScript
-- Tailwind CSS
-- Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (numbers)
+- **38 tools** in 4 categories (`app/tools/*`, registry in `lib/tools-data.ts`)
+- **Blog** (`app/blog`, posts in `lib/blog-posts.ts`)
+- **Guides** (`app/guides`, content in `lib/guides.ts`)
+- Comparison pages (`app/compare`), categories, search, and policy pages
+- `app/sitemap.ts`, `app/robots.ts`, and `app/rss.xml` generate the SEO feeds
 
-## Run locally (Windows / PowerShell)
+## Scripts
 
-```powershell
+```bash
 npm install
-npm run dev
+npm run dev        # next dev  -> http://localhost:3000
+npm run build      # next build
+npm run start      # next start (after build)
+npm run lint       # next lint
+npm run typecheck  # tsc --noEmit
 ```
 
-Open http://localhost:3000
+## Tests
 
-## Project structure
-
-```
-app/
-  layout.tsx              Root layout, fonts, metadata defaults
-  page.tsx                Home page
-  globals.css             Tailwind + design tokens
-  sitemap.ts               Auto-generated sitemap.xml
-  robots.ts                Auto-generated robots.txt
-  tools/
-    position-size-calculator/page.tsx
-    dca-calculator/page.tsx
-  about/page.tsx
-  privacy-policy/page.tsx   Fill in placeholders before publishing
-  terms/page.tsx            Fill in placeholders before publishing
-  blog/page.tsx              Empty index — add posts under app/blog/[slug]/
-components/
-  Header.tsx
-  Footer.tsx
-  calculators/
-    PositionSizeCalculator.tsx
-    DCACalculator.tsx
-lib/
-  calculations.ts           Pure calculation functions (unit-testable)
+```bash
+npx vitest run
 ```
 
-## Before you deploy
+The tests live in `lib/traffic-engine/__tests__/`.
 
-1. Replace `https://your-domain.com` in `app/layout.tsx`, `app/sitemap.ts`,
-   and `app/robots.ts` with your real domain.
-2. Fill in the `[Placeholder]` sections in `app/privacy-policy/page.tsx`
-   and `app/terms/page.tsx` — AdSense reviewers check these.
-3. Add a real favicon and OG image under `public/`.
-4. Deploy to Vercel: `vercel --prod`, or connect the GitHub repo in the
-   Vercel dashboard for auto-deploys on push.
-5. Submit `https://your-domain.com/sitemap.xml` to Google Search Console.
+## Traffic engine (internal)
 
-## Adding a third calculator
+`lib/traffic-engine/` is an offline analysis tool that reads Google Search
+Console CSV exports and reports traffic opportunities. It is not used by the site.
 
-1. Add pure functions to `lib/calculations.ts`.
-2. Create `components/calculators/YourCalculator.tsx` (client component,
-   same pattern as the two existing ones).
-3. Create `app/tools/your-calculator/page.tsx` with metadata + the
-   component + an SEO article section.
-4. Add the route to the `tools` array in `components/Header.tsx` and to
-   `app/sitemap.ts`.
+```bash
+npx tsx lib/traffic-engine/run-engine.ts <data-dir> <output-dir> HISTORICAL|CURRENT
+```
+
+`<data-dir>` must contain `queries.csv`, `pages.csv`, and `query-page.csv`.
+The defaults are `data/gsc`, `reports`, and `HISTORICAL`. `tsx` is not a
+project dependency, so `npx` fetches it on first use.
+
+`data/gsc/` is gitignored, so do not commit GSC exports.
