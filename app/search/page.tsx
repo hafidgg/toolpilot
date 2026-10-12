@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Search",
   description: "Search across every tool, guide, and article on ToolPilot.",
   alternates: { canonical: "/search" },
+  robots: { index: false, follow: true },
   twitter: {
     card: "summary_large_image",
     title: "Search",
