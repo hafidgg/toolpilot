@@ -70,6 +70,9 @@ export function normalizeQuery(rawQuery: string): NormalizedQuery {
   const normalizedQuery = rawQuery
     .trim()
     .toLowerCase()
+    // fold accents (générateur -> generateur) instead of deleting the letter
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
     .replace(/\s+/g, " ")
     // collapse repeated punctuation, strip characters that don't aid matching
     .replace(/[""'']/g, '"')

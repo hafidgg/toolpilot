@@ -92,6 +92,7 @@ const GENERIC_TERMS = new Set([
   "split",
   "finder",
   "find",
+  "test",
   "the",
   "for",
   "and",
@@ -111,7 +112,16 @@ function tokenWeight(token: string): number {
   return GENERIC_TERMS.has(token) ? GENERIC_TERM_WEIGHT : SPECIFIC_TERM_WEIGHT;
 }
 
-function inferPageForQuery(
+/** True for the dedicated tool pages, as opposed to blog/compare/guide pages. */
+function isToolPage(normalizedUrl: string): boolean {
+  try {
+    return new URL(normalizedUrl).pathname.startsWith("/tools/");
+  } catch {
+    return false;
+  }
+}
+
+export function inferPageForQuery(
   normalizedQuery: string,
   pages: { normalizedUrl: string }[]
 ): { page: string | null; relationship: PageRelationship } {
@@ -123,7 +133,7 @@ function inferPageForQuery(
     return { page: null, relationship: "UNKNOWN" };
   }
 
-  const scored: { url: string; score: number }[] = [];
+  const scored: { url: string; score: number; slugFullyMatched: boolean }[] = [];
 
   for (const p of pages) {
     // Slug tokens: the last path segment, split on hyphens, is the most
@@ -141,7 +151,9 @@ function inferPageForQuery(
     }
 
     if (score > 0) {
-      scored.push({ url: p.normalizedUrl, score });
+      const queryTokenSet = new Set(queryTokens);
+      const slugFullyMatched = [...slugTokens].every((t) => queryTokenSet.has(t));
+      scored.push({ url: p.normalizedUrl, score, slugFullyMatched });
     }
   }
 
@@ -161,7 +173,20 @@ function inferPageForQuery(
 
   // Require a clear margin over the next-best candidate — if two pages
   // are near-tied, guessing between them is worse than admitting UNKNOWN.
+  // Tie-break only: if exactly one of the near-tied pages is a /tools/
+  // page, its whole slug is named by the query, and it clears the
+  // confidence floor itself, prefer it over the blog/compare/guide pages
+  // it tied with. Two tied /tools/ pages stay UNKNOWN.
   if (runnerUp && best.score - runnerUp.score < MIN_WINNING_MARGIN) {
+    const tied = scored.filter((c) => best.score - c.score < MIN_WINNING_MARGIN);
+    const toolPages = tied.filter((c) => isToolPage(c.url));
+    if (
+      toolPages.length === 1 &&
+      toolPages[0].slugFullyMatched &&
+      toolPages[0].score >= MIN_CONFIDENCE_SCORE
+    ) {
+      return { page: toolPages[0].url, relationship: "INFERRED" };
+    }
     return { page: null, relationship: "UNKNOWN" };
   }
 
