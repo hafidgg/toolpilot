@@ -8,14 +8,14 @@ import Examples from "@/components/Examples";
 import Faq from "@/components/Faq";
 
 export const metadata: Metadata = {
-  title: "Emoji Counter — Count Emojis in Any Text",
+  title: "Emoji Counter — Free Tool to Count Emojis in Text",
   description:
-    "Paste any caption, bio, or comment to count emojis, see a breakdown of which ones you used, and check total character count.",
+    "Free emoji counter: paste a caption, bio, or comment to count every emoji, see which ones repeat, and check total characters. No signup needed.",
   alternates: { canonical: "/tools/emoji-counter" },
   twitter: {
     card: "summary_large_image",
-    title: "Emoji Counter — Count Emojis in Any Text",
-    description: "Paste any caption, bio, or comment to count emojis, see a breakdown of which ones you used, and check total character count.",
+    title: "Emoji Counter — Free Tool to Count Emojis in Text",
+    description: "Free emoji counter: paste a caption, bio, or comment to count every emoji, see which ones repeat, and check total characters. No signup needed.",
   },
 };
 
