@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
     slug: "meta-description-best-practices",
     title: "How to Write a Meta Description That Earns the Click",
     description:
-      "Length limits, what Google actually displays, and how to write a description that competes for attention in search results.",
+      "Why there's no fixed length limit, what Google actually displays, and how to write a description that competes for attention in search results.",
     category: "SEO & Web Tools",
     publishedAt: "2026-07-06",
     readTime: "4 min read",
@@ -126,11 +126,11 @@ export const blogPosts: BlogPost[] = [
       ),
       h("The length that actually matters"),
       p(
-        "Google typically displays somewhere around 150 to 160 characters of a meta description before truncating with an ellipsis, though the exact cutoff varies by device and how the snippet wraps. Aiming for roughly 120 to 155 characters gives you room to make a complete point without risking a mid-sentence cutoff."
+        "According to Google Search Central, there's no limit on how long a meta description can be — but the snippet is truncated in search results as needed, typically to fit the device width. Because the cutoff depends on screen width rather than a fixed character count, a common rule of thumb is to land your main point within roughly the first 120 to 155 characters, so it survives even a narrow display."
       ),
       h("Google sometimes ignores it entirely"),
       p(
-        "If Google decides a different passage from your page content better answers the searcher's specific query, it will generate its own snippet instead of using your meta description. Writing a strong, specific description improves your odds of it being used, but it isn't a guarantee."
+        "Google's documentation says snippets are primarily created from the page content itself, and the meta description is used when it might describe the page more accurately. If Google decides a different passage better answers the searcher's specific query, it will show that instead of your meta description. Writing a strong, specific description improves your odds of it being used, but it isn't a guarantee."
       ),
       p(
         "The descriptions that earn clicks tend to state a clear, specific benefit rather than a vague summary — naming what the reader will learn or get, rather than just restating the title in different words."
@@ -629,7 +629,7 @@ export const blogPosts: BlogPost[] = [
     slug: "right-youtube-thumbnail-size",
     title: "The Right YouTube Thumbnail Size (And Why It's Not Just One Number)",
     description:
-      "1280×720 is the target, but resolution, aspect ratio, and file size all matter separately — here's what each one actually affects.",
+      "3840×2160 is YouTube's current recommendation, but resolution, aspect ratio, and file size all matter separately — here's what each one actually affects.",
     category: "YouTube Tools",
     publishedAt: "2026-08-10",
     readTime: "4 min read",
@@ -640,14 +640,14 @@ export const blogPosts: BlogPost[] = [
     content: [
       h("Quick answer"),
       p(
-        "1280×720 resolution · 16:9 aspect ratio · 2MB maximum file size — those three numbers cover it, but each one fails independently for a different reason. Here's what each actually affects."
+        "3840×2160 resolution (640 pixels wide at minimum) · 16:9 aspect ratio · 2MB maximum file size on mobile (50MB on desktop) — those three numbers cover it, but each one fails independently for a different reason. Here's what each actually affects."
       ),
       p(
-        "\"What size should a YouTube thumbnail be\" has a simple headline answer — 1280×720 — but that single number actually bundles together three separate requirements that fail independently: resolution, aspect ratio, and file size."
+        "\"What size should a YouTube thumbnail be\" has a simple headline answer — 3840×2160, according to YouTube's Help Center — but that single number actually bundles together three separate requirements that fail independently: resolution, aspect ratio, and file size."
       ),
       h("Resolution: the minimum that keeps you sharp"),
       p(
-        "1280×720 is YouTube's recommended resolution, with 640 pixels as an absolute floor. Uploading below that minimum risks a soft, blurry thumbnail once YouTube's various placements (search results, suggested videos, TV app) scale it — and once a channel builds a habit of low-resolution thumbnails, it reads as low-effort even if the video content is strong."
+        "YouTube's Help Center recommends a resolution of 3840×2160 for video thumbnails, with a minimum width of 640 pixels. Uploading below that minimum risks a soft, blurry thumbnail once YouTube's various placements (search results, suggested videos, TV app) scale it — and once a channel builds a habit of low-resolution thumbnails, it reads as low-effort even if the video content is strong."
       ),
       h("Aspect ratio: the one that gets silently cropped"),
       p(
@@ -655,7 +655,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h("File size: the one nobody thinks about until it blocks the upload"),
       p(
-        "YouTube caps thumbnail uploads at 2MB. A thumbnail exported at full resolution from a modern camera or design tool can exceed that without any obvious visual signal that it's too large — the fix is usually just re-exporting at a reasonable JPEG compression level, which rarely produces a visible quality loss at thumbnail viewing sizes."
+        "YouTube caps video thumbnail uploads at 2MB from mobile and 50MB from desktop. A thumbnail exported at full resolution from a modern camera or design tool can exceed the mobile limit without any obvious visual signal that it's too large — the fix is usually just re-exporting at a reasonable JPEG compression level, which rarely produces a visible quality loss at thumbnail viewing sizes."
       ),
     ],
   },
