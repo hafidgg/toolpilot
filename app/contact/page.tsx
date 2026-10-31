@@ -35,7 +35,7 @@ export default function ContactPage() {
             contact@usetoolpilot.com
           </a>
           <p className="mt-1 text-xs text-faint">
-            [Placeholder — replace with your real contact address before publishing]
+            ToolPilot is operated by Gougua Hafid, Morocco.
           </p>
         </div>
 
