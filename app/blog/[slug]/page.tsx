@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts, getPostBySlug } from "@/lib/blog-posts";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { renderInlineText } from "@/components/InlineText";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -105,7 +106,7 @@ export default async function BlogPostPage({
               {block.text}
             </h2>
           ) : (
-            <p key={i}>{block.text}</p>
+            <p key={i}>{renderInlineText(block.text)}</p>
           )
         )}
       </div>
