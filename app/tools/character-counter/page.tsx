@@ -10,12 +10,12 @@ import Faq from "@/components/Faq";
 export const metadata: Metadata = {
   title: "Social Media Character Counter — X, Instagram, TikTok & More",
   description:
-    "Count characters as you type and check your text against the limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
+    "Count characters as you type and check your text against commonly cited limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
   alternates: { canonical: "/tools/character-counter" },
   twitter: {
     card: "summary_large_image",
     title: "Social Media Character Counter — X, Instagram, TikTok & More",
-    description: "Count characters as you type and check your text against the limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
+    description: "Count characters as you type and check your text against commonly cited limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
   },
 };
 
@@ -31,7 +31,7 @@ const exampleItems = [
   {
     title: "Cross-posting one caption everywhere",
     description:
-      "Write once, then check it against the tightest limit in your posting list — usually X's 280 characters or TikTok's 150.",
+      "Write once, then check it against the tightest limit in your posting list — often X (280) or TikTok (150), both commonly cited figures to check in the app.",
   },
   {
     title: "Writing a meta description",
@@ -117,8 +117,7 @@ export default function CharacterCounterPage() {
           <p>
             Every platform enforces a hard character limit, but the number
             that actually determines whether your post performs well is
-            usually much lower than the cap. X truncates nothing until 280,
-            but a caption on Instagram or Facebook that runs past two or
+            usually much lower than the cap. A caption on Instagram or Facebook that runs past two or
             three lines gets folded behind &quot;more,&quot; and most readers
             never tap it.
           </p>
@@ -126,8 +125,10 @@ export default function CharacterCounterPage() {
             That&apos;s why this tool shows every platform&apos;s limit side
             by side instead of just one — a caption you&apos;re repurposing
             across X, Threads, and LinkedIn needs to satisfy the tightest
-            constraint in the group, which is usually X&apos;s 280 or
-            TikTok&apos;s 150-character caption limit.
+            constraint in the group, which is often X (280) or TikTok&apos;s
+            caption (150). Only the LinkedIn and YouTube limits shown here are
+            confirmed on official pages; the others are commonly cited, so
+            check them in the app.
           </p>
           <p>
             If you&apos;re writing once and cross-posting, aim for whichever

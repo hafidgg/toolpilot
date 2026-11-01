@@ -32,16 +32,20 @@ export interface PlatformLimit {
   label: string;
   limit: number;
   note?: string;
+  /** true only when the limit was confirmed on the platform's own help pages */
+  verified: boolean;
 }
 
+export const UNVERIFIED_LIMIT_LABEL = "commonly cited, check in the app";
+
 export const PLATFORM_LIMITS: PlatformLimit[] = [
-  { key: "x", label: "X (Twitter) Post", limit: 280 },
-  { key: "instagram", label: "Instagram Caption", limit: 2200 },
-  { key: "tiktok", label: "TikTok Caption", limit: 150, note: "video caption, not bio" },
-  { key: "facebook", label: "Facebook Post", limit: 63206, note: "engagement drops after ~80" },
-  { key: "linkedin", label: "LinkedIn Post", limit: 3000 },
-  { key: "youtube-desc", label: "YouTube Description", limit: 5000 },
-  { key: "threads", label: "Threads Post", limit: 500 },
+  { key: "x", label: "X (Twitter) Post", limit: 280, verified: false },
+  { key: "instagram", label: "Instagram Caption", limit: 2200, verified: false },
+  { key: "tiktok", label: "TikTok Caption", limit: 150, note: "video caption, not bio", verified: false },
+  { key: "facebook", label: "Facebook Post", limit: 63206, verified: false },
+  { key: "linkedin", label: "LinkedIn Post", limit: 3000, verified: true },
+  { key: "youtube-desc", label: "YouTube Description", limit: 5000, verified: true },
+  { key: "threads", label: "Threads Post", limit: 500, verified: false },
 ];
 
 export function charCount(text: string): number {
@@ -504,15 +508,16 @@ export interface BioLimit {
   key: string;
   label: string;
   limit: number;
+  verified: boolean;
 }
 
 export const BIO_LIMITS: BioLimit[] = [
-  { key: "instagram", label: "Instagram Bio", limit: 150 },
-  { key: "tiktok", label: "TikTok Bio", limit: 80 },
-  { key: "x", label: "X (Twitter) Bio", limit: 160 },
-  { key: "youtube", label: "YouTube Channel Description", limit: 1000 },
-  { key: "linkedin", label: "LinkedIn Headline", limit: 220 },
-  { key: "threads", label: "Threads Bio", limit: 150 },
+  { key: "instagram", label: "Instagram Bio", limit: 150, verified: false },
+  { key: "tiktok", label: "TikTok Bio", limit: 80, verified: false },
+  { key: "x", label: "X (Twitter) Bio", limit: 160, verified: false },
+  { key: "youtube", label: "YouTube Channel Description", limit: 1000, verified: false },
+  { key: "linkedin", label: "LinkedIn Headline", limit: 220, verified: false },
+  { key: "threads", label: "Threads Bio", limit: 150, verified: false },
 ];
 
 export interface PinterestCheckResult {

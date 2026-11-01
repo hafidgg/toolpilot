@@ -23,9 +23,9 @@ const faqItems = [
       "Paste it inside a <script type=\"application/ld+json\"> tag in your page's HTML head or body.",
   },
   {
-    question: "Does FAQ schema guarantee a rich result in Google?",
+    question: "Will FAQ schema show expandable questions in Google?",
     answer:
-      "No — Google decides whether to display FAQ rich results based on its own quality assessment, and has scaled back which sites qualify over time. Valid markup is necessary but not sufficient for a rich result to appear.",
+      "No. Google stopped showing FAQ rich results in Search in May 2026. FAQPage is still valid schema.org markup that other consumers of structured data may read, but it won't add expandable questions to your Google listing.",
   },
 ];
 

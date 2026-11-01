@@ -5,14 +5,14 @@ import ToolPageHeader from "@/components/ToolPageHeader";
 import RelatedTools from "@/components/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "TikTok Caption Counter — 150-Character Limit",
+  title: "TikTok Caption Counter — Live Character Count",
   description:
-    "Check your TikTok video caption against the 150-character limit as you type.",
+    "Count your TikTok caption as you type against the commonly cited 150-character limit, then check the current limit in the app.",
   alternates: { canonical: "/tools/tiktok-caption-counter" },
   twitter: {
     card: "summary_large_image",
-    title: "TikTok Caption Counter — 150-Character Limit",
-    description: "Check your TikTok video caption against the 150-character limit as you type.",
+    title: "TikTok Caption Counter — Live Character Count",
+    description: "Count your TikTok caption as you type against the commonly cited 150-character limit, then check the current limit in the app.",
   },
 };
 
@@ -20,12 +20,12 @@ const faqItems = [
   {
     question: "Is 150 characters the limit for TikTok bios too?",
     answer:
-      "No — this limit is specifically for video captions. TikTok bios have their own, separate 80-character limit.",
+      "No. The 150 figure is the commonly cited caption limit; bios are counted separately (80 characters is the figure commonly cited). Neither is confirmed on an official TikTok page we could check, so check the current limit in the app.",
   },
   {
-    question: "Do hashtags count toward the 150-character caption limit?",
+    question: "Do hashtags count toward the caption character count?",
     answer:
-      "Yes, hashtags included in your caption count toward the same 150-character total as the rest of your text.",
+      "Yes, hashtags included in your caption count toward the same character total as the rest of your text.",
   },
 ];
 
@@ -37,8 +37,9 @@ export default function TiktokCaptionCounterPage() {
         categoryHref="/categories/social-media-tools"
         title="TikTok Caption Counter"
       >
-        Write your caption and watch the character count against TikTok&apos;s
-          150-character limit in real time.
+        Write your caption and watch the character count against the
+          commonly cited 150-character limit in real time (check the current
+          limit in the app).
       </ToolPageHeader>
 
       <div className="mt-10">

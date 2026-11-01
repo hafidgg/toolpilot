@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { charCount, PLATFORM_LIMITS } from "@/lib/content-calculations";
+import { charCount, PLATFORM_LIMITS, UNVERIFIED_LIMIT_LABEL } from "@/lib/content-calculations";
 
 export default function CharacterCounter() {
   const [text, setText] = useState("");
@@ -49,8 +49,12 @@ export default function CharacterCounter() {
                     style={{ width: `${ratio * 100}%` }}
                   />
                 </div>
-                {p.note && (
-                  <p className="mt-1 text-[11px] text-faint">{p.note}</p>
+                {(p.note || !p.verified) && (
+                  <p className="mt-1 text-[11px] text-faint">
+                    {[p.note, p.verified ? null : UNVERIFIED_LIMIT_LABEL]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
                 )}
               </div>
             );

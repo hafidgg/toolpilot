@@ -172,7 +172,7 @@ export const guides: Guide[] = [
       {
         heading: "Structured data helps search engines understand your content",
         paragraphs: [
-          "FAQ schema (a specific JSON-LD format) tells search engines that a section of your page is structured as questions and answers — it doesn't guarantee a rich result in search, since Google decides independently whether to display one, but valid markup is a prerequisite. The FAQ Schema Generator builds valid FAQPage JSON-LD from a list of questions and answers you provide.",
+          "FAQ schema (a specific JSON-LD format) marks up a section of your page as questions and answers using schema.org's FAQPage type. Google stopped showing FAQ rich results in Search in May 2026, so it no longer adds expandable questions to Google listings, but it is still valid structured data that other consumers may read. The FAQ Schema Generator builds valid FAQPage JSON-LD from a list of questions and answers you provide.",
         ],
       },
       {

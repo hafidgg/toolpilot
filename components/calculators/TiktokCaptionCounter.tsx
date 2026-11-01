@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { charCount } from "@/lib/content-calculations";
+import { charCount, UNVERIFIED_LIMIT_LABEL } from "@/lib/content-calculations";
 
 const LIMIT = 150;
 
@@ -38,6 +38,9 @@ export default function TiktokCaptionCounter() {
           {over ? `${Math.abs(remaining)} over limit` : `${remaining} characters left`}
         </span>
       </div>
+      <p className="mt-2 text-[11px] text-faint">
+        {LIMIT}-character limit: {UNVERIFIED_LIMIT_LABEL}
+      </p>
     </div>
   );
 }

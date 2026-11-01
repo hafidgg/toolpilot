@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { charCount, BIO_LIMITS } from "@/lib/content-calculations";
+import { charCount, BIO_LIMITS, UNVERIFIED_LIMIT_LABEL } from "@/lib/content-calculations";
 
 export default function BioCharacterCounter() {
   const [text, setText] = useState("");
@@ -43,6 +43,9 @@ export default function BioCharacterCounter() {
                     style={{ width: `${ratio * 100}%` }}
                   />
                 </div>
+                {!p.verified && (
+                  <p className="mt-1 text-[11px] text-faint">{UNVERIFIED_LIMIT_LABEL}</p>
+                )}
               </div>
             );
           })}

@@ -160,7 +160,7 @@ export const categories: CategoryMeta[] = [
       {
         slug: "tiktok-caption-counter",
         title: "TikTok Caption Counter",
-        shortDescription: "Check your caption against TikTok's 150-character limit as you type.",
+        shortDescription: "Check your caption against the commonly cited 150-character TikTok limit as you type.",
       },
       {
         slug: "instagram-caption-formatter",
