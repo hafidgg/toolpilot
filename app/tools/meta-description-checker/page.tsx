@@ -10,19 +10,19 @@ import Examples from "@/components/Examples";
 export const metadata: Metadata = {
   title: "Meta Description Checker — Search Snippet Preview",
   description:
-    "Check your meta description length against the ~155-character search snippet cutoff, with a live Google preview.",
+    "Check your meta description against the ~155-character recommended length, a rule of thumb, with a live Google search preview.",
   alternates: { canonical: "/tools/meta-description-checker" },
   twitter: {
     card: "summary_large_image",
     title: "Meta Description Checker — Search Snippet Preview",
-    description: "Check your meta description length against the ~155-character search snippet cutoff, with a live Google preview.",
+    description: "Check your meta description against the ~155-character recommended length, a rule of thumb, with a live Google search preview.",
   },
 };
 
 const howToSteps = [
   { text: "Write or paste your draft meta description." },
   { text: "Watch the character count and the live Google search preview update as you type." },
-  { text: "Trim if the count goes past ~155 characters — the preview will show where it gets cut." },
+  { text: "Consider trimming past ~155 characters, a rule of thumb — Google truncates snippets to fit the device width." },
   { text: "Copy the final version into your page's meta description tag." },
 ];
 
@@ -35,7 +35,7 @@ const exampleItems = [
   {
     title: "A description that gets cut off",
     description:
-      "Anything past roughly 155 characters risks truncation in Google's search results, shown with an ellipsis (…).",
+      "Google has no fixed limit, but truncates snippets as needed to fit the device width, shown with an ellipsis (…). Past the ~155-character rule of thumb, truncation becomes likely.",
   },
 ];
 
@@ -48,7 +48,7 @@ const faqItems = [
   {
     question: "Is there a minimum length that matters for SEO?",
     answer:
-      "There's no strict minimum, but a description under about 120 characters usually isn't using the available space to its full advantage. Aim for enough detail to earn the click without exceeding the cutoff.",
+      "There's no strict minimum, but a description under about 120 characters usually isn't using the available space to its full advantage. Aim for enough detail to earn the click while keeping the key message near the start, in case the snippet is truncated.",
   },
   {
     question: "Is this tool free?",
@@ -83,8 +83,9 @@ export default function MetaDescriptionCheckerPage() {
         <div className="space-y-4 text-sm text-muted leading-relaxed">
           <p>
             A meta description checker measures your draft description
-            against the ~155-character limit before Google truncates it in
-            search results, and shows a live preview of how the snippet
+            against the ~155-character recommended length, a rule of thumb
+            (Google has no fixed limit and truncates snippets as needed,
+            typically to fit the device width), and shows a live preview of how the snippet
             will actually appear. Writers and SEO practitioners use it to
             avoid submitting a description that gets cut off mid-sentence.
           </p>

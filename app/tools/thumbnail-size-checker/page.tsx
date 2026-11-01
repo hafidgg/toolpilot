@@ -5,14 +5,14 @@ import ToolPageHeader from "@/components/ToolPageHeader";
 import RelatedTools from "@/components/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "Thumbnail Size Checker — YouTube 1280×720 Spec",
+  title: "Thumbnail Size Checker — YouTube Thumbnail Specs",
   description:
-    "Upload a thumbnail image to check its dimensions and aspect ratio against YouTube's recommended 1280×720 spec.",
+    "Check a thumbnail's resolution, 16:9 ratio, file size and format against YouTube's specs: 640 px minimum width, 3840×2160 preferred.",
   alternates: { canonical: "/tools/thumbnail-size-checker" },
   twitter: {
     card: "summary_large_image",
-    title: "Thumbnail Size Checker — YouTube 1280×720 Spec",
-    description: "Upload a thumbnail image to check its dimensions and aspect ratio against YouTube's recommended 1280×720 spec.",
+    title: "Thumbnail Size Checker — YouTube Thumbnail Specs",
+    description: "Check a thumbnail's resolution, 16:9 ratio, file size and format against YouTube's specs: 640 px minimum width, 3840×2160 preferred.",
   },
 };
 
@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: "What's YouTube's recommended thumbnail size?",
     answer:
-      "YouTube recommends 1280×720 pixels, a 16:9 aspect ratio, with a minimum width of 640 pixels. Files should be under 2MB and in JPG, GIF, or PNG format.",
+      "According to YouTube's Help Center, the preferred resolution for video thumbnails is 3840×2160 pixels at a 16:9 aspect ratio, with a minimum width of 640 pixels. Use JPG or PNG; the file size limit is 2 MB when uploading from mobile and 50 MB from desktop.",
   },
   {
     question: "Is my image uploaded to a server?",

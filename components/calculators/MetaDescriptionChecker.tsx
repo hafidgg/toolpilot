@@ -38,7 +38,7 @@ export default function MetaDescriptionChecker() {
 
       <div className="mt-4 flex items-baseline justify-between">
         <span className={`readout text-sm font-semibold ${statusColor}`}>
-          {result.length} / 155
+          {result.length} / ~155 recommended
         </span>
       </div>
       <p className="mt-2 text-sm text-muted">{result.message}</p>

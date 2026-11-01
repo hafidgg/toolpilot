@@ -36,7 +36,7 @@ const exampleItems = [
   {
     title: "Writing a meta description",
     description:
-      "Meta descriptions get cut off around 155 characters in Google search results — check length before publishing a page.",
+      "Google has no fixed meta description limit and truncates snippets to fit the device width; ~155 characters is a common rule of thumb — check length before publishing a page.",
   },
   {
     title: "Trimming a headline",

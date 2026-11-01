@@ -50,13 +50,13 @@ export function checkMetaDescription(text: string): MetaDescriptionResult {
     return {
       length,
       status: "good",
-      message: "Fits within the typical ~155-character search snippet.",
+      message: "Within the ~155-character recommended length (a rule of thumb).",
     };
   }
   return {
     length,
     status: "too-long",
-    message: "Likely to be truncated in search results.",
+    message: "Past the ~155-character rule of thumb — may be truncated, depending on device width.",
   };
 }
 

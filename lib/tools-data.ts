@@ -121,7 +121,7 @@ export const categories: CategoryMeta[] = [
         slug: "thumbnail-size-checker",
         title: "Thumbnail Size Checker",
         shortDescription:
-          "Upload an image to check its dimensions and aspect ratio against YouTube's 1280×720 spec.",
+          "Upload an image to check its resolution, 16:9 ratio, file size and format against YouTube's thumbnail specs.",
       },
       {
         slug: "youtube-thumbnail-downloader",
@@ -206,7 +206,7 @@ export const categories: CategoryMeta[] = [
         slug: "meta-description-checker",
         title: "Meta Description Checker",
         shortDescription:
-          "Check your meta description length against the ~155-character search snippet cutoff.",
+          "Check your meta description against the ~155-character recommended length (a rule of thumb).",
       },
       {
         slug: "keyword-density-checker",

@@ -2,17 +2,23 @@
 
 import { useState } from "react";
 import EmptyState from "@/components/EmptyState";
+import {
+  checkAspectRatio,
+  checkFileSize,
+  checkFormat,
+  checkResolution,
+  TARGET_RATIO,
+  type CheckStatus,
+} from "@/lib/thumbnail-checks";
 
 interface ImageInfo {
   width: number;
   height: number;
   aspectRatio: number;
+  size: number;
+  type: string;
   src: string;
 }
-
-const TARGET_WIDTH = 1280;
-const TARGET_HEIGHT = 720;
-const TARGET_RATIO = TARGET_WIDTH / TARGET_HEIGHT;
 
 export default function ThumbnailSizeChecker() {
   const [image, setImage] = useState<ImageInfo | null>(null);
@@ -29,6 +35,8 @@ export default function ThumbnailSizeChecker() {
           width: img.naturalWidth,
           height: img.naturalHeight,
           aspectRatio: img.naturalWidth / img.naturalHeight,
+          size: file.size,
+          type: file.type,
           src,
         });
       };
@@ -37,8 +45,10 @@ export default function ThumbnailSizeChecker() {
     reader.readAsDataURL(file);
   }
 
-  const ratioMatch = image ? Math.abs(image.aspectRatio - TARGET_RATIO) < 0.02 : false;
-  const meetsMinimum = image ? image.width >= TARGET_WIDTH && image.height >= TARGET_HEIGHT : false;
+  const resolution = image ? checkResolution(image.width, image.height) : null;
+  const ratio = image ? checkAspectRatio(image.width, image.height) : null;
+  const fileSize = image ? checkFileSize(image.size) : null;
+  const format = image ? checkFormat(image.type) : null;
 
   return (
     <div className="grid md:grid-cols-2 gap-6">
@@ -74,7 +84,7 @@ export default function ThumbnailSizeChecker() {
 
       <div className="panel terminal-grid p-6">
         <span className="eyebrow">Result</span>
-        {!image ? (
+        {!image || !resolution || !ratio || !fileSize || !format ? (
           <EmptyState message="Upload an image to check its dimensions." />
         ) : (
           <div className="mt-4 space-y-5">
@@ -87,18 +97,20 @@ export default function ThumbnailSizeChecker() {
 
             <StatusRow
               label="Aspect ratio (16:9)"
-              ok={ratioMatch}
-              detail={`Yours: ${image.aspectRatio.toFixed(3)} · Target: ${TARGET_RATIO.toFixed(3)}`}
+              status={ratio.status}
+              detail={`${ratio.message} Yours: ${image.aspectRatio.toFixed(3)} · Target: ${TARGET_RATIO.toFixed(3)}`}
             />
             <StatusRow
-              label="Meets minimum 1280×720"
-              ok={meetsMinimum}
-              detail={
-                meetsMinimum
-                  ? "Resolution is sufficient for YouTube."
-                  : "Below YouTube's recommended minimum resolution."
-              }
+              label="Resolution (min. 640 px wide, 3840×2160 preferred)"
+              status={resolution.status}
+              detail={resolution.message}
             />
+            <StatusRow
+              label="File size (2 MB mobile, 50 MB desktop)"
+              status={fileSize.status}
+              detail={`${fileSize.message} Yours: ${(image.size / (1024 * 1024)).toFixed(2)} MB`}
+            />
+            <StatusRow label="Format (JPG or PNG)" status={format.status} detail={format.message} />
           </div>
         )}
       </div>
@@ -108,19 +120,21 @@ export default function ThumbnailSizeChecker() {
 
 function StatusRow({
   label,
-  ok,
+  status,
   detail,
 }: {
   label: string;
-  ok: boolean;
+  status: CheckStatus;
   detail: string;
 }) {
+  const color =
+    status === "pass" ? "text-gain" : status === "warn" ? "text-[#F5A623]" : "text-loss";
   return (
     <div className="bg-raised border border-line-soft rounded-md px-4 py-3">
       <div className="flex items-center justify-between mb-1">
         <span className="text-sm text-ink">{label}</span>
-        <span className={`readout text-xs font-semibold ${ok ? "text-gain" : "text-loss"}`}>
-          {ok ? "PASS" : "FAIL"}
+        <span className={`readout text-xs font-semibold ${color}`}>
+          {status.toUpperCase()}
         </span>
       </div>
       <p className="text-xs text-faint">{detail}</p>

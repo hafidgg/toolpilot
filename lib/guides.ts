@@ -54,9 +54,9 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Thumbnails: 1280×720 is the target, not just a suggestion",
+        heading: "Thumbnails: 16:9, at least 640 px wide, 3840×2160 preferred",
         paragraphs: [
-          "YouTube recommends a 1280×720 thumbnail at a 16:9 aspect ratio, with 640 pixels as an absolute minimum width. A thumbnail outside that ratio gets cropped unpredictably across different placements — search results, suggested videos, and the mobile app can all crop differently.",
+          "YouTube's Help Center lists 3840×2160 as the preferred thumbnail resolution, at a 16:9 aspect ratio, with 640 pixels as the minimum width — anything at or above that minimum is accepted, and higher is better. Files must be JPG or PNG, up to 2 MB from mobile or 50 MB from desktop. A thumbnail outside that ratio gets cropped unpredictably across different placements — search results, suggested videos, and the mobile app can all crop differently.",
           "Upload any draft thumbnail to the Thumbnail Size Checker to confirm both the resolution and the aspect ratio before you set it live.",
         ],
       },
@@ -165,7 +165,7 @@ export const guides: Guide[] = [
       {
         heading: "Meta descriptions and Open Graph tags control how links look when shared",
         paragraphs: [
-          "A meta description doesn't directly affect rankings, but it's often the deciding factor in whether someone clicks your result over a competitor's — and Google typically displays only the first ~155 characters before truncating. The Meta Description Checker shows a live Google search preview as you write.",
+          "A meta description doesn't directly affect rankings, but it's often the deciding factor in whether someone clicks your result over a competitor's — and Google has no fixed length limit, but truncates the snippet as needed, typically to fit the device width; around 155 characters is a common rule of thumb for staying fully visible. The Meta Description Checker shows a live Google search preview as you write.",
           "Open Graph tags control how a link looks when shared on social platforms, in Slack, or in messaging apps — without them, shares often show a blank or generic preview. Build them with the Open Graph Tag Generator, then verify an already-published page's tags with the Open Graph Preview tool.",
         ],
       },
