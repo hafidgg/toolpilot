@@ -83,28 +83,36 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-write-hashtags-that-work",
     title: "How to Write Hashtags That Actually Get Found",
     description:
-      "Formatting, capitalization, and volume — the practical details of hashtags that most guides skip.",
+      "What Instagram and YouTube document about hashtags (limits, allowed characters, where they show), plus formatting choices that are judgment calls.",
     category: "Social Media Tools",
     publishedAt: "2026-06-29",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/hashtag-formatter",
       label: "Hashtag Formatter",
     },
     content: [
       p(
-        "Hashtags work as a discovery mechanism — a way for someone who isn't already following you to find your post through a topic they're browsing. That only works if the hashtag is formatted correctly and matches how people actually search."
+        "Use a few hashtags that are directly relevant, with no spaces or symbols, and stay within each platform's documented limit: up to 5 on an Instagram post; on YouTube, more than 60 and all of them are ignored. Everything beyond those documented rules, such as capitalization or picking broad versus niche tags, is a judgment call, and this post labels it that way."
       ),
-      h("Capitalization isn't just cosmetic"),
+      h("What Instagram documents"),
       p(
-        "A multi-word hashtag written in CamelCase, like #SmallBusinessTips, is functionally identical to #smallbusinesstips for search purposes — platforms treat hashtags as case-insensitive. The real reason to use CamelCase is accessibility: screen readers can correctly announce each word in a CamelCase hashtag, but often read an all-lowercase run-on as one long, garbled string."
+        "Instagram's [hashtag help page](https://help.instagram.com/351460621611097) says: \"You can use up to 5 tags on a post.\" \"Numbers are allowed in hashtags\", but \"spaces and special characters, such as $ or %, won't work.\" Hashtags can go \"in the caption or comments of your post\", and on a public account the post \"will be visible on the corresponding hashtag page\"; posts from private accounts won't appear there publicly. Advice that quotes a 30-hashtag limit is out of date."
       ),
-      h("How many is too many"),
+      h("What YouTube documents"),
       p(
-        "Instagram allows up to 30 hashtags per post, but posts using somewhere in the 3–5 range often perform just as well, since a wall of hashtags can look spammy and doesn't necessarily reach more of the right audience. Quality and relevance of each tag matters more than hitting a maximum count."
+        "YouTube's [hashtag policy](https://support.google.com/youtube/answer/6390658) says hashtags have \"no spaces\", that \"if a video or playlist has more than 60 hashtags, we'll ignore each hashtag on that content\", and that \"up to three hashtags that are considered most engaging will appear by your video title.\" It also says: \"Don't add hashtags that are not directly related to the video or playlist.\""
+      ),
+      h("Worked example"),
+      p(
+        "Our [Hashtag Formatter](/tools/hashtag-formatter) turns \"small business tips, coffee shop, latte art, cafe life, barista\" into #SmallBusinessTips #CoffeeShop #LatteArt #CafeLife #Barista. That's 5 tags, exactly Instagram's documented maximum, and 59 characters including the spaces between tags. The lowercase version (#smallbusinesstips …) is the same length. Input with symbols shows the character rule in action: \"$5 deals\" becomes #5Deals and \"100% cotton\" becomes #100Cotton, because $ and % don't work in hashtags while numbers do."
+      ),
+      h("Judgment calls (not platform rules)"),
+      p(
+        "CamelCase (#SmallBusinessTips) is easier for people to read. It's also common accessibility advice, on the grounds that screen readers can separate the words, but we haven't verified that against an official source. Neither help page above mentions capitalization, so whether a platform treats #CoffeeShop and #coffeeshop as the same tag is something we couldn't verify. Choosing relevant, specific tags over the most popular ones is our opinion; YouTube's rule against unrelated hashtags is the closest official statement."
       ),
       p(
-        "Mix specificity levels: one or two broad tags for volume, a few mid-size niche tags where you can realistically rank, and one branded or community tag specific to you. A hashtag with millions of posts is nearly impossible to be seen in; one with only a few hundred might not have any real search volume at all."
+        "For caption and post length limits, see our [character limits reference](/blog/social-media-character-limits-guide) rather than numbers repeated here."
       ),
     ],
   },
@@ -115,25 +123,36 @@ export const blogPosts: BlogPost[] = [
       "Why there's no fixed length limit, what Google actually displays, and how to write a description that competes for attention in search results.",
     category: "SEO & Web Tools",
     publishedAt: "2026-07-06",
-    readTime: "4 min read",
+    readTime: "3 min read",
     relatedTool: {
       href: "/tools/meta-description-checker",
       label: "Meta Description Checker",
     },
     content: [
       p(
-        "A meta description doesn't directly influence search rankings, but it's often the deciding factor in whether someone clicks your result over a competitor's. Think of it as ad copy that you write once and Google displays for free, indefinitely."
+        "Write a short, accurate summary of that specific page, and put the most important point first. Google sets no length limit, but it truncates long snippets to fit the screen and may show different text from the page instead of your description."
       ),
-      h("The length that actually matters"),
+      h("What Google's documentation actually says"),
       p(
-        "According to Google Search Central, there's no limit on how long a meta description can be — but the snippet is truncated in search results as needed, typically to fit the device width. Because the cutoff depends on screen width rather than a fixed character count, a common rule of thumb is to land your main point within roughly the first 120 to 155 characters, so it survives even a narrow display."
-      ),
-      h("Google sometimes ignores it entirely"),
-      p(
-        "Google's documentation says snippets are primarily created from the page content itself, and the meta description is used when it might describe the page more accurately. If Google decides a different passage better answers the searcher's specific query, it will show that instead of your meta description. Writing a strong, specific description improves your odds of it being used, but it isn't a guarantee."
+        "Google's [snippet documentation](https://developers.google.com/search/docs/appearance/snippet) states that \"there's no limit on how long a meta description can be\", but that \"the snippet is truncated in Google Search results as needed, typically to fit the device width.\" There is no official character count. The ~155 characters our checker uses is a rule of thumb for keeping the main point visible, not a Google cutoff."
       ),
       p(
-        "The descriptions that earn clicks tend to state a clear, specific benefit rather than a vague summary — naming what the reader will learn or get, rather than just restating the title in different words."
+        "The same page says \"snippets are primarily created from the page content itself\", and that Google \"sometimes uses the meta description HTML element if it might give users a more accurate description of the page.\" A description raises the odds that your wording is shown, but there is no guarantee."
+      ),
+      h("What a good description contains"),
+      p(
+        "Google's guidance boils down to three points. Describe the page itself: a description \"generally informs and interests users with a short, relevant summary.\" Make it unique, because \"identical or similar descriptions on every page of a site aren't helpful.\" And don't write keyword lists, since \"long strings of keywords don't give users a clear idea of the page's content.\" The documentation also notes a description doesn't have to be a full sentence; page-specific facts like a price, an author or a duration work too."
+      ),
+      h("Worked example"),
+      p(
+        "Here is what our [Meta Description Checker](/tools/meta-description-checker) returns for four drafts. Google's own \"better\" example, \"Learn how to cook eggs with this complete guide in 1 hour or less.\", is 66 characters, so the checker flags it as short (under 120). That's not wrong: it's a reminder you have room, not a penalty. Google's keyword-list counter-example (\"Sewing supplies, yarn, colored pencils…\") is 82 characters. It's also short, but the real problem is the keyword list, and no length check will catch that."
+      ),
+      p(
+        "A draft for a checker tool page, \"Free online meta description checker: count characters, see a live Google-style preview, and spot drafts likely to be cut off on narrow screens.\", is 144 characters, within the rule of thumb. A longer version with \"as you type\", \"search\" and \"mobile\" added reaches 179 characters and is flagged as likely to be truncated. The extra words added nothing a reader needs, so the 144-character version is the better one anyway."
+      ),
+      h("Common mistakes"),
+      p(
+        "Reusing one boilerplate description across many pages. Stuffing in keywords. Treating 155 characters as a hard limit and cutting a useful detail to hit it. Expecting the description to change rankings. Google's snippet documentation presents it as a summary shown in results and doesn't describe it as a ranking factor."
       ),
     ],
   },
@@ -181,41 +200,45 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "social-media-character-limits-guide",
-    title: "The Complete Guide to Social Media Character Limits",
+    title: "Social Media Character Limits (Verified)",
     description:
-      "Every major platform's post and bio character limits in one place, and what actually happens when you go over.",
+      "Post, title and hashtag limits checked against official help pages, with the verification date, and clear flags on the numbers we couldn't verify.",
     category: "Social Media Tools",
     publishedAt: "2026-07-20",
-    readTime: "5 min read",
+    readTime: "3 min read",
     relatedTool: {
       href: "/tools/character-counter",
       label: "Character Counter",
     },
     content: [
       p(
-        "Every platform enforces a character limit differently — some hard-cap what you can type at all, others let you type freely but fold the excess behind a \"see more\" link. Knowing which behavior you're dealing with changes how you should write."
+        "We could verify these limits against official help pages: LinkedIn posts allow up to 3,000 characters; YouTube video titles 100 and descriptions 5,000; Instagram posts at most 5 hashtags; YouTube ignores every hashtag on a video that has more than 60. For X, Instagram captions and bios, Threads, Facebook and TikTok we couldn't verify a figure from an official page, so check the current limit in the app itself."
       ),
-      h("Hard limits vs soft cutoffs"),
+      p("Limits last verified: 2026-11-01. Platforms change these numbers, so the date matters."),
+      h("Verified limits"),
       p(
-        "X enforces a genuine hard limit at 280 characters — the composer simply won't let you type past it. TikTok's 150-character caption limit works the same way. These are the platforms where going over isn't an option; you have to edit down before you can post at all."
-      ),
-      p(
-        "Instagram, Facebook, and LinkedIn work differently. Their true limits are generous — Instagram allows 2,200 characters, LinkedIn allows 3,000 — but the visible preview is much shorter before a \"more\" link appears, usually somewhere between 125 and 210 characters depending on the platform and device. Here, the practical limit isn't the platform's rule; it's how much of your text a reader will see before deciding whether to expand it."
-      ),
-      h("Why this distinction matters for how you write"),
-      p(
-        "For hard-limit platforms, the whole message has to fit — prioritize cutting anything non-essential. For soft-cutoff platforms, put the complete thought or hook in that visible preview window, and treat everything after the fold as optional depth for readers who are already engaged enough to tap \"more.\""
-      ),
-      h("Bios follow a separate, stricter set of limits"),
-      p(
-        "Profile bios are consistently shorter than post limits across every platform — Instagram's bio caps at 150 characters versus 2,200 for a caption, and TikTok's bio caps at just 80. The logic is the same everywhere: a bio is meant to be scanned in a glance on a profile page, not read like a post."
-      ),
-      h("A quick reference"),
-      p(
-        "X posts: 280 characters, hard limit. TikTok captions: 150 characters, hard limit. Threads posts: 500 characters, hard limit. Instagram captions: 2,200 characters allowed, roughly 125 visible before folding. LinkedIn posts: 3,000 characters allowed, roughly 210 visible before folding. Facebook posts: over 63,000 characters allowed, but engagement tends to drop sharply past about 80 characters even though nothing forces a cutoff."
+        "LinkedIn post: 3,000 characters. LinkedIn's [help page on posting](https://www.linkedin.com/help/linkedin/answer/a528176) says \"Posts can contain up to 3,000 characters\", and suggests writing an article instead for anything longer."
       ),
       p(
-        "Rather than memorizing all of this, the practical habit is to draft in whichever platform has the tightest limit for your use case, then adapt outward — it's much easier to expand a message than to compress one that's already over."
+        "YouTube video title: 100 characters. YouTube video description: 5,000 characters. From YouTube's [help page on video details](https://support.google.com/youtube/answer/57404): \"Video titles have a character limit of 100 characters\" and \"Video descriptions have a character limit of 5,000 characters.\""
+      ),
+      p(
+        "Instagram hashtags: up to 5 per post. Instagram's [hashtag help page](https://help.instagram.com/351460621611097) says \"You can use up to 5 tags on a post\", and that if you include more than 5, \"your comment won't post.\" Older advice quoting 30 hashtags is out of date."
+      ),
+      p(
+        "YouTube hashtags: more than 60 cancels all of them. YouTube's [hashtag policy](https://support.google.com/youtube/answer/6390658) says \"If a video or playlist has more than 60 hashtags, we'll ignore each hashtag on that content.\""
+      ),
+      h("Not verified: check in the app"),
+      p(
+        "X, Instagram captions and bios, Threads, Facebook and TikTok. X's help center blocked our requests, and Instagram's caption and bio limits weren't stated on any help page we could load. For Threads, Facebook and TikTok we found no official page stating a current figure. The [Character Counter](/tools/character-counter) still shows commonly cited limits for these platforms, but treat them as approximate until you've confirmed them in the composer."
+      ),
+      h("Worked example: what counts as a character"),
+      p(
+        "Our Character Counter counts Unicode code points. \"New post is live 🚀\" counts as 18 characters, while JavaScript's string length reports 19, because the rocket emoji takes two UTF-16 units. Platforms don't all count emoji, accented letters or links the same way, and none of the pages above documents its counting method. If you're within a few characters of a limit, the platform's own composer is the final word."
+      ),
+      h("How to use this"),
+      p(
+        "Draft for the tightest limit you'll publish to, then expand for the roomier platforms. Expanding a short message is easier than cutting a long one. Other posts on this site link here rather than repeating the numbers, so this page is where the figures get updated."
       ),
     ],
   },
@@ -377,26 +400,33 @@ export const blogPosts: BlogPost[] = [
     slug: "faq-schema-still-worth-it",
     title: "Is FAQ Schema Still Worth Adding in 2026?",
     description:
-      "Google scaled back which sites get FAQ rich results in search. Here's what that means for whether the markup is still worth the effort.",
+      "Google stopped showing FAQ rich results on May 7, 2026. What that means for FAQPage markup, and the few cases where adding it still makes sense.",
     category: "SEO & Web Tools",
     publishedAt: "2026-08-03",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/faq-schema-generator", label: "FAQ Schema Generator" },
     content: [
       p(
-        "FAQ schema — a structured data format that marks up a section of a page as questions and answers — used to reliably produce an expandable rich result directly in Google's search listings, taking up extra visual space and often boosting click-through rate. Google has since narrowed which sites qualify for that treatment, which raises a fair question: is it still worth adding?"
+        "Not for Google rich results: Google no longer shows the FAQ rich result in Search, so FAQPage markup won't get you expandable questions under your listing. It can still be worth keeping if it's already in place and matches a real FAQ on the page, but don't add it expecting a visible change in Google."
       ),
-      h("What changed"),
+      h("What changed, with dates"),
       p(
-        "Google now limits the FAQ rich result primarily to well-known, authoritative sites for certain query types, rather than displaying it broadly for any page with valid markup. For most smaller or newer sites, adding FAQ schema no longer guarantees the visual rich result it once did."
+        "According to Google's [Search Central changelog](https://developers.google.com/search/updates), the feature had already been restricted in September 2023, when it was \"only shown for well-known, authoritative government and health websites.\" On May 8, 2026, Google announced the deprecation: \"This feature will no longer appear in Google Search starting May 7, 2026.\" On June 15, 2026, it removed the documentation, noting that \"the FAQ rich result feature is no longer shown in Google Search results.\""
       ),
-      h("Why it's still worth doing anyway"),
+      h("What FAQPage markup still is"),
       p(
-        "Structured data serves a second purpose beyond the visual rich result: it helps search engines and AI-driven answer systems parse the actual content of a page more reliably, which can support how a page gets surfaced in ways that aren't limited to the classic blue-link rich result. Valid FAQ markup also costs nothing to add if the content already exists as genuine questions and answers on the page — the downside risk of adding it is close to zero even without a guaranteed visual payoff."
+        "FAQPage remains a valid type on schema.org, defined as \"a WebPage presenting one or more 'Frequently asked questions'\" ([schema.org/FAQPage](https://schema.org/FAQPage)). What ended is one Google display feature, not the schema type."
       ),
-      h("When to skip it"),
+      h("Worked example"),
       p(
-        "Don't manufacture a fake FAQ section purely to add the schema — Google's guidelines explicitly discourage marking up content that isn't genuinely presented as FAQ content on the page itself, and doing so risks the markup being ignored or the page being viewed as manipulative. Add it where a real FAQ section already serves your readers, not as a standalone SEO trick."
+        "For a single made-up question, \"Do you ship internationally?\", with the answer \"Yes, to 40 countries. Shipping times are listed at checkout.\", our [FAQ Schema Generator](/tools/faq-schema-generator) produces a JSON-LD object with \"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", and a mainEntity array holding one Question whose acceptedAnswer is an Answer containing that text. That is the whole structure. Each question and answer must also appear as visible text on the page, otherwise the markup describes content that isn't there."
+      ),
+      h("When it's still reasonable, and when to skip it"),
+      p(
+        "Our judgment, not a documented benefit: keeping existing FAQPage markup on a genuine FAQ section is cheap and harmless, and other consumers of schema.org data may read it. We found no Google documentation of a ranking benefit, and no official statement from any AI answer system that it uses FAQPage, so we don't claim either."
+      ),
+      p(
+        "Skip it if you'd be adding it only for the Google rich result, which no longer exists, or if it means inventing an FAQ section the page doesn't need. Time spent there is better spent on the content itself."
       ),
     ],
   },
@@ -404,26 +434,36 @@ export const blogPosts: BlogPost[] = [
     slug: "keyword-density-myth",
     title: "Keyword Density Is Mostly a Myth — Here's What Still Matters",
     description:
-      "Why hitting a specific keyword percentage stopped being a meaningful SEO strategy, and what to focus on instead.",
+      "Google publishes no ideal keyword density. What its spam policies say about keyword stuffing, the density formula, and a worked example.",
     category: "SEO & Web Tools",
     publishedAt: "2026-08-03",
-    readTime: "4 min read",
+    readTime: "3 min read",
     relatedTool: { href: "/tools/keyword-density-checker", label: "Keyword Density Checker" },
     content: [
       p(
-        "Keyword density — the percentage of a page's total words made up by a target keyword — was a meaningful ranking signal in early search engines that relied heavily on literal text matching. Modern search engines use semantic understanding that recognizes synonyms, related concepts, and intent, which has significantly reduced how much a specific density percentage matters."
+        "There is no ideal keyword density. Google publishes no target percentage, and its spam policies name the opposite problem: repeating words so often that the text sounds unnatural."
       ),
-      h("Why the old advice persists anyway"),
+      h("What Google actually says"),
       p(
-        "Keyword density tools are simple to build and the concept is easy to explain, which is why \"aim for 1–2% density\" advice still circulates widely even though it doesn't reflect how modern ranking systems actually evaluate content. Following a strict density target today is more likely to produce awkward, repetitive writing than to improve rankings."
+        "Google's [spam policies](https://developers.google.com/search/docs/essentials/spam-policies) define keyword stuffing as \"the practice of filling a web page with keywords or numbers in an attempt to manipulate rankings in Google Search results.\" One of the listed examples is \"repeating the same words or phrases so often that it sounds unnatural.\" The policy describes what to avoid. It doesn't set a percentage, and we found no Google documentation recommending one. The familiar \"1–2%\" figure is folklore, not guidance."
       ),
-      h("What checking density is still useful for"),
+      h("The formula"),
       p(
-        "The genuinely useful case for a density checker isn't hitting a target — it's catching the opposite problem: accidental keyword stuffing, where a phrase gets repeated so often that the writing starts to read unnaturally. If a check comes back showing a keyword at 6–8% density, that's a signal to revise for readability, not evidence you're under-optimized if it's lower."
+        "Density = (occurrences of the phrase × words in the phrase) ÷ total words × 100. That's the formula our [Keyword Density Checker](/tools/keyword-density-checker) uses. Multiplying by the phrase's word count means a two-word phrase repeated six times counts as twelve of the total words."
       ),
-      h("What to focus on instead"),
+      h("Worked example"),
       p(
-        "Covering a topic thoroughly, using related terms and synonyms naturally as a human writer would, and structuring content so it directly answers the questions a searcher likely has all matter more than any density percentage. If content reads naturally and thoroughly covers what someone searching the topic would want to know, density tends to land in a reasonable range on its own without deliberate targeting."
+        "A stuffed sample: \"Best coffee grinder for home: our coffee grinder guide reviews every coffee grinder. If you need a coffee grinder, this coffee grinder list has the best coffee grinder deals.\" That's 29 words, with \"coffee grinder\" appearing 6 times. Using the tool's formula, occurrences × words in the phrase ÷ total words × 100, density = 6 × 2 ÷ 29 × 100 = 41.379%. Read it aloud and it's exactly what Google's example describes."
+      ),
+      p(
+        "A natural sample (46 words): \"A burr grinder crushes beans between two plates, so every particle comes out close to the same size. That consistency matters for espresso, where uneven grounds extract unevenly and taste sour and bitter at once. Blade grinders are cheaper but chop beans into dust and chunks.\""
+      ),
+      p(
+        "This paragraph never contains the exact phrase \"coffee grinder\", so its density for that phrase is 0 × 2 ÷ 46 × 100 = 0%, even though it's clearly about coffee grinders. For the single word \"grinder\", the tool finds 2 matches (\"burr grinder\" and \"Blade grinders\"; it matches text inside longer words, so \"grinders\" counts), giving 2 × 1 ÷ 46 × 100 = 4.348%. Neither number says anything about quality. What makes the paragraph useful is that it explains something."
+      ),
+      h("What a density check is still good for"),
+      p(
+        "Our judgment: use a density check as a smell test for accidental repetition, for example a phrase that crept into every sentence during editing. A high number is a prompt to reread the text; a low number is not a sign the page is under-optimized."
       ),
     ],
   },
@@ -632,7 +672,7 @@ export const blogPosts: BlogPost[] = [
       "3840×2160 is YouTube's current recommendation, but resolution, aspect ratio, and file size all matter separately — here's what each one actually affects.",
     category: "YouTube Tools",
     publishedAt: "2026-08-10",
-    readTime: "4 min read",
+    readTime: "3 min read",
     relatedTool: {
       href: "/tools/thumbnail-size-checker",
       label: "Thumbnail Size Checker",
@@ -640,22 +680,30 @@ export const blogPosts: BlogPost[] = [
     content: [
       h("Quick answer"),
       p(
-        "3840×2160 resolution (640 pixels wide at minimum) · 16:9 aspect ratio · 2MB maximum file size on mobile (50MB on desktop) — those three numbers cover it, but each one fails independently for a different reason. Here's what each actually affects."
+        "For a regular video, YouTube's preferred thumbnail is 3840×2160 pixels at 16:9, in JPG or PNG. The minimum width is 640 pixels, and the file must be under 2 MB if you upload from mobile or 50 MB from desktop."
       ),
       p(
-        "\"What size should a YouTube thumbnail be\" has a simple headline answer — 3840×2160, according to YouTube's Help Center — but that single number actually bundles together three separate requirements that fail independently: resolution, aspect ratio, and file size."
+        "Those figures come from YouTube's [custom thumbnail help page](https://support.google.com/youtube/answer/72431). Resolution, ratio, file size and format are separate checks, and an image can pass one and fail another."
       ),
-      h("Resolution: the minimum that keeps you sharp"),
+      h("Resolution: preferred vs minimum"),
       p(
-        "YouTube's Help Center recommends a resolution of 3840×2160 for video thumbnails, with a minimum width of 640 pixels. Uploading below that minimum risks a soft, blurry thumbnail once YouTube's various placements (search results, suggested videos, TV app) scale it — and once a channel builds a habit of low-resolution thumbnails, it reads as low-effort even if the video content is strong."
+        "The help page says the image \"should be as large as possible\" and lists \"a resolution of 3840 x 2160 pixels for videos and 2160 x 3840 for Shorts\", \"with a minimum width of 640 pixels for videos.\" 3840×2160 is the preference, not a requirement: a 1280×720 or 1920×1080 image is above the minimum and is accepted."
       ),
-      h("Aspect ratio: the one that gets silently cropped"),
+      h("Aspect ratio"),
       p(
-        "YouTube expects a 16:9 aspect ratio. Upload something off-ratio — a square Instagram export, for instance — and YouTube doesn't reject it; it crops it to fit, often cutting off exactly the part of the image (a face, a text overlay) that made the thumbnail work in the first place. This is the failure mode that's easiest to miss, since the thumbnail can look fine in the upload preview and only reveal the cropping once it's live in different placements."
+        "For videos, the page says \"try to upload a thumbnail with an aspect ratio of 16:9\"; for Shorts, 9:16. It also warns that \"vertical videos with 16:9 custom thumbnails will be replaced by an auto-generated 4:5 thumbnail.\" How an off-ratio image is displayed in each placement isn't documented there, so treat 16:9 as the safe choice rather than relying on how YouTube adapts other shapes."
       ),
-      h("File size: the one nobody thinks about until it blocks the upload"),
+      h("File size and format"),
       p(
-        "YouTube caps video thumbnail uploads at 2MB from mobile and 50MB from desktop. A thumbnail exported at full resolution from a modern camera or design tool can exceed the mobile limit without any obvious visual signal that it's too large — the fix is usually just re-exporting at a reasonable JPEG compression level, which rarely produces a visible quality loss at thumbnail viewing sizes."
+        "The limits depend on the device you upload from: \"Mobile: 2 MB for video thumbnails\" and \"Desktop: 50MB for video, Shorts, and podcast thumbnails.\" Formats are \"JPG or PNG.\" A full-size 3840×2160 PNG can easily be over 2 MB, which only matters if you upload from your phone."
+      ),
+      h("Worked example"),
+      p(
+        "We ran four images through the same logic as our [Thumbnail Size Checker](/tools/thumbnail-size-checker). A 3840×2160 PNG of 6.4 MB passes resolution, ratio and format but gets a warning on file size: over the 2 MB mobile limit, under the 50 MB desktop limit. A 1280×720 JPG of 350 KB passes everything, with a note that higher resolution is better. A 1080×1080 square JPG passes resolution but gets a 16:9 warning. A 600×338 GIF fails twice: it's below the 640 px minimum width, and GIF isn't JPG or PNG."
+      ),
+      h("When this doesn't apply"),
+      p(
+        "Shorts and podcasts have their own specs on the same help page (Shorts: 2160×3840 preferred, 9:16, minimum height 640 px; podcast playlists: 1:1). To upload a custom thumbnail at all, the help page says \"your account must be verified\", linking to YouTube's account verification step at youtube.com/verify. That's an account check, not the verification badge some channels show next to their name. YouTube can change these specs, so check the help page if a value here doesn't match what you see in YouTube Studio."
       ),
     ],
   },
