@@ -8,13 +8,13 @@ import Examples from "@/components/Examples";
 import Faq from "@/components/Faq";
 
 export const metadata: Metadata = {
-  title: "Social Media Character Counter — X, Instagram, TikTok & More",
+  title: "Social Media Character Counter — Check Limits",
   description:
     "Count characters as you type and check your text against commonly cited limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
   alternates: { canonical: "/tools/character-counter" },
   twitter: {
     card: "summary_large_image",
-    title: "Social Media Character Counter — X, Instagram, TikTok & More",
+    title: "Social Media Character Counter — Check Limits",
     description: "Count characters as you type and check your text against commonly cited limits for X, Instagram, TikTok, Facebook, LinkedIn, Threads, and YouTube descriptions.",
   },
 };
@@ -46,7 +46,7 @@ const exampleItems = [
   {
     title: "Fitting a YouTube description preview",
     description:
-      "Only the first ~150 characters of a YouTube description show before \"show more\" — check that opening separately.",
+      "Only the opening of a YouTube description shows before \"show more\" (~150 characters: approximate, varies by device) — check that opening separately.",
   },
 ];
 

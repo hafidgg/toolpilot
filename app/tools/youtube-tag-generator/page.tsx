@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: "How is the 500-character limit counted?",
     answer:
-      "YouTube counts the total length of all your tags combined, including the commas that separate them. This tool accounts for that when deciding which tags fit.",
+      "500 characters is the commonly cited limit (we couldn't confirm it on YouTube Help, so check in YouTube Studio). It's counted as the total length of all your tags combined, including the commas that separate them. This tool accounts for that when deciding which tags fit.",
   },
 ];
 
@@ -38,7 +38,8 @@ export default function YoutubeTagGeneratorPage() {
         title="YouTube Tag Generator"
       >
         Paste your keyword ideas and get a clean, ready-to-paste tag list
-          that stays under YouTube&apos;s 500-character limit.
+          that stays under the commonly cited 500-character limit (check in
+          YouTube Studio).
       </ToolPageHeader>
 
       <div className="mt-10">

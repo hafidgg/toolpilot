@@ -74,7 +74,7 @@ export default function ComparePage() {
         <p>
           Social platforms almost always enforce character limits, not word
           limits — X&apos;s 280 limit and TikTok&apos;s 150-character caption
-          cap are both measured in characters, which is why a character
+          cap (both commonly cited, check in the app) are measured in characters, which is why a character
           counter is the right tool when you&apos;re writing for social.
         </p>
         <p>

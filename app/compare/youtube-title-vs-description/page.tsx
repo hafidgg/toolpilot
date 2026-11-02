@@ -37,7 +37,7 @@ export default function ComparePage() {
             <tr className="border-b border-line-soft">
               <td className="px-4 py-3 font-medium text-ink">Max length</td>
               <td className="px-4 py-3">100 characters (≈60–70 visible)</td>
-              <td className="px-4 py-3">5,000 characters (≈150 visible before &quot;more&quot;)</td>
+              <td className="px-4 py-3">5,000 characters (≈150 visible before &quot;more&quot;; approximate, varies by device)</td>
             </tr>
             <tr className="border-b border-line-soft">
               <td className="px-4 py-3 font-medium text-ink">Primary job</td>
@@ -52,7 +52,7 @@ export default function ComparePage() {
             <tr>
               <td className="px-4 py-3 font-medium text-ink">Truncation risk</td>
               <td className="px-4 py-3">High — most content is only ~60 characters wide</td>
-              <td className="px-4 py-3">First ~150 characters, rest hidden behind &quot;more&quot;</td>
+              <td className="px-4 py-3">First ~150 characters (approximate, varies by device), rest hidden behind &quot;more&quot;</td>
             </tr>
           </tbody>
         </table>
@@ -67,7 +67,7 @@ export default function ComparePage() {
           cutting it off mid-sentence.
         </p>
         <p>
-          The description does its work after the click, but the first ~150
+          The description does its work after the click, but the first ~150 (approximate, varies by device)
           characters still matter — that preview text shows in search
           results under some placements too, so it&apos;s worth treating as a
           secondary pitch, not just a place to dump links.

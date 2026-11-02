@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: "Why is each post shorter than 280 characters?",
     answer:
-      "A few characters are reserved for the \"(1/5)\" style numbering added to the end of each post, so the visible text plus the counter never exceeds the 280-character limit.",
+      "A few characters are reserved for the \"(1/5)\" style numbering added to the end of each post, so the visible text plus the counter never exceeds 280 characters, the commonly cited X limit (check in the app).",
   },
 ];
 

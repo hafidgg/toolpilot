@@ -40,17 +40,17 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Descriptions: the first 150 characters do the real work",
+        heading: "Descriptions: the first ~150 characters do the real work",
         paragraphs: [
-          "A YouTube description can run up to 5,000 characters, but only around the first 150 show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
+          "A YouTube description can run up to 5,000 characters, but only around the first 150 (approximate, varies by device) show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
           "The YouTube Description Checker flags exactly where that preview cutoff lands in your draft.",
         ],
       },
       {
         heading: "Tags: minor for ranking, still worth doing correctly",
         paragraphs: [
-          "YouTube has said tags play a smaller role than titles and descriptions, mainly helping with misspellings of your main keywords. They're still worth adding, and the technical constraint is real: all your tags combined, including the commas between them, can't exceed 500 characters, and YouTube silently truncates whatever doesn't fit.",
-          "The YouTube Tag Generator builds a tag list from your keyword ideas and stops adding tags exactly at that 500-character boundary, so nothing gets silently cut mid-list.",
+          "YouTube has said tags play a smaller role than titles and descriptions, mainly helping with misspellings of your main keywords. They're still worth adding, and the commonly cited constraint is that all your tags combined, including the commas between them, can't exceed 500 characters (we couldn't confirm this on YouTube Help, so check in YouTube Studio).",
+          "The YouTube Tag Generator builds a tag list from your keyword ideas and stops adding tags at that 500-character boundary, so no tag is cut off mid-list.",
         ],
       },
       {
@@ -100,14 +100,14 @@ export const guides: Guide[] = [
       {
         heading: "Hard limits vs. soft cutoffs",
         paragraphs: [
-          "X and TikTok enforce genuine hard limits — 280 and 150 characters respectively — where the composer simply won't accept more text. Instagram, LinkedIn, and Facebook work differently: their real limits are generous (2,200, 3,000, and over 60,000 characters), but only a fraction of that shows before a \"more\" link appears. Writing for a hard-limit platform means editing until it fits; writing for a soft-cutoff platform means front-loading the hook into the visible preview window.",
+          "X and TikTok enforce hard limits — commonly cited as 280 and 150 characters respectively (check in the app) — where the composer simply won't accept more text. Instagram, LinkedIn, and Facebook work differently: their real limits are generous (2,200, 3,000, and over 60,000 characters), but only a fraction of that shows before a \"more\" link appears. Writing for a hard-limit platform means editing until it fits; writing for a soft-cutoff platform means front-loading the hook into the visible preview window.",
           "Check any draft against seven platforms at once with the Character Counter.",
         ],
       },
       {
         heading: "Bios follow a stricter, separate set of limits",
         paragraphs: [
-          "Profile bios are consistently shorter than post limits — Instagram's bio caps at 150 characters versus 2,200 for a caption, and TikTok's bio caps at just 80. A bio is meant to be scanned instantly on a profile page, which is why every platform keeps it tight.",
+          "Profile bios are consistently shorter than post limits — Instagram's bio is commonly cited at 150 characters versus 2,200 for a caption, and TikTok's bio at just 80 (check both in the app). A bio is meant to be scanned instantly on a profile page, which is why every platform keeps it tight.",
           "The Bio Character Counter checks a single draft against Instagram, TikTok, X, YouTube, and LinkedIn bio limits simultaneously.",
         ],
       },
@@ -115,7 +115,7 @@ export const guides: Guide[] = [
         heading: "Hashtags and captions have their own formatting conventions",
         paragraphs: [
           "Multi-word hashtags need CamelCase formatting (#SmallBusinessTips, not #smallbusinesstips) for screen readers to announce each word correctly — the Hashtag Formatter handles this automatically. On Instagram specifically, creators commonly separate the caption from the hashtag block with a stack of single dots so the hashtags fall below the \"more\" fold; the Instagram Caption Formatter builds this structure for you.",
-          "TikTok's 150-character caption limit is tight enough that it's worth checking separately from a general character counter — the TikTok Caption Counter tracks it in real time as you type.",
+          "TikTok's commonly cited 150-character caption limit (check in the app) is tight enough that it's worth checking separately from a general character counter — the TikTok Caption Counter tracks it in real time as you type.",
         ],
       },
       {
@@ -135,7 +135,7 @@ export const guides: Guide[] = [
       {
         question: "Should I write one caption and reuse it everywhere?",
         answer:
-          "You can, but it's worth checking it against the tightest limit in your posting list first — usually TikTok's 150 characters or X's 280 — since it's easier to expand a short caption for a generous platform than to compress a long one under a tight deadline.",
+          "You can, but it's worth checking it against the tightest limit in your posting list first — usually TikTok's 150 characters or X's 280, both commonly cited figures to check in the app — since it's easier to expand a short caption for a generous platform than to compress a long one under a tight deadline.",
       },
       {
         question: "Do these limits change often?",

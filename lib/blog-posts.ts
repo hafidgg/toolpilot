@@ -459,7 +459,7 @@ export const blogPosts: BlogPost[] = [
         "A natural sample (46 words): \"A burr grinder crushes beans between two plates, so every particle comes out close to the same size. That consistency matters for espresso, where uneven grounds extract unevenly and taste sour and bitter at once. Blade grinders are cheaper but chop beans into dust and chunks.\""
       ),
       p(
-        "This paragraph never contains the exact phrase \"coffee grinder\", so its density for that phrase is 0 × 2 ÷ 46 × 100 = 0%, even though it's clearly about coffee grinders. For the single word \"grinder\", the tool finds 2 matches (\"burr grinder\" and \"Blade grinders\"; it matches text inside longer words, so \"grinders\" counts), giving 2 × 1 ÷ 46 × 100 = 4.348%. Neither number says anything about quality. What makes the paragraph useful is that it explains something."
+        "This paragraph never contains the exact phrase \"coffee grinder\", so its density for that phrase is 0 × 2 ÷ 46 × 100 = 0%, even though it's clearly about coffee grinders. For the single word \"grinder\", the tool finds 1 match (\"burr grinder\"; it matches whole words only, so \"Blade grinders\" doesn't count), giving 1 × 1 ÷ 46 × 100 = 2.174%. Neither number says anything about quality. What makes the paragraph useful is that it explains something."
       ),
       h("What a density check is still good for"),
       p(

@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: "Why does the preview cut off so early?",
     answer:
-      "YouTube shows roughly the first 150–157 characters of a description before folding the rest behind a \"show more\" link. Put your most important information — links, key details — in that first stretch.",
+      "YouTube shows roughly the first 150–157 characters (approximate, varies by device) of a description before folding the rest behind a \"show more\" link. Put your most important information — links, key details — in that first stretch.",
   },
   {
     question: "What's the actual maximum description length?",

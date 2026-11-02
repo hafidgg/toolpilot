@@ -23,6 +23,11 @@ const faqItems = [
       "Modern search engines rely on semantic understanding far more than raw keyword counts. Density is best used as a sanity check against keyword stuffing, not as a target to optimize toward.",
   },
   {
+    question: "Does it count plurals or partial words?",
+    answer:
+      "No. It matches whole words only, ignoring case: \"cat\" doesn't count \"category\" or \"cats\". Apostrophes and hyphens act as word separators, so \"grinder\" does count in \"grinder's\". A phrase matches with any spacing between its words.",
+  },
+  {
     question: "What density range is considered natural?",
     answer:
       "There's no official number, but content written naturally around a topic often lands somewhere between 0.5% and 2.5% for its main keyword. Much higher than that tends to read as repetitive.",

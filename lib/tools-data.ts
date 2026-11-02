@@ -109,13 +109,13 @@ export const categories: CategoryMeta[] = [
         slug: "youtube-description-checker",
         title: "YouTube Description Checker",
         shortDescription:
-          "Check your description against the ~150-character preview cutoff and 5,000-character limit.",
+          "Check your description against the 5,000-character limit and the ~150-character preview (approximate, varies by device).",
       },
       {
         slug: "youtube-tag-generator",
         title: "YouTube Tag Generator",
         shortDescription:
-          "Turn a title or keyword list into a clean, comma-separated tag list under the 500-character limit.",
+          "Turn a title or keyword list into a clean, comma-separated tag list under the commonly cited 500-character limit.",
       },
       {
         slug: "thumbnail-size-checker",
@@ -177,7 +177,7 @@ export const categories: CategoryMeta[] = [
       {
         slug: "twitter-thread-splitter",
         title: "Twitter/X Thread Splitter",
-        shortDescription: "Split long-form text into numbered, 280-character thread posts automatically.",
+        shortDescription: "Split long-form text into numbered thread posts of up to 280 characters (commonly cited X limit).",
       },
       {
         slug: "bio-character-counter",

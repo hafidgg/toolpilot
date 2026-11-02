@@ -75,9 +75,16 @@ export function checkKeywordDensity(text: string, keyword: string): KeywordDensi
   const totalWords = words.length;
 
   const keywordWordCount = cleanKeyword.split(/\s+/).length;
-  const lowerText = text.toLowerCase();
-  const escaped = cleanKeyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const matches = lowerText.match(new RegExp(escaped, "g")) ?? [];
+  // Whole-word match: the keyword may not touch a letter, combining mark or
+  // digit from any script on either side. Apostrophes and hyphens count as
+  // separators, so "grinder" matches "grinder's" and "burr-grinder" but not
+  // "grinders". Words inside a phrase match across any run of whitespace.
+  const escaped = cleanKeyword
+    .split(/\s+/)
+    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("\\s+");
+  const pattern = new RegExp(`(?<![\\p{L}\\p{M}\\p{N}])${escaped}(?![\\p{L}\\p{M}\\p{N}])`, "giu");
+  const matches = text.match(pattern) ?? [];
 
   const occurrences = matches.length;
   const density =

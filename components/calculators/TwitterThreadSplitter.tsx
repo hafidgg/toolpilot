@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import EmptyState from "@/components/EmptyState";
-import { splitIntoThread } from "@/lib/content-calculations";
+import { splitIntoThread, UNVERIFIED_LIMIT_LABEL } from "@/lib/content-calculations";
 
 export default function TwitterThreadSplitter() {
   const [text, setText] = useState("");
@@ -44,7 +44,7 @@ export default function TwitterThreadSplitter() {
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xs text-faint font-mono">
-                    {tweet.length} / 280
+                    {tweet.length} / 280 <span className="font-body">({UNVERIFIED_LIMIT_LABEL})</span>
                   </span>
                   <button
                     onClick={() => copyTweet(i)}

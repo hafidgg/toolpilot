@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { generateYoutubeTags } from "@/lib/content-calculations";
+import { generateYoutubeTags, UNVERIFIED_LIMIT_LABEL } from "@/lib/content-calculations";
 
 export default function YoutubeTagGenerator() {
   const [raw, setRaw] = useState("video editing tutorial, how to edit videos, video editing tips, beginner video editing");
@@ -47,13 +47,13 @@ export default function YoutubeTagGenerator() {
         <div className="mt-4 flex items-baseline justify-between border-b border-line-soft pb-4">
           <span className="text-sm text-muted">Character Usage</span>
           <span className="readout text-lg font-semibold text-ink">
-            {result.totalLength} / 500
+            {result.totalLength} / 500 <span className="font-body">({UNVERIFIED_LIMIT_LABEL})</span>
           </span>
         </div>
 
         {result.overLimit && (
           <p className="mt-3 text-xs text-loss">
-            Some keywords were dropped — they would exceed YouTube&apos;s 500-character tag limit.
+            Some keywords were dropped — they would exceed the commonly cited 500-character tag limit.
           </p>
         )}
 
