@@ -141,7 +141,7 @@ export const categories: CategoryMeta[] = [
       {
         slug: "youtube-channel-id-finder",
         title: "YouTube Channel ID Finder",
-        shortDescription: "Extract the handle, channel ID, or custom URL slug from any channel link.",
+        shortDescription: "Read the handle, channel ID or custom URL in a channel link. It doesn't look up the ID behind a handle.",
       },
     ],
   },

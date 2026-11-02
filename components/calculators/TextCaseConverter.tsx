@@ -6,7 +6,7 @@ import { convertTextCase, TextCase } from "@/lib/content-calculations";
 const CASES: { key: TextCase; label: string }[] = [
   { key: "uppercase", label: "UPPERCASE" },
   { key: "lowercase", label: "lowercase" },
-  { key: "title", label: "Title Case" },
+  { key: "title", label: "Title Case (Microsoft style rules)" },
   { key: "sentence", label: "Sentence case" },
   { key: "camel", label: "camelCase" },
 ];
@@ -76,6 +76,11 @@ export default function TextCaseConverter() {
             <span className="text-faint">Converted text will appear here.</span>
           )}
         </p>
+        {activeCase === "sentence" && converted && (
+          <p className="mt-3 text-xs text-muted">
+            Proper nouns and brand names are not detected; fix them by hand.
+          </p>
+        )}
       </div>
     </div>
   );

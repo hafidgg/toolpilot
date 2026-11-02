@@ -43,12 +43,12 @@ const faqItems = [
   {
     question: "What's a good Flesch Reading Ease score for blog content?",
     answer:
-      "Most general-audience web content aims for a score of 60 or above, roughly an 8th–9th grade reading level, which is considered accessible to most readers without feeling oversimplified.",
+      "Microsoft's documentation for Word says: \"For most standard files, you want the score to be between 60 and 70.\" For the Flesch-Kincaid Grade Level it says \"the recommended score is around 7.0 to 8.0.\" The bands shown under the score (\"Easy (6th grade)\" and so on) are our own, not Microsoft's.",
   },
   {
     question: "How is the score calculated?",
     answer:
-      "The Flesch Reading Ease formula weighs average sentence length and average syllables per word — shorter sentences and simpler, shorter words produce a higher (easier) score.",
+      "With the formulas Microsoft documents: Reading Ease is 206.835 – (1.015 × ASL) – (84.6 × ASW), and Flesch-Kincaid Grade Level is (0.39 × ASL) + (11.8 × ASW) – 15.59, where ASL is words per sentence and ASW is syllables per word. Shorter sentences and shorter words give a higher Reading Ease and a lower grade. Very long sentences or very short text can push Reading Ease below 0 or above 100.",
   },
   {
     question: "Is this tool free?",

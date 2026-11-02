@@ -204,13 +204,13 @@ export const blogPosts: BlogPost[] = [
         "How our checker computes it"
       ),
       p(
-        "Our [Readability Checker](/tools/readability-checker) uses the same Reading Ease constants. It counts words by spaces and sentences by . ! and ?, and estimates syllables with a vowel-group rule rather than a dictionary, so its score can differ a little from Word's for the same text. It shows Reading Ease and a descriptive band, not the grade-level number."
+        "Our [Readability Checker](/tools/readability-checker) uses the same Reading Ease constants. It counts words by spaces and sentences by . ! and ?, and estimates syllables with a vowel-group rule rather than a dictionary, so its score can differ a little from Word's for the same text. It shows Reading Ease, the Flesch-Kincaid grade from the same counts, and a descriptive band that is ours rather than Microsoft's, and it notes when a score falls outside 0–100."
       ),
       h(
         "Worked example"
       ),
       p(
-        "Before: \"It is important to note that in order to facilitate the subsequent utilization of the documentation, administrators should carefully evaluate the configuration options, which are described comprehensively in the appendix, before implementing any modifications.\" The checker counts 34 words, 1 sentence and 80 syllables, for a score of -26.7. Grade level from the same counts, by the formula above: 25.4."
+        "Before: \"It is important to note that in order to facilitate the subsequent utilization of the documentation, administrators should carefully evaluate the configuration options, which are described comprehensively in the appendix, before implementing any modifications.\" The checker counts 34 words, 1 sentence and 80 syllables, for a score of -26.7 and a grade level of 25.4; the checker notes that the score is outside 0–100."
       ),
       p(
         "After: \"Before you change any settings, read the options in the appendix. They explain what each one does. This makes the guide easier to use later.\" 25 words, 3 sentences, 33 syllables: a score of 86.7, and a grade level of 3.2. The edits were the ones below: cut the opener, split the sentence, and swap long words for short ones."
@@ -428,7 +428,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Our [Text Case Converter](/tools/text-case-converter) capitalizes every word in title case. \"a home to go back to\" becomes \"A Home To Go Back To\", while Microsoft's rules give \"A Home to Go Back To\" (its own example). \"the teaching tool you're looking for\" becomes \"The Teaching Tool You'Re Looking For\", with a capital R after the apostrophe. In sentence case, \"how to personalize Windows\" becomes \"How to personalize windows\", because the tool can't tell that Windows is a product name. Use the converter for the bulk change, then fix minor words, contractions and proper nouns by hand."
+        "Our [Text Case Converter](/tools/text-case-converter) applies the Microsoft rules quoted above in title case. \"a home to go back to\" becomes \"A Home to Go Back To\", matching Microsoft's own example, and \"the teaching tool you're looking for\" becomes \"The Teaching Tool You're Looking For\". In sentence case, \"how to personalize Windows\" becomes \"How to personalize windows\": the tool keeps acronyms such as API and the pronoun I, but it can't tell that Windows is a product name. Its list of short prepositions is ours, and it can't tell when a word like \"up\" isn't being used as a preposition, so read the result and fix proper nouns by hand."
       ),
       h(
         "Common mistakes"

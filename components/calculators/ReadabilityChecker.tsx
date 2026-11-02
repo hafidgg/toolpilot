@@ -40,7 +40,19 @@ export default function ReadabilityChecker() {
                 {result.fleschScore}
               </span>
             </div>
-            <p className="text-sm text-ink font-medium">{result.gradeLevel}</p>
+            <div className="flex items-baseline justify-between border-b border-line-soft pb-4">
+              <span className="text-sm text-muted">Flesch-Kincaid Grade Level</span>
+              <span className="readout text-xl font-semibold text-ink">{result.fleschKincaidGrade}</span>
+            </div>
+            {result.outOfRange && (
+              <p className="text-xs text-muted">
+                Scores can fall outside 0–100 for very long sentences or very short text.
+              </p>
+            )}
+            <p className="text-sm text-ink font-medium">
+              {result.gradeLevel}{" "}
+              <span className="text-xs text-muted font-normal">(our reading-level bands, not from Microsoft)</span>
+            </p>
             <div className="grid grid-cols-3 gap-3">
               <Metric label="Words" value={String(result.words)} />
               <Metric label="Sentences" value={String(result.sentences)} />

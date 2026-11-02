@@ -56,6 +56,21 @@ export default function YoutubeChannelIdFinder() {
             {result?.value || <span className="text-faint">@mkbhd</span>}
           </span>
         </div>
+        {result && result.type !== "channel-id" && (
+          <p className="mt-3 text-xs text-muted">
+            This is the identifier in your link, not the channel ID. This tool doesn&apos;t look IDs
+            up. To find your own channel ID, open{" "}
+            <a
+              href="https://support.google.com/youtube/answer/3250431"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-ink"
+            >
+              Advanced settings in YouTube
+            </a>
+            .
+          </p>
+        )}
       </div>
     </div>
   );

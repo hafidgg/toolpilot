@@ -278,6 +278,87 @@ export type TextCase =
   | "sentence"
   | "camel";
 
+/**
+ * Words kept lowercase in title case, from the Microsoft Writing Style Guide:
+ * "Don't capitalize a, an, or the unless it's the first word." / "Don't
+ * capitalize prepositions of four or fewer letters (such as on, to, in, up,
+ * down, of, and for) unless the preposition is the first or last word." /
+ * "Don't capitalize and, but, or, nor, yet, or so unless it's the first word
+ * or the last word." The preposition list is ours; it can't tell a
+ * preposition from the same word used another way ("Back Up" vs "up").
+ */
+const TITLE_MINOR_WORDS = new Set([
+  "a", "an", "the",
+  "and", "but", "or", "nor", "yet", "so",
+  "as", "at", "by", "down", "for", "from", "in", "into", "of", "off",
+  "on", "onto", "out", "over", "per", "to", "up", "upon", "via", "with",
+]);
+
+/** Splits a token into leading punctuation, the word, and trailing punctuation. */
+function splitToken(token: string): [string, string, string] {
+  const m = token.match(/^([^\p{L}\p{N}]*)([\s\S]*?)([^\p{L}\p{N}]*)$/u);
+  return m ? [m[1], m[2], m[3]] : ["", token, ""];
+}
+
+/** An acronym such as API or SEO: two or more capitals, no lowercase. */
+function isAcronym(word: string): boolean {
+  return word === word.toUpperCase() && (word.match(/\p{Lu}/gu) ?? []).length >= 2;
+}
+
+function capitalizeFirst(word: string): string {
+  return word.replace(/^\p{L}/u, (c) => c.toUpperCase()); // "12th" stays "12th"
+}
+
+function toTitleCase(text: string): string {
+  // Acronyms are kept as typed, unless the whole input is in capitals.
+  const keepAcronyms = text !== text.toUpperCase();
+  const parts = text.split(/(\s+)/);
+  const wordIndexes = parts.flatMap((part, i) => (/[\p{L}\p{N}]/u.test(part) ? [i] : []));
+  const first = wordIndexes[0];
+  const last = wordIndexes[wordIndexes.length - 1];
+  let afterColon = false;
+
+  return parts
+    .map((part, i) => {
+      if (!wordIndexes.includes(i)) return part;
+      const [lead, word, trail] = splitToken(part);
+      let out: string;
+      if (keepAcronyms && isAcronym(word)) {
+        out = word;
+      } else {
+        const lower = word.toLowerCase();
+        const minor = i !== first && i !== last && !afterColon && TITLE_MINOR_WORDS.has(lower);
+        // Capitalize the start of each hyphenated part; letters after an
+        // apostrophe stay lowercase ("You're", "Well-Known").
+        out = minor ? lower : lower.split("-").map(capitalizeFirst).join("-");
+      }
+      // The first word after a colon starts a new phrase, so it's capitalized.
+      afterColon = trail.endsWith(":");
+      return lead + out + trail;
+    })
+    .join("");
+}
+
+function toSentenceCase(text: string): string {
+  const keepAcronyms = text !== text.toUpperCase();
+  let sentenceStart = true;
+
+  return text
+    .split(/(\s+)/)
+    .map((part) => {
+      if (!/[\p{L}\p{N}]/u.test(part)) return part;
+      const [lead, word, trail] = splitToken(part);
+      let out =
+        keepAcronyms && isAcronym(word)
+          ? word
+          : word.toLowerCase().replace(/^i(?=$|['’])/, "I"); // the pronoun I, I'm, I've
+      if (sentenceStart) out = capitalizeFirst(out);
+      sentenceStart = /[.!?]/.test(trail);
+      return lead + out + trail;
+    })
+    .join("");
+}
+
 export function convertTextCase(text: string, targetCase: TextCase): string {
   if (!text) return "";
 
@@ -287,13 +368,9 @@ export function convertTextCase(text: string, targetCase: TextCase): string {
     case "lowercase":
       return text.toLowerCase();
     case "title":
-      return text
-        .toLowerCase()
-        .replace(/\b\w/g, (c) => c.toUpperCase());
+      return toTitleCase(text);
     case "sentence":
-      return text
-        .toLowerCase()
-        .replace(/(^\s*\w|[.!?]\s+\w)/g, (c) => c.toUpperCase());
+      return toSentenceCase(text);
     case "camel": {
       const words = text
         .replace(/[^a-zA-Z0-9\s]/g, "")
@@ -454,10 +531,21 @@ export function splitIntoThread(text: string, limit = 280): string[] {
   const reserve = 8;
   const effectiveLimit = limit - reserve;
 
+  // A single word longer than a post is cut at the limit, by characters.
+  const pieces = words.flatMap((word) => {
+    const chars = Array.from(word);
+    if (chars.length <= effectiveLimit) return [word];
+    const parts: string[] = [];
+    for (let i = 0; i < chars.length; i += effectiveLimit) {
+      parts.push(chars.slice(i, i + effectiveLimit).join(""));
+    }
+    return parts;
+  });
+
   const chunks: string[] = [];
   let current = "";
 
-  for (const word of words) {
+  for (const word of pieces) {
     const candidate = current ? `${current} ${word}` : word;
     if (charCount(candidate) > effectiveLimit && current) {
       chunks.push(current);

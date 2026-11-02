@@ -197,6 +197,11 @@ export function buildFaqSchema(pairs: FaqPair[]): string {
 
 export interface ReadabilityResult {
   fleschScore: number;
+  /** Flesch-Kincaid Grade Level from the same counts. */
+  fleschKincaidGrade: number;
+  /** True when the Reading Ease score falls outside 0-100. */
+  outOfRange: boolean;
+  /** Our reading-level band for the Reading Ease score (not from Microsoft). */
   gradeLevel: string;
   words: number;
   sentences: number;
@@ -223,8 +228,13 @@ export function checkReadability(text: string): ReadabilityResult | null {
   const syllables = words.reduce((sum, w) => sum + countSyllables(w), 0);
 
   const wordCount = words.length || 1;
+  // Formulas as documented by Microsoft Support:
+  // Reading Ease "206.835 – (1.015 x ASL) – (84.6 x ASW)"
+  // Grade Level "(.39 x ASL) + (11.8 x ASW) – 15.59"
   const fleschScore =
     206.835 - 1.015 * (wordCount / sentences) - 84.6 * (syllables / wordCount);
+  const fleschKincaidGrade =
+    0.39 * (wordCount / sentences) + 11.8 * (syllables / wordCount) - 15.59;
 
   let gradeLevel = "Very difficult (graduate level)";
   if (fleschScore >= 90) gradeLevel = "Very easy (5th grade)";
@@ -236,6 +246,8 @@ export function checkReadability(text: string): ReadabilityResult | null {
 
   return {
     fleschScore: Math.round(fleschScore * 10) / 10,
+    fleschKincaidGrade: Math.round(fleschKincaidGrade * 10) / 10,
+    outOfRange: fleschScore < 0 || fleschScore > 100,
     gradeLevel,
     words: wordCount,
     sentences,

@@ -20,12 +20,22 @@ const faqItems = [
   {
     question: "What's the difference between a handle and a channel ID?",
     answer:
-      "A handle (like @mkbhd) is the modern, user-chosen identifier shown in a channel's URL. A channel ID (starting with UC) is the underlying, permanent identifier YouTube assigns internally — used by the YouTube Data API and some embed integrations.",
+      "A handle (like @mkbhd) is the short name YouTube says \"will also automatically become the new YouTube URL for your channel\", and it can be changed. The channel ID is what YouTube and its Data API use to identify the channel.",
   },
   {
     question: "Does this look up the actual channel ID from a handle?",
     answer:
-      "No — this tool extracts whatever identifier is present in the URL you paste. Converting a handle to its underlying UC-prefixed channel ID requires a YouTube Data API lookup, which this client-side tool doesn't perform.",
+      "No. It only reads the identifier that's already in the link you paste, and makes no request to YouTube. A handle link gives you the handle, not the channel ID.",
+  },
+  {
+    question: "What does it return for each kind of link?",
+    answer:
+      "A youtube.com/@name link or a bare @name returns the handle. A /channel/ link returns the channel ID in it (we recognize IDs as \"UC\" followed by 22 characters, our pattern rather than a documented rule). A /c/ link returns the custom URL name, and a /user/ link the legacy username. Anything else is shown as an unrecognized format.",
+  },
+  {
+    question: "Where do I find my own channel ID?",
+    answer:
+      "In YouTube's settings. YouTube Help says: \"You can see your channel's user and channel IDs in your advanced account settings on a computer or mobile browser.\"",
   },
 ];
 
@@ -37,8 +47,9 @@ export default function YoutubeChannelIdFinderPage() {
         categoryHref="/categories/youtube-tools"
         title="YouTube Channel ID Finder"
       >
-        Paste any channel link to extract its handle, channel ID, or
-          custom URL slug.
+        Paste a channel link to read the handle, channel ID, custom URL
+          or username that&apos;s in it. It doesn&apos;t look up the ID behind a
+          handle.
       </ToolPageHeader>
 
       <div className="mt-10">

@@ -30,7 +30,7 @@ const exampleItems = [
   {
     title: "Title Case for a headline",
     input: "the quick brown fox jumps over the lazy dog",
-    output: "The Quick Brown Fox Jumps Over The Lazy Dog",
+    output: "The Quick Brown Fox Jumps over the Lazy Dog",
   },
   {
     title: "camelCase for a variable name",
@@ -48,12 +48,12 @@ const faqItems = [
   {
     question: "How does Title Case handle small words like 'a' or 'the'?",
     answer:
-      "This tool capitalizes the first letter of every word for simplicity. Style guides differ on whether to lowercase small words like \"a,\" \"the,\" or \"of\" — if you follow a specific style guide, you may need to manually adjust a few words after converting.",
+      "It follows the Microsoft Writing Style Guide: \"Always capitalize the first and last words,\" and keep a, an, the; and, but, or, nor, yet, so; and prepositions of four or fewer letters lowercase elsewhere. The first word after a colon is capitalized too. Other style guides use different lists, and the tool can't tell when a word like \"up\" isn't a preposition, so check the result if you follow another guide.",
   },
   {
     question: "What's the difference between Sentence case and Title Case?",
     answer:
-      "Sentence case capitalizes only the first letter of each sentence, like normal prose. Title Case capitalizes the first letter of every word, which is the convention for headlines and titles.",
+      "Sentence case capitalizes the first letter of each sentence, like normal prose, and keeps acronyms such as API and the pronoun I. It can't detect proper nouns or brand names, so fix those by hand. Title Case capitalizes the main words and keeps short ones lowercase, as described above.",
   },
   {
     question: "Is this tool free to use?",

@@ -36,3 +36,31 @@ describe("splitIntoThread counts characters with charCount", () => {
     expect(splitIntoThread(text)).toEqual([`${"a".repeat(135)} (1/2)`, `${"b".repeat(136)}. (2/2)`]);
   });
 });
+
+describe("splitIntoThread hard-splits words longer than a post", () => {
+  it("cuts a 300-character word into 272 + 28", () => {
+    const word = "a".repeat(300);
+    expect(splitIntoThread(word)).toEqual([`${"a".repeat(272)} (1/2)`, `${"a".repeat(28)} (2/2)`]);
+  });
+
+  it("keeps a 272-character word whole", () => {
+    const word = "b".repeat(272);
+    expect(splitIntoThread(word)).toEqual([`${word} (1/1)`]);
+  });
+
+  it("cuts a 273-character word into 272 + 1", () => {
+    expect(splitIntoThread("c".repeat(273)).map(charCount)).toEqual([278, 7]);
+  });
+
+  it("cuts a long emoji run by characters, never inside an emoji", () => {
+    const run = "😀".repeat(600);
+    const posts = splitIntoThread(run);
+    expect(posts.map(charCount)).toEqual([278, 278, 62]);
+    expect(posts.every((p) => !p.includes("�") && charCount(p) <= 280)).toBe(true);
+    expect(posts.map((p) => p.replace(/ \(\d+\/\d+\)$/, "")).join("")).toBe(run);
+  });
+
+  it("continues with normal words after a split word", () => {
+    expect(splitIntoThread(`${"a".repeat(300)} b`)).toEqual([`${"a".repeat(272)} (1/2)`, `${"a".repeat(28)} b (2/2)`]);
+  });
+});

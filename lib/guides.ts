@@ -63,7 +63,7 @@ export const guides: Guide[] = [
       {
         heading: "Utility tools: IDs, timestamps, and thumbnails after publishing",
         paragraphs: [
-          "Beyond pre-publish checks, a few small utilities solve recurring annoyances: the YouTube Video ID Extractor and YouTube Channel ID Finder pull the underlying identifiers out of any URL format, the YouTube Timestamp Link Generator builds a direct link to a specific moment in a video, and the YouTube Thumbnail Downloader gives you direct links to a published video's thumbnail at every available resolution.",
+          "Beyond pre-publish checks, a few small utilities solve recurring annoyances: the YouTube Video ID Extractor pulls the video ID out of common link formats, the YouTube Channel ID Finder reads whichever channel identifier a link contains (a handle link gives the handle, not the ID), the YouTube Timestamp Link Generator builds a direct link to a specific moment in a video, and the YouTube Thumbnail Downloader gives you direct links to a published video's thumbnail at every available resolution.",
         ],
       },
     ],
