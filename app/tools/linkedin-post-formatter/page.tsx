@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: "Where does LinkedIn cut off a post?",
     answer:
-      "LinkedIn typically folds posts behind \"see more\" after roughly 210 characters on mobile feeds, though this can vary by device. Put your strongest hook in that first stretch.",
+      "LinkedIn typically folds posts behind \"see more\" after roughly 210 characters on mobile feeds (approximate, varies by device; not documented by LinkedIn). Put your strongest hook in that first stretch.",
   },
   {
     question: "What's LinkedIn's maximum post length?",
@@ -37,8 +37,8 @@ export default function LinkedinPostFormatterPage() {
         categoryHref="/categories/social-media-tools"
         title="LinkedIn Post Formatter"
       >
-        Write your post and see exactly how much shows before the &quot;see
-          more&quot; cutoff.
+        Write your post and see roughly how much shows before the &quot;see
+          more&quot; cutoff (approximate; LinkedIn doesn&apos;t document it).
       </ToolPageHeader>
 
       <div className="mt-10">

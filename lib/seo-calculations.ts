@@ -16,9 +16,14 @@ export interface FileNameResult {
   extension: string;
 }
 
+/**
+ * The text after the last dot counts as an extension only when it is 1-5
+ * letters or digits ("jpeg", "7z", "0"). Anything else ("2 notes",
+ * "toolongext") stays part of the name, as does a leading dot (".hidden").
+ */
 export function optimizeFileName(input: string): FileNameResult {
   const lastDot = input.lastIndexOf(".");
-  const hasExtension = lastDot > 0 && lastDot < input.length - 1;
+  const hasExtension = lastDot > 0 && /^[a-zA-Z0-9]{1,5}$/.test(input.slice(lastDot + 1));
   const namePart = hasExtension ? input.slice(0, lastDot) : input;
   const extension = hasExtension ? input.slice(lastDot + 1).toLowerCase() : "";
 

@@ -42,8 +42,8 @@ export const guides: Guide[] = [
       {
         heading: "Descriptions: the opening does the real work",
         paragraphs: [
-          "A YouTube description can run up to 5,000 characters, but only around the first ~157 characters (approximate, varies by device (not documented by YouTube)) show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
-          "The YouTube Description Checker flags exactly where that preview cutoff lands in your draft.",
+          "A YouTube description can run up to 5,000 characters, but only around the first ~157 characters (approximate; varies by device and not documented by YouTube) show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
+          "The YouTube Description Checker flags roughly where that approximate preview cutoff lands in your draft.",
         ],
       },
       {
@@ -100,7 +100,7 @@ export const guides: Guide[] = [
       {
         heading: "Hard limits vs. soft cutoffs",
         paragraphs: [
-          "X and TikTok enforce hard limits — commonly cited as 280 and 150 characters respectively (check in the app) — where the composer simply won't accept more text. Instagram, LinkedIn, and Facebook work differently: their real limits are generous (2,200, 3,000, and over 60,000 characters), but only a fraction of that shows before a \"more\" link appears. Writing for a hard-limit platform means editing until it fits; writing for a soft-cutoff platform means front-loading the hook into the visible preview window.",
+          "X and TikTok enforce hard limits — commonly cited as 280 and 150 characters respectively (check in the app) — where the composer simply won't accept more text. Instagram, LinkedIn, and Facebook work differently: their full limits are generous (LinkedIn documents 3,000 characters; the figures often quoted for Instagram and Facebook aren't on an official page we could verify, so check in the app), but only a fraction of that shows before a \"more\" link appears. Writing for a hard-limit platform means editing until it fits; writing for a soft-cutoff platform means front-loading the hook into the visible preview window.",
           "Check any draft against seven platforms at once with the Character Counter.",
         ],
       },
@@ -121,13 +121,13 @@ export const guides: Guide[] = [
       {
         heading: "Long-form text needs restructuring, not just trimming",
         paragraphs: [
-          "LinkedIn posts fold behind \"see more\" after roughly 210 characters on mobile — the LinkedIn Post Formatter previews exactly where that happens in your draft. For genuinely long-form ideas meant for X, the Twitter/X Thread Splitter breaks text into numbered, 280-character posts automatically, without ever cutting a post in the middle of a word.",
+          "LinkedIn posts fold behind \"see more\" after roughly 210 characters on mobile (approximate, varies by device; not documented by LinkedIn) — the LinkedIn Post Formatter shows roughly where that falls in your draft. For genuinely long-form ideas meant for X, the Twitter/X Thread Splitter breaks text into numbered, 280-character posts automatically, without ever cutting a post in the middle of a word.",
         ],
       },
       {
         heading: "Pinterest is a different game entirely",
         paragraphs: [
-          "Pinterest pin titles allow 100 characters and descriptions allow 500 — and unlike most social platforms, Pinterest's search leans heavily on the actual text in your description, so using more of that space with relevant keywords tends to help discovery rather than just being extra typing. The Pinterest Pin Description Checker confirms both fields fit before you publish.",
+          "Pinterest pin titles allow 100 characters and descriptions allow 800, per Pinterest's Review Pin specs — and unlike most social platforms, Pinterest's search leans heavily on the actual text in your description, so using more of that space with relevant keywords tends to help discovery rather than just being extra typing. The Pinterest Pin Description Checker confirms both fields fit before you publish.",
         ],
       },
     ],

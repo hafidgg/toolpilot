@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { checkPinterestPin } from "@/lib/content-calculations";
+import {
+  checkPinterestPin,
+  PINTEREST_DESCRIPTION_LIMIT,
+  PINTEREST_TITLE_LIMIT,
+} from "@/lib/content-calculations";
 
 export default function PinterestPinChecker() {
   const [title, setTitle] = useState("");
@@ -35,12 +39,19 @@ export default function PinterestPinChecker() {
       <div className="panel terminal-grid p-6">
         <span className="eyebrow">Result</span>
         <div className="mt-4 space-y-4">
-          <LimitRow label="Title" length={result.titleLength} limit={100} status={result.titleStatus} />
+          <LimitRow
+            label="Title"
+            length={result.titleLength}
+            limit={PINTEREST_TITLE_LIMIT}
+            status={result.titleStatus}
+            message={result.titleMessage}
+          />
           <LimitRow
             label="Description"
             length={result.descriptionLength}
-            limit={500}
+            limit={PINTEREST_DESCRIPTION_LIMIT}
             status={result.descriptionStatus}
+            message={result.descriptionMessage}
           />
         </div>
       </div>
@@ -53,11 +64,13 @@ function LimitRow({
   length,
   limit,
   status,
+  message,
 }: {
   label: string;
   length: number;
   limit: number;
   status: "good" | "too-long";
+  message: string;
 }) {
   const ratio = Math.min(length / limit, 1);
   return (
@@ -74,6 +87,7 @@ function LimitRow({
           style={{ width: `${ratio * 100}%` }}
         />
       </div>
+      <p className={`mt-1.5 text-xs ${status === "too-long" ? "text-loss" : "text-muted"}`}>{message}</p>
     </div>
   );
 }

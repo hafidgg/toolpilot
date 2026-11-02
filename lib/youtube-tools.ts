@@ -4,21 +4,38 @@ export function extractYoutubeVideoId(input: string): string | null {
   // Already a bare 11-character video ID
   if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
 
-  const patterns = [
-    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
-    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
-    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
-    /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
-    /(?:youtube\.com\/live\/)([a-zA-Z0-9_-]{11})/,
-  ];
-
-  for (const pattern of patterns) {
-    const match = trimmed.match(pattern);
-    if (match) return match[1];
+  let url: URL;
+  try {
+    url = new URL(/^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`);
+  } catch {
+    return null;
   }
 
-  return null;
+  const host = url.hostname.toLowerCase();
+  const segments = url.pathname.split("/").filter(Boolean);
+  let candidate: string | null = null;
+
+  if (host === "youtu.be") {
+    candidate = segments[0] ?? null;
+  } else if (YOUTUBE_HOSTS.has(host)) {
+    if (segments[0] === "watch") {
+      candidate = url.searchParams.get("v"); // any parameter position
+    } else if (["embed", "shorts", "live"].includes(segments[0])) {
+      candidate = segments[1] ?? null;
+    }
+  }
+
+  // IDs are 11 characters; a longer value keeps its first 11, as before.
+  const match = candidate?.match(/^[a-zA-Z0-9_-]{11}/);
+  return match ? match[0] : null;
 }
+
+const YOUTUBE_HOSTS = new Set([
+  "youtube.com",
+  "www.youtube.com",
+  "m.youtube.com",
+  "music.youtube.com",
+]);
 
 export interface ThumbnailVariant {
   key: string;

@@ -7,12 +7,12 @@ import RelatedTools from "@/components/RelatedTools";
 export const metadata: Metadata = {
   title: "Twitter/X Thread Splitter — Auto-Split Long Text",
   description:
-    "Paste long-form text and get it automatically split into numbered, 280-character posts ready for a thread.",
+    "Paste long-form text and split it into numbered thread posts of up to 280 characters, the commonly cited X limit.",
   alternates: { canonical: "/tools/twitter-thread-splitter" },
   twitter: {
     card: "summary_large_image",
     title: "Twitter/X Thread Splitter — Auto-Split Long Text",
-    description: "Paste long-form text and get it automatically split into numbered, 280-character posts ready for a thread.",
+    description: "Paste long-form text and split it into numbered thread posts of up to 280 characters, the commonly cited X limit.",
   },
 };
 

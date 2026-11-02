@@ -7,12 +7,12 @@ import RelatedTools from "@/components/RelatedTools";
 export const metadata: Metadata = {
   title: "Pinterest Pin Description Checker",
   description:
-    "Check your Pinterest pin title and description against Pinterest's 100 and 500-character limits.",
+    "Check your Pinterest pin title and description against Pinterest's 100 and 800-character limits.",
   alternates: { canonical: "/tools/pinterest-pin-checker" },
   twitter: {
     card: "summary_large_image",
     title: "Pinterest Pin Description Checker",
-    description: "Check your Pinterest pin title and description against Pinterest's 100 and 500-character limits.",
+    description: "Check your Pinterest pin title and description against Pinterest's 100 and 800-character limits.",
   },
 };
 
@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: "What are Pinterest's actual limits?",
     answer:
-      "Pin titles allow up to 100 characters, and pin descriptions allow up to 500 characters.",
+      "Pinterest's Review Pin specs page lists titles as \"100 characters max\" and says of descriptions: \"Enter up to 800 characters.\" Its ad specs page adds that, depending on the device, only about the first 40 characters of a title may show in feeds (30 for double-byte languages such as Chinese, Japanese, Korean and Arabic), so lead with the key words.",
   },
   {
     question: "Does the description length affect Pinterest SEO?",

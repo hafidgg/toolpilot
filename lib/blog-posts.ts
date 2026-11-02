@@ -296,7 +296,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Our [YouTube Video ID Extractor](/tools/youtube-video-id-extractor) returns dQw4w9WgXcQ for https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s&list=PL123, https://youtu.be/dQw4w9WgXcQ?si=abc123, https://www.youtube.com/shorts/dQw4w9WgXcQ and https://www.youtube.com/embed/dQw4w9WgXcQ. The [YouTube Thumbnail Downloader](/tools/youtube-thumbnail-downloader) then builds five links, from https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg (1280×720) down to default.jpg (120×90). One gap we found: a mobile link where v= isn't the first parameter, such as https://m.youtube.com/watch?feature=share&v=dQw4w9WgXcQ, returns no ID. Paste just the ID instead; the extractor accepts it on its own."
+        "Our [YouTube Video ID Extractor](/tools/youtube-video-id-extractor) returns dQw4w9WgXcQ for https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s&list=PL123, https://youtu.be/dQw4w9WgXcQ?si=abc123, https://www.youtube.com/shorts/dQw4w9WgXcQ and https://www.youtube.com/embed/dQw4w9WgXcQ. The [YouTube Thumbnail Downloader](/tools/youtube-thumbnail-downloader) then builds five links, from https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg (1280×720) down to default.jpg (120×90). A mobile share link where v= isn't the first parameter, such as https://m.youtube.com/watch?feature=share&v=dQw4w9WgXcQ, also returns dQw4w9WgXcQ, and so does a bare ID pasted on its own."
       ),
       h(
         "Common mistakes"
@@ -583,7 +583,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Given a 93-word paragraph about knife sharpening, the splitter produced two posts of 275 and 212 characters, including the \" (1/2)\" and \" (2/2)\" suffixes. It reserves 8 characters for that numbering and splits only between words, but it ignores sentences: post 1 ends \"until you feel a burr along the\" and post 2 starts \"whole edge.\" That's exactly the kind of cut to fix by hand. The splitter also counts JavaScript string length, so an emoji counts as two: a test text with 60 emoji gave a first post of 278 by its count but 247 visible characters. X's own counting may differ."
+        "Given a 93-word paragraph about knife sharpening, the splitter produced two posts of 275 and 212 characters, including the \" (1/2)\" and \" (2/2)\" suffixes. It reserves 8 characters for that numbering and splits only between words, but it ignores sentences: post 1 ends \"until you feel a burr along the\" and post 2 starts \"whole edge.\" That's exactly the kind of cut to fix by hand. The splitter counts characters the same way as our other counters, so an emoji counts as one: 100 knife emoji separated by spaces (199 characters) stay in a single post of 205 characters including \" (1/1)\". X's own counting may differ, so check the count in the app."
       ),
       h(
         "Trim the supporting detail"
@@ -631,7 +631,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "In our [Pinterest Pin Checker](/tools/pinterest-pin-checker), the title \"Whetstone Knife Sharpening for Beginners: Angles, Grits and a Simple Coin Trick\" is 79 characters, and its first 40 are exactly \"Whetstone Knife Sharpening for Beginners\", so the part that may show in feeds still describes the Pin. A 218-character description about angles, burrs and stropping passes too. One caveat: the checker currently flags descriptions over 500 characters, while Review Pin specs allows 800, so treat its description limit as conservative."
+        "In our [Pinterest Pin Checker](/tools/pinterest-pin-checker), the title \"Whetstone Knife Sharpening for Beginners: Angles, Grits and a Simple Coin Trick\" is 79 characters, and its first 40 are exactly \"Whetstone Knife Sharpening for Beginners\", so the part that may show in feeds still describes the Pin. A 218-character description about angles, burrs and stropping passes too; the checker flags descriptions only past the 800 characters Review Pin specs allows."
       ),
       h(
         "What we removed"

@@ -459,7 +459,7 @@ export function splitIntoThread(text: string, limit = 280): string[] {
 
   for (const word of words) {
     const candidate = current ? `${current} ${word}` : word;
-    if (candidate.length > effectiveLimit && current) {
+    if (charCount(candidate) > effectiveLimit && current) {
       chunks.push(current);
       current = word;
     } else {
@@ -540,20 +540,34 @@ export const BIO_LIMITS: BioLimit[] = [
   { key: "threads", label: "Threads Bio", limit: 150, verified: false },
 ];
 
+/** From Pinterest's Review Pin specs: "100 characters max" and "Enter up to 800 characters." */
+export const PINTEREST_TITLE_LIMIT = 100;
+export const PINTEREST_DESCRIPTION_LIMIT = 800;
+
 export interface PinterestCheckResult {
   titleLength: number;
   titleStatus: "good" | "too-long";
+  titleMessage: string;
   descriptionLength: number;
   descriptionStatus: "good" | "too-long";
+  descriptionMessage: string;
 }
 
 export function checkPinterestPin(title: string, description: string): PinterestCheckResult {
   const titleLength = charCount(title);
   const descriptionLength = charCount(description);
+  const titleOver = titleLength > PINTEREST_TITLE_LIMIT;
+  const descriptionOver = descriptionLength > PINTEREST_DESCRIPTION_LIMIT;
   return {
     titleLength,
-    titleStatus: titleLength > 100 ? "too-long" : "good",
+    titleStatus: titleOver ? "too-long" : "good",
+    titleMessage: titleOver
+      ? `Over Pinterest's 100-character title limit by ${titleLength - PINTEREST_TITLE_LIMIT}.`
+      : "Within Pinterest's 100-character title limit.",
     descriptionLength,
-    descriptionStatus: descriptionLength > 500 ? "too-long" : "good",
+    descriptionStatus: descriptionOver ? "too-long" : "good",
+    descriptionMessage: descriptionOver
+      ? `Over Pinterest's 800-character description limit by ${descriptionLength - PINTEREST_DESCRIPTION_LIMIT}.`
+      : "Within Pinterest's 800-character description limit.",
   };
 }

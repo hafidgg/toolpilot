@@ -46,7 +46,7 @@ const exampleItems = [
   {
     title: "Fitting a YouTube description preview",
     description:
-      "Only the opening of a YouTube description shows before \"show more\" (~157 characters: approximate, varies by device (not documented by YouTube)) — check that opening separately.",
+      "Only the opening of a YouTube description shows before \"show more\" (~157 characters; approximate, varies by device and not documented by YouTube) — check that opening separately.",
   },
 ];
 

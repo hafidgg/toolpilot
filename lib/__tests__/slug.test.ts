@@ -72,7 +72,6 @@ const PINNED_FILES_NO_INNER_DOTS: [string, string, string][] = [
   [".hidden", "hidden", ""],
   ["trailing.", "trailing", ""],
   ["Holiday Photo 2026.jpeg", "holiday-photo-2026.jpeg", "jpeg"],
-  ["v1.2 notes", "v1.2 notes", "2 notes"], // known quirk: "2 notes" is taken as the extension
 ];
 
 describe("optimizeFileName pinned outputs (no inner dots)", () => {
@@ -94,5 +93,23 @@ describe("inner dots in file names are word separators", () => {
 
   it("leaves slugify unchanged", () => {
     expect(slugify("v1.2 notes")).toBe("v12-notes");
+  });
+});
+
+describe("optimizeFileName extension rule (1-5 letters or digits)", () => {
+  it.each([
+    ["v1.2 notes", "v1-2-notes", ""],
+    ["report.final.PDF", "report-final.pdf", "pdf"],
+    ["photo.jpeg", "photo.jpeg", "jpeg"],
+    ["archive.tar.gz", "archive-tar.gz", "gz"],
+    ["no extension", "no-extension", ""],
+    ["file.", "file", ""],
+    [".hidden", "hidden", ""],
+    ["file.toolongext", "file-toolongext", ""],
+    ["draft.v2 final", "draft-v2-final", ""],
+    ["clip.MP4", "clip.mp4", "mp4"],
+    ["notes.a_b", "notes-a-b", ""],
+  ])("%j", (input, optimized, extension) => {
+    expect(optimizeFileName(input)).toEqual({ optimized, extension });
   });
 });
