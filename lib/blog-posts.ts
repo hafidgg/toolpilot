@@ -52,30 +52,49 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "youtube-title-length-guide",
-    title: "The Real YouTube Title Length Limit (It's Not 100 Characters)",
+    title: "YouTube Title Length Limit: 100 Characters",
     description:
-      "YouTube allows 100-character titles, but search results and mobile screens show far less. Here's the number that actually matters.",
+      "YouTube titles can be up to 100 characters. How much shows in search or on mobile isn't documented, so write titles that still work when cut short.",
     category: "YouTube Tools",
     publishedAt: "2026-06-22",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/youtube-title-checker",
       label: "YouTube Title Checker",
     },
     content: [
       p(
-        "YouTube's title field accepts up to 100 characters, and plenty of creators write titles that use most of that space. The problem is that almost nowhere on the platform actually displays 100 characters of a title before cutting it off."
+        "A YouTube title can be up to 100 characters, as YouTube Help states. How many of those appear in search results, suggestions or on a phone isn't documented by YouTube, so any \"visible length\" figure is an estimate."
       ),
-      h("Where the truncation actually happens"),
-      p(
-        "Desktop search results and suggested-video panels generally show somewhere around 60 to 70 characters before adding an ellipsis. Mobile screens, where most watch time happens, often show even less — sometimes closer to 40 characters in a suggested-video thumbnail row."
-      ),
-      h("What this means for how you write titles"),
-      p(
-        "Front-load the part of the title that explains what the video actually is. If your title is a question, a number, and a promise (\"How I Edited This in 10 Minutes\"), make sure the core of that idea lands within the first 60 characters — anything after that is a bonus some viewers will see and others won't."
+      h(
+        "What YouTube documents"
       ),
       p(
-        "A useful habit: write your title, then read only the first 60 characters back to yourself. If that fragment alone still makes sense and sounds compelling, the full title will perform fine regardless of where it gets cut."
+        "From YouTube Help, [Add video details](https://support.google.com/youtube/answer/57404) (retrieved 2 November 2026): \"Video titles have a character limit of 100 characters and cannot include invalid characters.\" The page says nothing about truncation. For other platforms, see our [character limits reference](/blog/social-media-character-limits-guide)."
+      ),
+      h(
+        "What isn't documented"
+      ),
+      p(
+        "Earlier versions of this post gave 60 to 70 characters for desktop and about 40 for mobile. We couldn't find those figures in YouTube's documentation, so they're gone. In our view no single number can be right everywhere anyway: displayed length depends on the surface, the screen width and the characters themselves."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [YouTube Title Checker](/tools/youtube-title-checker) counts characters and applies a rule of thumb: up to 60 is marked good, 61 to 70 tight, and over 70 too long. Those thresholds are our heuristic, not YouTube's. \"How to Sharpen a Kitchen Knife\" is 30 characters (good). \"How to Sharpen a Kitchen Knife With a Whetstone (Beginner Guide, No Jig)\" is 72, flagged by the heuristic but well inside YouTube's limit. \"How to Sharpen a Kitchen Knife With a Whetstone: The Complete Beginner Guide to Angles, Grits and Stropping\" is 107, which YouTube won't accept."
+      ),
+      h(
+        "Writing for an unknown cut-off"
+      ),
+      p(
+        "Put the words that say what the video is at the start, so the title still makes sense however much of it is shown. Read the first five or six words on their own: if they don't identify the video, reorder. This is our judgment, not a YouTube rule."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Treating 60 characters as a YouTube limit; it's a rule of thumb. Padding a title to 100 because it's allowed. Relying on a counter alone when you're close to 100: emoji can be counted differently, so confirm in YouTube Studio."
       ),
     ],
   },
@@ -376,23 +395,38 @@ export const blogPosts: BlogPost[] = [
       "Clean, descriptive URLs and file names are a small technical detail with an outsized effect on how search engines parse a page.",
     category: "SEO & Web Tools",
     publishedAt: "2026-08-03",
-    readTime: "5 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/url-slug-generator", label: "URL Slug Generator" },
     content: [
       p(
-        "It's easy to treat a URL as plumbing — something that just needs to work, not something worth thinking about. But both URLs and file names are text that search engines read as a signal about what a page or image contains, on top of their obvious job of being a working link."
+        "They matter a little, mostly through readability: Google's documentation recommends readable words in URLs, hyphens rather than underscores between words, and short descriptive image file names. It doesn't present any of this as a big ranking lever, so treat it as cheap hygiene rather than a growth tactic."
       ),
-      h("What search engines read into a URL"),
-      p(
-        "A URL like example.com/blog/post-847 tells a search engine nothing about the content behind it. A URL like example.com/blog/position-size-calculator-guide gives it a real signal before it even crawls the page, and it gives a human scanning search results or a shared link the same context. Google has confirmed hyphens are treated as word separators in URLs, while underscores generally are not — which is the entire reason hyphenated slugs became the standard convention."
+      h(
+        "What Google's URL guidance says"
       ),
-      h("File names carry the same signal for images"),
       p(
-        "A photo saved as IMG_4821.jpg tells a search engine nothing. The same photo saved as orange-tabby-cat-sleeping.jpg gives context that, combined with descriptive alt text, helps that image surface in image search — a channel that's easy to ignore but drives real traffic for visually-oriented content."
+        "Google's [URL structure documentation](https://developers.google.com/search/docs/crawling-indexing/url-structure) (retrieved 2 November 2026) says: \"When possible, use readable words rather than long ID numbers in your URLs.\" On separators: \"we recommend using hyphens (-) instead of underscores (_) to separate words in your URLs,\" adding, \"For historical reasons, we don't recommend using underscores.\" The [Search Central changelog](https://developers.google.com/search/updates) lists this clarification on October 23, 2026: \"Updated the URL structure best practices to clarify word separation guidelines using hyphens versus underscores.\""
       ),
-      h("Where this matters most"),
       p(
-        "The effect is small on a per-page or per-image basis, but it compounds across a site with many pages and many images, and it costs nothing to do correctly from the start. Retrofitting URLs after a site has been live for a while creates its own problem — changing a URL breaks existing links and requires a redirect to avoid losing the SEO value already built up, so it's far cheaper to get the naming right before publishing than to fix it after."
+        "On parameters, the same page says: \"Whenever possible, shorten URLs by trimming unnecessary parameters (meaning, parameters that don't change the content).\""
+      ),
+      h(
+        "Image file names"
+      ),
+      p(
+        "Google's [image SEO guide](https://developers.google.com/search/docs/appearance/google-images) says: \"When possible, use filenames that are short, but descriptive,\" and gives the example that \"my-new-black-kitten.jpg is better than IMG00023.JPG.\" The same page calls alt text \"the most important attribute when it comes to providing more metadata for an image,\" so a good file name complements alt text rather than replacing it."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [URL Slug Generator](/tools/url-slug-generator) turns \"Café Menu: 10 Best Crème Brûlée Recipes (2026)!\" into cafe-menu-10-best-creme-brulee-recipes-2026: lowercase, accents removed, punctuation dropped, spaces turned into hyphens. The [File Name Optimizer](/tools/file-name-optimizer) turns \"IMG_4821 Orange Tabby Cat.JPG\" into img4821-orange-tabby-cat.jpg. Note that it deletes underscores instead of converting them, so if an underscore separates real words (my_product_page), replace it with a space or hyphen before running the tool, or the words get glued together."
+      ),
+      h(
+        "Common mistakes, and when this doesn't apply"
+      ),
+      p(
+        "Renaming live URLs just to make them prettier. If you do change a URL, Google's [site move documentation](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes) recommends \"server side permanent redirects from the old URLs to the new URLs,\" using \"HTTP permanent redirects if possible, such as 301 and 308.\" Repeating keywords in a slug makes it less readable, not more (our judgment). And IDs aren't forbidden: the guidance says \"when possible,\" so a shop with numeric product URLs isn't broken."
       ),
     ],
   },
@@ -471,26 +505,38 @@ export const blogPosts: BlogPost[] = [
     slug: "tiktok-character-limits-guide",
     title: "TikTok's Character Limits Nobody Tells You About",
     description:
-      "Beyond the well-known 150-character caption limit, TikTok enforces separate, shorter limits for bios and other fields that catch creators off guard.",
+      "TikTok doesn't publish a caption or bio limit we could verify. Why limits vary, how to check yours in the app, and how to count before you post.",
     category: "Social Media Tools",
     publishedAt: "2026-08-03",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/tiktok-caption-counter", label: "TikTok Caption Counter" },
     content: [
       p(
-        "TikTok's 150-character caption limit is well-documented, but it's not the only length constraint on the platform, and the others are easy to hit by surprise since they're rarely mentioned in the same breath as the caption limit."
+        "We can't give you a number, because we couldn't find an official one: the TikTok help pages we could load don't state a caption or bio character limit. The reliable way to know your limit is to paste a draft into the field in the app and see where it stops you."
       ),
-      h("The bio limit is much tighter than the caption limit"),
-      p(
-        "A TikTok bio is capped at 80 characters — barely more than half the caption limit, and short enough that even a brief, casual self-description can run over without careful editing. Because the bio is one of the first things a potential follower reads on a profile, it's worth treating that 80-character budget as valuable, not an afterthought."
+      h(
+        "Why we don't quote a figure"
       ),
-      h("Display names have their own separate limit"),
       p(
-        "A TikTok display name (distinct from the @username) is limited to roughly 30 characters, which affects how much of a brand name or tagline can realistically fit before it gets cut off in the app's UI across different screen sizes."
+        "Numbers for TikTok circulate widely, but we only state platform limits we can confirm on the platform's own help pages. TikTok's [support page on captions](https://support.tiktok.com/en/using-tiktok/creating-videos/adding-captions), fetched on 2 November 2026, didn't list a limit, and we found no other official TikTok page that did. In our judgment, limits are also likely to differ between fields (caption, bio, display name) and to change over time, which is another reason a single quoted figure goes stale."
       ),
-      h("Why this matters more on TikTok than on some other platforms"),
+      h(
+        "How to check the limit yourself"
+      ),
       p(
-        "TikTok's interface displays less profile text at once compared to platforms like Instagram or LinkedIn, so exceeding these shorter limits doesn't just risk truncation — it can mean the text never gets typed in successfully at all, since some fields enforce a hard character cap the same way the caption field does. Checking your bio and display name against these limits before you're mid-edit in the app saves the friction of rewriting on the fly."
+        "Open the field you want to fill in the TikTok app and paste a deliberately long draft. The point where the app stops accepting characters or warns you is your current limit. Check each field separately rather than assuming the caption limit applies to your bio, and recheck after a major app update."
+      ),
+      h(
+        "Worked example: counting before you paste"
+      ),
+      p(
+        "Our [TikTok Caption Counter](/tools/tiktok-caption-counter) counts characters the way people see them. For the caption \"Three knife cuts every home cook should learn first 🔪 #cooking #knifeskills\" it reports 75 characters, while a plain JavaScript .length count gives 76, because the knife emoji is stored as two code units. The counter also shows a target figure, but labels it \"commonly cited, check in the app\", because we couldn't verify it. Use the count to compare drafts, and the app to confirm the limit."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Treating a number from a blog post, including older versions of this one, as official. Assuming one limit covers every field. Trusting any counter, ours included, over what the app actually accepts: emoji and combined characters can be counted differently. For the limits we could verify on other platforms, see our [social media character limits reference](/blog/social-media-character-limits-guide)."
       ),
     ],
   },
@@ -585,23 +631,47 @@ export const blogPosts: BlogPost[] = [
       "Missing images, wrong titles, or a blank preview when sharing a link almost always trace back to missing or incorrect Open Graph tags.",
     category: "SEO & Web Tools",
     publishedAt: "2026-08-03",
-    readTime: "4 min read",
+    readTime: "3 min read",
     relatedTool: { href: "/tools/og-tag-generator", label: "Open Graph Tag Generator" },
     content: [
       p(
-        "Paste a link into X, LinkedIn, Slack, or iMessage and most platforms build a preview card automatically — a title, description, and image pulled from the page itself. When that preview shows a blank box, a random unrelated image, or no image at all, the cause is almost always missing or incomplete Open Graph meta tags on the page, not a bug in the platform generating the preview."
+        "Usually the page is missing Open Graph tags, or the platform is showing an old cached copy. Add og:title, og:type, og:image and og:url (plus og:description), then use the platform's debugger to re-scrape the URL."
       ),
-      h("How the preview actually gets built"),
-      p(
-        "When a link is shared, the platform's server briefly visits the URL and looks for a specific set of meta tags in the page's HTML head — og:title, og:description, and og:image chief among them. If those tags are missing, most platforms fall back to the page's regular <title> tag and meta description, and if there's no og:image, the preview often shows no image at all rather than guessing one from the page content."
+      h(
+        "What the tags are"
       ),
-      h("Why a page can look fine but still preview badly"),
       p(
-        "A page can render perfectly for a human visitor while still missing Open Graph tags entirely, since these tags are invisible in the browser and only read by sharing platforms and crawlers — there's no visual symptom on the page itself to signal the problem. This is why link preview issues often go unnoticed for a long time; nothing about visiting the page directly reveals it."
+        "The [Open Graph protocol](https://ogp.me/) defines four required properties: og:title (\"The title of your object as it should appear within the graph\"), og:type, og:image (\"An image URL which should represent your object within the graph\") and og:url (\"The canonical URL of your object\"). og:description is optional: \"A one to two sentence description of your object.\" og:image:width and og:image:height give the image size in pixels, and og:image:alt is \"A description of what is in the image (not a caption).\""
       ),
-      h("Caching makes fixes look like they didn't work"),
+      h(
+        "What the platforms document"
+      ),
       p(
-        "Most platforms cache a link's preview the first time it's shared and won't re-fetch it for a while, even after the underlying meta tags are fixed. If a preview still looks broken after adding correct tags, the fix likely worked — the platform is just showing a stale cached version, and most platforms offer a debugging tool (like Facebook's Sharing Debugger or X's Card Validator) that forces a re-fetch."
+        "Facebook: Meta's [webmaster sharing guide](https://developers.facebook.com/docs/sharing/webmasters/) lists og:url, og:title, og:description and og:image as basic tags, and says that without them \"the Facebook Crawler uses internal heuristics to make a best guess about the title, description, and preview image.\" It gives no pixel dimensions there, but advises: \"Specify height and width for your image to ensure that the image loads properly the first time it's shared.\" Accepted og:image:type values are \"image/jpeg, image/gif or image/png.\""
+      ),
+      p(
+        "LinkedIn: its [help page on shared content](https://www.linkedin.com/help/linkedin/answer/a521928) lists og:title, og:image, og:description and og:url, with \"Max file size: 5 MB\", \"Minimum image dimensions: 1200 (w) x 627 (h) pixels\" and \"Recommended ratio: 1.91:1\"."
+      ),
+      p(
+        "X's Cards documentation returned an HTTP 402 error when we tried to fetch it, so we make no claims about X here, and we didn't find official preview documentation for Slack or iMessage."
+      ),
+      h(
+        "Caching: why a fix can look like it failed"
+      ),
+      p(
+        "Meta documents that \"Images are cached based on the URL and won't be updated unless the URL changes,\" so a new image needs a new URL, such as a new file name. Its Sharing Debugger \"will show which meta tags the crawler scrapes as well as any errors or warnings\" and can trigger a fresh scrape. The LinkedIn page we fetched doesn't mention caching, so we don't describe LinkedIn's behavior."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Given the title \"Spring Menu\", description \"Twelve new dishes, available from March.\", image https://example.com/og/spring-menu.png, URL https://example.com/spring-menu and site name \"Example Bistro\", our [Open Graph Tag Generator](/tools/og-tag-generator) outputs og:title, og:description, og:image, og:url, og:site_name and og:type (set to website), plus twitter:title, twitter:description, twitter:image and twitter:card (set to summary_large_image). That covers all four required properties. It doesn't output og:image:width, og:image:height or og:image:alt, so add those by hand to follow Meta's first-share advice. To see what a live page exposes, our [OG Preview](/tools/og-preview) tool reads og:title (falling back to the page title), og:description (falling back to the meta description), og:image and og:site_name."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Replacing an image file but keeping its URL, which Meta says won't refresh the cached image. Using a relative image path: the spec asks for \"an image URL\", and an absolute https URL is the safe choice (our judgment). Adding tags only with JavaScript after the page loads: we found no statement in these docs that crawlers run scripts, so check what the platform's debugger actually sees."
       ),
     ],
   },
@@ -609,29 +679,47 @@ export const blogPosts: BlogPost[] = [
     slug: "how-long-should-youtube-description-be",
     title: "How Long Should a YouTube Description Actually Be?",
     description:
-      "The 5,000-character limit rarely matters — what matters is the roughly 150 characters most viewers ever see.",
+      "YouTube allows 5,000 characters in a description. How much shows before \"more\" isn't documented, so put the line and link that matter first.",
     category: "YouTube Tools",
     publishedAt: "2026-08-10",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/youtube-description-checker",
       label: "YouTube Description Checker",
     },
     content: [
       p(
-        "YouTube allows up to 5,000 characters in a video description, which leads a lot of creators to either leave the field nearly empty or fill it with a wall of links and keywords on the assumption that more is better. Neither approach reflects how the field actually gets used."
+        "As long as it needs to be, up to YouTube's 5,000-character limit. YouTube doesn't document how much appears before a viewer expands the description, so put the sentence and link that matter most at the very top."
       ),
-      h("What's visible without a click"),
-      p(
-        "Only the first roughly 150 characters show before a viewer has to tap \"show more.\" That means the realistic budget for anything you want guaranteed to be seen — a hook, a key link, a call to action — is much closer to a tweet than to a full page of text."
+      h(
+        "The documented limit"
       ),
-      h("What the rest of the space is actually for"),
       p(
-        "Everything past that preview still has a job: timestamps for chapter navigation, links to related videos or resources, credits, and context that helps YouTube's system understand what the video covers. It's read by a smaller, more engaged slice of your audience, and by YouTube's indexing — not wasted space, just lower-priority space than the first 150 characters."
+        "From YouTube Help, [Add video details](https://support.google.com/youtube/answer/57404) (retrieved 2 November 2026): \"Video descriptions have a character limit of 5,000 characters and cannot include invalid characters.\" The page describes the description simply as \"Info that shows below your video.\" Other platforms' limits are in our [character limits reference](/blog/social-media-character-limits-guide)."
       ),
-      h("A structure that works for most channels"),
+      h(
+        "The preview length is approximate"
+      ),
       p(
-        "Lead with one or two sentences that stand alone as a pitch for the video, place your most important link right after that opening (some viewers only read that far), then use the remaining space for timestamps, secondary links, and any required disclosures. Padding the opening with keywords instead of an actual hook tends to hurt more than it helps, since it wastes the one part of the description almost everyone actually reads."
+        "Earlier versions of this post said roughly 150 characters show before \"show more\". That figure isn't in YouTube's documentation: treat it as approximate, varying by device and layout. We also removed the claim that the rest of the description helps YouTube understand or rank a video, because we found no YouTube documentation of a ranking effect."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [YouTube Description Checker](/tools/youtube-description-checker) counts characters against the 5,000 limit and flags the opening against an approximate preview of about 157 characters, which is our heuristic, not a YouTube figure. \"Learn to sharpen a chef's knife on a whetstone in 10 minutes. Free angle guide: https://example.com/angles\" is 106 characters and is marked tight (over 100, under 157). Adding \" Below: chapters, the stones I use, and how to tell when an edge is actually sharp.\" brings it to 189, marked as likely truncated, and still far inside 5,000."
+      ),
+      h(
+        "A structure that works (our judgment)"
+      ),
+      p(
+        "One or two sentences that pitch the video, then the most important link, then everything else: chapters, secondary links, credits and required disclosures. None of this is a YouTube rule; it just puts the most important content where the most people see it."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Treating 150 or 157 as an exact cut-off. Opening with a block of keywords instead of a sentence a person would read. Pasting long boilerplate into every video until chaptered ones run past 5,000; the checker flags the total."
       ),
     ],
   },
@@ -639,29 +727,47 @@ export const blogPosts: BlogPost[] = [
     slug: "utm-parameters-explained",
     title: "UTM Parameters Explained: Source, Medium, and Campaign",
     description:
-      "What each UTM parameter actually tracks, and the naming mistakes that quietly break Analytics reports.",
+      "What each UTM parameter means according to Google Analytics Help, which ones to always set, and why inconsistent capitalization splits your reports.",
     category: "SEO & Web Tools",
     publishedAt: "2026-08-10",
-    readTime: "5 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/utm-link-builder",
       label: "UTM Link Builder",
     },
     content: [
       p(
-        "UTM parameters are small tags appended to a URL that tell Google Analytics (or any analytics platform that reads them) where a visit came from. They don't change what the page shows — they're purely a tracking label attached to the link."
+        "UTM parameters are tags added to a link's query string so Google Analytics can attribute a visit to a source, medium and campaign. Google says to always set utm_source, utm_medium and utm_campaign, and that the values are case sensitive."
       ),
-      h("The three that matter most"),
-      p(
-        "Source identifies the specific origin of the traffic — a platform or publication, like \"newsletter\" or \"instagram.\" Medium is the general category that source belongs to, like \"email\" or \"social.\" Campaign identifies the specific push the link belongs to, like \"spring-launch\" or \"black-friday-2026.\" Together, they let you filter traffic by exactly which link drove a visit, not just which site."
+      h(
+        "The parameters Google Analytics reads"
       ),
-      h("The naming mistake that breaks reports silently"),
       p(
-        "Analytics platforms treat UTM values as case-sensitive and exact-match — \"Newsletter,\" \"newsletter,\" and \"news-letter\" will all show up as three separate sources in your reports, splitting what should be one clean data set into fragments. The fix is entirely about discipline: pick a naming convention (lowercase, hyphenated is the common standard) and use it identically every time, ideally from a shared reference sheet if more than one person creates links."
+        "From Google Analytics Help, [Collect campaign data with custom URLs](https://support.google.com/analytics/answer/10917952) (retrieved 2 November 2026): utm_source is the \"Referrer, for example: google, newsletter4, billboard\"; utm_medium is the \"Marketing medium, for example: cpc, banner, email\"; utm_campaign is \"Product, slogan, promo code, for example: spring_sale\"; utm_id is the \"Campaign ID\"; utm_term is \"Paid keyword\"; and utm_content is used \"to differentiate creatives.\" The page also lists utm_source_platform, utm_creative_format and utm_marketing_tactic, and notes the last two aren't currently reported in Google Analytics properties."
       ),
-      h("When not to bother with UTMs"),
+      h(
+        "Which ones to set"
+      ),
       p(
-        "Internal links between pages on your own site don't need UTM tags — analytics tools already track internal navigation natively, and adding UTM parameters to internal links can actually corrupt session data by making the platform think a new session started. UTMs are for links that live somewhere outside your own site: social posts, emails, ads, and other external placements."
+        "The page says that when you add parameters, \"you should always use utm_source, utm_medium, and utm_campaign,\" and warns that \"Missing UTM parameters will result in (not set) values being present in reporting.\" Add utm_term or utm_content when you need to tell keywords or creatives apart."
+      ),
+      h(
+        "Case sensitivity and naming"
+      ),
+      p(
+        "This is documented: \"Parameter values are case sensitive,\" so Google and google count as different values. The best-practice advice is to \"Maintain a strict, case-sensitive naming convention for all fields,\" to \"Use lowercase as a standard practice,\" and to \"Use only one unique utm_source for each distinct platform.\" Keeping a shared sheet of allowed values is our suggestion for teams, not a Google requirement."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "In our [UTM Link Builder](/tools/utm-link-builder), the URL https://example.com/spring-menu with source newsletter, medium email, campaign spring_sale and content header_button produces https://example.com/spring-menu?utm_source=newsletter&utm_medium=email&utm_campaign=spring_sale&utm_content=header_button. Enter example.com/spring-menu without https:// and the builder returns nothing, because it can't parse that as a full URL."
+      ),
+      h(
+        "Common mistakes, and when not to use UTMs"
+      ),
+      p(
+        "Mixing \"Email\" and \"email\", or \"fb\" and \"facebook\", for the same channel. Leaving out medium or campaign and getting (not set) rows. Tagging links between pages of your own site: in our judgment that credits ordinary navigation to a campaign, so keep UTMs for links placed elsewhere, such as emails, social posts and ads."
       ),
     ],
   },
