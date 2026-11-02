@@ -109,7 +109,7 @@ export const categories: CategoryMeta[] = [
         slug: "youtube-description-checker",
         title: "YouTube Description Checker",
         shortDescription:
-          "Check your description against the 5,000-character limit and the ~150-character preview (approximate, varies by device).",
+          "Check your description against the 5,000-character limit and the ~157-character preview (approximate, varies by device (not documented by YouTube)).",
       },
       {
         slug: "youtube-tag-generator",

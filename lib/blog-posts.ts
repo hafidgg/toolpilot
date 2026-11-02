@@ -265,36 +265,44 @@ export const blogPosts: BlogPost[] = [
     slug: "find-youtube-video-id-and-thumbnail",
     title: "How to Find Any YouTube Video's ID and Thumbnail URL",
     description:
-      "Every YouTube URL format contains the same 11-character video ID — here's how to extract it and use it to pull thumbnail images directly.",
+      "Where the video ID sits in watch, youtu.be, Shorts and embed links, and how thumbnail sizes relate to it: what YouTube documents and what it doesn't.",
     category: "YouTube Tools",
     publishedAt: "2026-07-27",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/youtube-thumbnail-downloader",
       label: "YouTube Thumbnail Downloader",
     },
     content: [
       p(
-        "Every YouTube video has a unique 11-character ID, regardless of which URL format led you there — a standard watch link, a youtu.be short link, a Shorts link, or an embed URL all encode the same underlying ID differently."
+        "The video ID is the code after v= in a watch link, after youtu.be/ in a short link, after /shorts/ in a Shorts link and after /embed/ in an embed link. Our tools pull it out of all four and build thumbnail links from it."
       ),
-      h("Where the ID hides in each URL format"),
-      p(
-        "In a standard watch URL like youtube.com/watch?v=dQw4w9WgXcQ, the ID is the value after v=. In a short youtu.be link, it's the path segment right after the domain. In a Shorts link, it follows /shorts/, and in an embed URL, it follows /embed/. All four point to the exact same video and the exact same ID."
-      ),
-      h("What the ID is actually used for"),
-      p(
-        "Beyond just identifying the video, the ID is the key input for a handful of practical tasks: embedding the video on your own site, querying the YouTube Data API for video details, and — usefully — constructing a direct link to the video's thumbnail image without needing any API access at all."
-      ),
-      h("Thumbnails follow a predictable public URL pattern"),
-      p(
-        "YouTube serves thumbnail images from a public, unauthenticated URL built entirely from the video ID: img.youtube.com/vi/{video ID}/maxresdefault.jpg for the highest resolution, with hqdefault, mqdefault, and default as smaller fallback sizes. Because this pattern is public, no login or API key is required to fetch a thumbnail once you have the ID."
+      h(
+        "Where the ID sits"
       ),
       p(
-        "One practical catch: not every video has a maxresdefault image generated, particularly older or lower-resolution uploads. If the top-resolution link doesn't load, stepping down to sddefault or hqdefault almost always works."
+        "YouTube's [player parameters documentation](https://developers.google.com/youtube/player_parameters) gives the embed format \"https://www.youtube.com/embed/VIDEO_ID\", and YouTube Help's [embed page](https://support.google.com/youtube/answer/171780) describes the ID as \"the series of letters that follows \"embed/\"\". We found no official page that documents the watch, youtu.be or Shorts formats or states the ID's length. IDs are 11 characters in practice, and our extractor assumes that."
       ),
-      h("A faster path than manual extraction"),
+      h(
+        "Thumbnail sizes"
+      ),
       p(
-        "Manually spotting the ID inside a long URL with tracking parameters attached is easy to get wrong. Pasting the full URL into a dedicated video ID extractor handles all four formats consistently, and a thumbnail downloader takes it one step further by generating all five resolution links at once."
+        "The YouTube Data API's [thumbnails documentation](https://developers.google.com/youtube/v3/docs/thumbnails) lists default (\"120px wide and 90px tall\"), medium (\"320px wide and 180px tall\"), high (\"480px wide and 360px tall\"), standard (\"640px wide and 480px tall\") and maxres (\"1280px wide and 720px tall\"), and says standard and maxres are \"available for some videos\". That's why a max-resolution link sometimes fails."
+      ),
+      p(
+        "The img.youtube.com/vi/{ID}/maxresdefault.jpg pattern our downloader uses isn't on that page. It works without an API key, but it isn't officially documented, so it could change."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [YouTube Video ID Extractor](/tools/youtube-video-id-extractor) returns dQw4w9WgXcQ for https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s&list=PL123, https://youtu.be/dQw4w9WgXcQ?si=abc123, https://www.youtube.com/shorts/dQw4w9WgXcQ and https://www.youtube.com/embed/dQw4w9WgXcQ. The [YouTube Thumbnail Downloader](/tools/youtube-thumbnail-downloader) then builds five links, from https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg (1280×720) down to default.jpg (120×90). One gap we found: a mobile link where v= isn't the first parameter, such as https://m.youtube.com/watch?feature=share&v=dQw4w9WgXcQ, returns no ID. Paste just the ID instead; the extractor accepts it on its own."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Assuming a max-resolution thumbnail always exists, when the API docs say it's only available for some videos. Copying tracking parameters along with the ID. Relying on the img.youtube.com pattern for anything critical, since YouTube doesn't document it."
       ),
     ],
   },
@@ -544,29 +552,50 @@ export const blogPosts: BlogPost[] = [
     slug: "blog-post-to-twitter-thread",
     title: "How to Turn a Blog Post Into a Twitter/X Thread",
     description:
-      "Repurposing long-form writing into a thread isn't just chopping it into 280-character pieces — here's what actually changes.",
+      "Splitting an article into posts is the easy part. What to rewrite when you turn a blog post into an X thread, with a worked example from our splitter.",
     category: "Social Media Tools",
     publishedAt: "2026-08-03",
-    readTime: "5 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/twitter-thread-splitter", label: "Twitter/X Thread Splitter" },
     content: [
       p(
-        "Turning an existing article into a thread is a common way to repurpose content, but a thread that's just the article chopped into 280-character chunks usually reads worse than either the original article or a thread written for the format from the start."
+        "Rewrite, don't just chop: give the first post its own hook, make each post one complete thought, and cut supporting detail. The splitting itself is mechanical and a tool can do it; the rewriting is where a thread gets better or worse."
       ),
-      h("The first post has to work as a standalone hook"),
-      p(
-        "An article's opening paragraph is often written to set context; a thread's opening post has to earn the tap to expand and read further, competing directly against every other post in someone's timeline. Rewriting the first post as a clear, specific hook — not just the article's first sentence — matters more than any other single edit in the adaptation."
-      ),
-      h("Each post should be a complete thought, not a mid-sentence cut"),
-      p(
-        "An article's sentences are written to flow into each other across paragraph breaks that don't exist in a thread — each post needs to make sense read on its own, since threads often get quote-tweeted or screenshotted one post at a time, disconnected from the rest of the sequence. This usually means restructuring around one idea per post rather than mechanically splitting by character count."
-      ),
-      h("Trim supporting detail that worked in long-form but drags in a thread"),
-      p(
-        "An article can support a claim with two or three examples in a row; a thread reader's patience for that same repetition is much shorter, since each additional post is a fresh decision to keep scrolling. Keep the strongest single example per point and cut the rest, even if the original article included all three."
+      h(
+        "About the character limit"
       ),
       p(
-        "The mechanical part — fitting text under 280 characters per post — is the easy part to automate. The rewriting judgment about what to cut, restructure, and lead with is what actually determines whether the thread performs."
+        "X's help center returned an HTTP 403 error when we tried to fetch it on 2 November 2026, so we can't confirm X's current post limit. Our [Twitter/X Thread Splitter](/tools/twitter-thread-splitter) uses 280 characters, labeled \"commonly cited, check in the app\". Check the limit in X's composer. For the limits we could verify, see our [character limits reference](/blog/social-media-character-limits-guide)."
+      ),
+      h(
+        "The first post needs its own hook"
+      ),
+      p(
+        "An article's first paragraph sets context; a thread's first post has to earn the next tap. Rewrite it as the clearest version of your claim instead of reusing the article's first sentence. This is editorial judgment, not a platform rule."
+      ),
+      h(
+        "One thought per post"
+      ),
+      p(
+        "Posts get read, quoted and shared one at a time, so each should make sense on its own (our judgment). That usually means restructuring around ideas, not character counts."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Given a 93-word paragraph about knife sharpening, the splitter produced two posts of 275 and 212 characters, including the \" (1/2)\" and \" (2/2)\" suffixes. It reserves 8 characters for that numbering and splits only between words, but it ignores sentences: post 1 ends \"until you feel a burr along the\" and post 2 starts \"whole edge.\" That's exactly the kind of cut to fix by hand. The splitter also counts JavaScript string length, so an emoji counts as two: a test text with 60 emoji gave a first post of 278 by its count but 247 visible characters. X's own counting may differ."
+      ),
+      h(
+        "Trim the supporting detail"
+      ),
+      p(
+        "An article can back a point with three examples; in a thread each extra post is another reason to stop reading. Keep the strongest example per point (our judgment)."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Posting the splitter's output without editing it. Leaving a cut in the middle of a sentence. Treating 280 as a verified limit."
       ),
     ],
   },
@@ -574,26 +603,47 @@ export const blogPosts: BlogPost[] = [
     slug: "pinterest-seo-vs-google-seo",
     title: "Why Pinterest SEO Works Differently Than Google SEO",
     description:
-      "Pinterest is a visual search engine with its own ranking logic — optimizing for it takes a different approach than typical web SEO.",
+      "Pinterest's help pages explain how Pin titles and descriptions are used. What they say, what isn't documented, and how to check a Pin before posting.",
     category: "Social Media Tools",
     publishedAt: "2026-08-03",
-    readTime: "5 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/pinterest-pin-checker", label: "Pinterest Pin Description Checker" },
     content: [
       p(
-        "Pinterest functions less like a social feed and more like a visual search engine — users go there actively searching for ideas, which means Pinterest's ranking logic has more in common with Google than with Instagram or TikTok's engagement-driven feeds, but the specifics differ in ways that matter for how you write pin descriptions."
+        "Pinterest documents its own text fields: titles of up to 100 characters and descriptions of up to 800, with descriptions hidden in feeds but used by its algorithm for relevance. Those details, not general web SEO habits, should shape how you write a Pin."
       ),
-      h("Text still matters heavily, unlike some visual platforms"),
-      p(
-        "Because Pinterest's search relies on the text attached to a pin — the title, description, and any text detected in the image itself — a pin with a thin or generic description is harder to surface than one with a specific, keyword-relevant description, even if the image itself is strong. This is different from platforms where the image or video carries almost the entire weight and captions are treated as an afterthought."
+      h(
+        "What Pinterest documents"
       ),
-      h("Pins have a long search lifespan"),
       p(
-        "Unlike a tweet or an Instagram post that's mostly seen in the hours after posting, a well-optimized pin can keep generating traffic for months or years after it's published, since Pinterest search surfaces old pins just as readily as new ones if they match a search query well. This changes the incentive: it's worth spending real effort on a pin's description and title, since the payoff compounds over a much longer window than most social content."
+        "From Pinterest help, [Review Pin specs](https://help.pinterest.com/en/article/review-pin-specs) (retrieved 2 November 2026): titles are \"100 characters max\", and for descriptions you can \"Enter up to 800 characters.\" The page notes that \"Descriptions do not appear when viewing the Pin in the home feed or search feed\" and that \"Descriptions are used by our algorithm to determine relevance for delivery.\""
       ),
-      h("Board context adds another ranking signal"),
       p(
-        "Which board a pin is saved to, and what other pins live on that board, gives Pinterest additional context about the topic — a well-organized, topically consistent board can help pins on it rank better than the same pin saved to a mismatched or disorganized board. This is a layer of optimization that has no real equivalent on Instagram or TikTok."
+        "Pinterest's [ad specs page](https://help.pinterest.com/en/business/article/pinterest-product-specs) adds, for titles: \"Depending on the device, the first 40 characters may show in people's feeds,\" and for Chinese, Japanese, Korean, Arabic and other double-byte languages, \"only the first 30 characters will show.\" It recommends \"entering a description to help get your Pin or ad in front of the right audience.\""
+      ),
+      h(
+        "How that differs from a web page"
+      ),
+      p(
+        "On Pinterest, the description is never shown in the feed yet still informs delivery, and the title may be cut to about 40 characters in feeds. So put the most descriptive words at the start of the title, and write the description to say what the Pin is and who it's for, rather than as visible copy. That comparison is our judgment, built on the quotes above."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "In our [Pinterest Pin Checker](/tools/pinterest-pin-checker), the title \"Whetstone Knife Sharpening for Beginners: Angles, Grits and a Simple Coin Trick\" is 79 characters, and its first 40 are exactly \"Whetstone Knife Sharpening for Beginners\", so the part that may show in feeds still describes the Pin. A 218-character description about angles, burrs and stropping passes too. One caveat: the checker currently flags descriptions over 500 characters, while Review Pin specs allows 800, so treat its description limit as conservative."
+      ),
+      h(
+        "What we removed"
+      ),
+      p(
+        "Earlier versions said Pins keep earning traffic for months or years and that board organization helps Pins rank. We couldn't find either claim in Pinterest's help pages, so both are gone."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Leaving the description empty because it isn't shown in feeds, when Pinterest says it's used for relevance. Putting the key words late in a long title. Assuming a Google SEO tactic carries over without checking Pinterest's own documentation."
       ),
     ],
   },
@@ -817,59 +867,89 @@ export const blogPosts: BlogPost[] = [
     slug: "linkedin-post-that-doesnt-get-buried",
     title: "How to Write a LinkedIn Post That Doesn't Get Buried",
     description:
-      "The first two lines determine whether a LinkedIn post gets read at all — here's how the \"see more\" fold actually works.",
+      "LinkedIn posts can run to 3,000 characters, but only the opening shows before \"see more\". How to write that opening, with a worked example.",
     category: "Social Media Tools",
     publishedAt: "2026-08-10",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/linkedin-post-formatter",
       label: "LinkedIn Post Formatter",
     },
     content: [
       p(
-        "LinkedIn allows up to 3,000 characters in a post, but the feed only shows roughly the first 210 characters before folding the rest behind \"see more.\" Most posts that underperform aren't badly written overall — they just don't survive that first fold."
+        "Put your claim, result or question in the first line or two, because that's what people see before deciding to tap \"see more\". LinkedIn allows up to 3,000 characters in a post, but doesn't document how much of it shows before the fold."
       ),
-      h("What has to happen in the first two lines"),
-      p(
-        "The opening needs to work as a complete, standalone reason to keep reading, not a slow windup. Posts that open with scene-setting (\"Last week I was reflecting on...\") burn the entire visible budget before making a single point, while posts that open with the actual claim, question, or result give the reader something to decide on before they even have to tap."
+      h(
+        "What LinkedIn documents"
       ),
-      h("Line breaks change how the fold lands"),
       p(
-        "LinkedIn's feed counts characters toward the fold, but visual line breaks affect how much of your opening thought is visible at once. A post with short, deliberate line breaks in the opening can put a complete, punchy idea entirely above the fold, while the same character count written as one dense paragraph might cut off mid-sentence."
+        "From LinkedIn Help, [Post and share updates](https://www.linkedin.com/help/linkedin/answer/a528176) (retrieved 2 November 2026): \"Posts can contain up to 3,000 characters.\" It adds: \"If your post exceeds 3000 characters, you can instead write an article using LinkedIn's Publishing Platform.\" The page doesn't mention \"see more\" or how much of a post appears in the feed."
       ),
-      h("What's actually below the fold"),
+      h(
+        "The ~210 figure is approximate"
+      ),
       p(
-        "The 3,000-character ceiling is generous enough for real depth — a full argument, a story with a payoff, a detailed breakdown. That space isn't wasted if the opening earned the click to expand; it's simply not what determines whether that click happens in the first place. Treat the first 210 characters as the pitch and everything after as the content the pitch was for."
+        "The often-quoted 210 characters isn't in any LinkedIn help page we found. Our checker uses it as a rough preview length and labels it \"approximate, varies by device; not documented by LinkedIn\". Line breaks also change what fits, because the preview is a visual space rather than a pure character count (our judgment)."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Two openings in our [LinkedIn Post Formatter](/tools/linkedin-post-formatter): \"We cut our onboarding from 14 days to 3. Here's the one change that did it, and the two we tried first that didn't.\" is 115 characters. \"Last week I was reflecting on something that has been on my mind for a while now, and I wanted to share a few thoughts about how our team has been approaching onboarding over the past year.\" is 189. Both fall inside the approximate preview, so the checker marks both good. The count can't tell them apart; only the first gives a reader a reason to tap. A 3,001-character post gets \"Over LinkedIn's 3,000-character post limit.\""
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Opening with scene-setting instead of the point. Treating 210 as an exact cut-off. Squeezing a piece past 3,000 characters when it would work better as a LinkedIn article, as the help page suggests."
       ),
     ],
   },
   {
     slug: "what-makes-a-good-social-bio",
-    title: "What Makes a Good Social Media Bio (In About 150 Characters)",
+    title: "What Makes a Good Social Media Bio",
     description:
-      "Every platform gives you less room for a bio than a caption — here's how to use that tight space well.",
+      "Bio limits vary by platform and change over time, so check them in the app. What a short bio needs to say, with a worked example and common mistakes.",
     category: "Social Media Tools",
     publishedAt: "2026-08-10",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/bio-character-counter",
       label: "Bio Character Counter",
     },
     content: [
       p(
-        "A profile bio has to do more work per character than almost any other piece of writing a creator produces — Instagram gives it 150 characters, TikTok gives it 80, and in that space it has to answer \"who is this and why should I follow\" for a stranger who's spending about two seconds deciding."
+        "A good bio tells a stranger what they'll get by following you, in words specific enough to picture. Bio limits differ by platform and we couldn't verify them on official pages, so check the limit in each app and write the shortest version first."
       ),
-      h("What actually earns a follow in that space"),
-      p(
-        "A bio that lists credentials or job titles answers a different question than the one a visitor is asking. What tends to work better is a specific, concrete description of what someone will get by following — the topic, the format, the value — rather than a general statement of identity. \"Daily budgeting tips for freelancers\" tells a visitor more in five words than \"Finance enthusiast | Entrepreneur\" does in six."
+      h(
+        "Why we don't quote bio limits"
       ),
-      h("Why shorter platforms force better writing"),
       p(
-        "TikTok's 80-character bio limit — barely half of Instagram's — is tight enough that there's no room for a throwaway phrase. Writing the TikTok version first and then expanding for platforms with more room tends to produce a sharper bio everywhere, since the constraint forces every word to justify its place before you have the luxury of adding more."
+        "Bio figures for Instagram, TikTok, X and Threads circulate widely, but we couldn't confirm any of them on an official help page on 2 November 2026: the Instagram help pages we tried loaded without their content, X's help center returned an HTTP 403 error, and we found no TikTok page that states a bio limit. Our [character limits reference](/blog/social-media-character-limits-guide) lists the limits we could verify. To find a bio limit, paste a long draft into the bio field in the app and see where it stops."
       ),
-      h("The line update most creators skip"),
+      h(
+        "What earns a follow"
+      ),
       p(
-        "A bio written once at account creation and never revisited stops reflecting what the account is actually about after a few months of posting. Since it costs nothing to edit and takes seconds to check against a platform's limit, treating the bio as something to revisit every few months — not a one-time setup task — keeps it doing its job as the account evolves."
+        "This is our judgment, not platform guidance: a bio that lists titles answers \"who are you?\", while a visitor is asking \"what will I get?\". A concrete promise (topic, format, how often) does more than a label. \"Daily budgeting tips for freelancers\" tells a visitor more than \"Finance enthusiast | Entrepreneur\"."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "In our [Bio Character Counter](/tools/bio-character-counter), \"Finance enthusiast | Entrepreneur\" is 33 characters. \"Daily budgeting tips for freelancers. New video every Tuesday 📅\" is 63 characters, while a plain JavaScript .length count gives 64, because the emoji takes two code units. The counter shows a bar for each platform, but every limit in it is labeled \"commonly cited, check in the app\", because none is verified. Use it to compare drafts, not to confirm a limit."
+      ),
+      h(
+        "Write the short version first"
+      ),
+      p(
+        "Because limits differ, write the bio for the platform where the app gives you the least room, then expand where there's more. Starting tight forces you to choose the one thing that matters. That's a writing habit, not a platform rule."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Copying a limit from a blog post, including older versions of this one, instead of checking the app. Listing credentials with no promise. Never revisiting the bio as the account changes. Trusting any counter, ours included, when you're near a limit: emoji and combined characters may be counted differently by the app."
       ),
     ],
   },

@@ -36,8 +36,8 @@ export default function ComparePage() {
           <tbody className="text-muted">
             <tr className="border-b border-line-soft">
               <td className="px-4 py-3 font-medium text-ink">Max length</td>
-              <td className="px-4 py-3">100 characters (≈60–70 visible)</td>
-              <td className="px-4 py-3">5,000 characters (≈150 visible before &quot;more&quot;; approximate, varies by device)</td>
+              <td className="px-4 py-3">100 characters (official limit)</td>
+              <td className="px-4 py-3">5,000 characters (official limit)</td>
             </tr>
             <tr className="border-b border-line-soft">
               <td className="px-4 py-3 font-medium text-ink">Primary job</td>
@@ -51,8 +51,8 @@ export default function ComparePage() {
             </tr>
             <tr>
               <td className="px-4 py-3 font-medium text-ink">Truncation risk</td>
-              <td className="px-4 py-3">High — most content is only ~60 characters wide</td>
-              <td className="px-4 py-3">First ~150 characters (approximate, varies by device), rest hidden behind &quot;more&quot;</td>
+              <td className="px-4 py-3">How much shows isn&apos;t documented by YouTube; a ~60-character rule of thumb keeps the key words early</td>
+              <td className="px-4 py-3">Roughly the first ~157 characters before &quot;more&quot; — approximate, varies by device (not documented by YouTube)</td>
             </tr>
           </tbody>
         </table>
@@ -62,15 +62,16 @@ export default function ComparePage() {
         <p>
           The title&apos;s job is to get the click — it&apos;s the first, and
           often only, thing a potential viewer sees before deciding whether
-          to watch. That&apos;s why staying under roughly 60 characters
-          matters so much: past that, search and suggested placements start
-          cutting it off mid-sentence.
+          to watch. YouTube allows 100 characters but doesn&apos;t document
+          how many are shown in search or suggestions, so putting the words
+          that explain the video first is the safe choice.
         </p>
         <p>
-          The description does its work after the click, but the first ~150 (approximate, varies by device)
-          characters still matter — that preview text shows in search
-          results under some placements too, so it&apos;s worth treating as a
-          secondary pitch, not just a place to dump links.
+          The description does its work after the click, but its opening
+          still matters: only the start shows before &quot;more&quot;. We use
+          ~157 characters as a guide — approximate, varies by device (not
+          documented by YouTube) — so treat the opening as a secondary
+          pitch, not just a place to dump links.
         </p>
       </div>
 
@@ -79,13 +80,13 @@ export default function ComparePage() {
           <div className="text-sm font-display font-semibold text-ink">
             YouTube Title Checker →
           </div>
-          <p className="mt-1 text-xs text-muted">Live search-result preview.</p>
+          <p className="mt-1 text-xs text-muted">Check the 100-character limit.</p>
         </Link>
         <Link href="/tools/youtube-description-checker" className="panel panel-interactive p-4 ">
           <div className="text-sm font-display font-semibold text-ink">
             YouTube Description Checker →
           </div>
-          <p className="mt-1 text-xs text-muted">Check the &quot;show more&quot; cutoff.</p>
+          <p className="mt-1 text-xs text-muted">Check the 5,000 limit and approximate preview.</p>
         </Link>
       </div>
     </div>

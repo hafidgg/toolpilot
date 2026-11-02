@@ -22,7 +22,8 @@ export function optimizeFileName(input: string): FileNameResult {
   const namePart = hasExtension ? input.slice(0, lastDot) : input;
   const extension = hasExtension ? input.slice(lastDot + 1).toLowerCase() : "";
 
-  const optimizedName = slugify(namePart);
+  // Dots left in the name (archive.tar, v1.2) separate words, like spaces.
+  const optimizedName = slugify(namePart.replace(/\./g, " "));
   return {
     optimized: extension ? `${optimizedName}.${extension}` : optimizedName,
     extension,

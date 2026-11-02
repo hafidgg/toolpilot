@@ -206,14 +206,14 @@ export function checkLinkedInPost(text: string): LinkedInPreviewResult {
     return {
       length,
       status: "good",
-      message: "Fits fully before the \"see more\" cutoff on most feeds.",
+      message: "Within the ~210-character \"see more\" preview (approximate, varies by device; not documented by LinkedIn).",
     };
   }
   if (length <= 3000) {
     return {
       length,
       status: "tight",
-      message: "Will be folded behind \"see more\" — make sure your hook is in the first ~210 characters.",
+      message: "Likely folded behind \"see more\" — put your hook in the first ~210 characters (approximate, varies by device; not documented by LinkedIn).",
     };
   }
   return {

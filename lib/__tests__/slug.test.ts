@@ -19,7 +19,6 @@ const PINNED_SLUGS: [string, string][] = [
 const PINNED_FILES: [string, string, string][] = [
   ["IMG 4821 Orange Tabby Cat.JPG", "img-4821-orange-tabby-cat.jpg", "jpg"],
   ["My Photo (Final).PNG", "my-photo-final.png", "png"],
-  ["archive.tar.gz", "archivetar.gz", "gz"],
   [".htaccess", "htaccess", ""],
   ["noext", "noext", ""],
   ["trailingdot.", "trailingdot", ""],
@@ -65,5 +64,35 @@ describe("underscores are word separators", () => {
     expect(optimizeFileName("IMG_4821 Orange Tabby Cat.JPG").optimized).toBe(
       "img-4821-orange-tabby-cat.jpg"
     );
+  });
+});
+
+// Captured before inner dots became word separators; no inner dots here.
+const PINNED_FILES_NO_INNER_DOTS: [string, string, string][] = [
+  [".hidden", "hidden", ""],
+  ["trailing.", "trailing", ""],
+  ["Holiday Photo 2026.jpeg", "holiday-photo-2026.jpeg", "jpeg"],
+  ["v1.2 notes", "v1.2 notes", "2 notes"], // known quirk: "2 notes" is taken as the extension
+];
+
+describe("optimizeFileName pinned outputs (no inner dots)", () => {
+  it.each(PINNED_FILES_NO_INNER_DOTS)("%j", (input, optimized, extension) => {
+    expect(optimizeFileName(input)).toEqual({ optimized, extension });
+  });
+});
+
+describe("inner dots in file names are word separators", () => {
+  it.each([
+    ["archive.tar.gz", "archive-tar.gz", "gz"],
+    ["v1.2-notes.pdf", "v1-2-notes.pdf", "pdf"],
+    ["a.b.c.JPG", "a-b-c.jpg", "jpg"],
+    ["my..file.txt", "my-file.txt", "txt"],
+    ["..double..dots..png", "double-dots.png", "png"],
+  ])("%j", (input, optimized, extension) => {
+    expect(optimizeFileName(input)).toEqual({ optimized, extension });
+  });
+
+  it("leaves slugify unchanged", () => {
+    expect(slugify("v1.2 notes")).toBe("v12-notes");
   });
 });

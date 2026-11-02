@@ -40,9 +40,9 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Descriptions: the first ~150 characters do the real work",
+        heading: "Descriptions: the opening does the real work",
         paragraphs: [
-          "A YouTube description can run up to 5,000 characters, but only around the first 150 (approximate, varies by device) show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
+          "A YouTube description can run up to 5,000 characters, but only around the first ~157 characters (approximate, varies by device (not documented by YouTube)) show before a viewer has to click \"show more.\" Links, key context, and your strongest pitch for the video should live in that first stretch — everything after it is there for viewers who are already engaged enough to expand the box.",
           "The YouTube Description Checker flags exactly where that preview cutoff lands in your draft.",
         ],
       },
