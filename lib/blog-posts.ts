@@ -179,41 +179,53 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-improve-readability-score",
     title: "How to Improve Your Content's Readability Score",
     description:
-      "What the Flesch Reading Ease score actually measures, why it matters for web content, and five concrete edits that raise it.",
+      "The Flesch Reading Ease formula as Microsoft documents it, how our checker computes it, and the edits that raise the score, with a worked before-and-after.",
     category: "SEO & Web Tools",
     publishedAt: "2026-07-13",
-    readTime: "6 min read",
+    readTime: "3 min read",
     relatedTool: {
       href: "/tools/readability-checker",
       label: "Readability Checker",
     },
     content: [
       p(
-        "Readability scores get dismissed by some writers as a vanity metric, but the underlying signal is real: content that's easier to read gets skimmed more successfully, retains more of its audience past the first paragraph, and translates better across a wider range of reading contexts — including the growing share of traffic that reads on a phone screen in short bursts."
+        "Flesch Reading Ease is calculated only from sentence length and syllables per word, so the score goes up when you use shorter sentences and shorter words. It says nothing about accuracy or structure; treat it as a check on mechanics, not on quality."
       ),
-      h("What the score is actually measuring"),
-      p(
-        "The Flesch Reading Ease formula weighs two variables: average sentence length and average syllables per word. It doesn't know anything about your topic, argument quality, or accuracy — a technically brilliant paragraph can score poorly just because its sentences run long and its vocabulary is dense. That's a feature, not a bug, for the purpose it serves: it flags mechanical complexity, which is a different problem from conceptual complexity, and one you can usually fix without dumbing down the idea itself."
-      ),
-      h("Five edits that reliably raise the score"),
-      p(
-        "Split compound sentences. A sentence joined by \"and\" or \"which\" in the middle can almost always become two shorter sentences without losing meaning — and shorter sentences are the single biggest lever in the formula."
+      h(
+        "The formula"
       ),
       p(
-        "Swap multi-syllable words for common alternatives where they mean the same thing: \"utilize\" becomes \"use,\" \"facilitate\" becomes \"help,\" \"subsequently\" becomes \"then.\" This isn't about sounding simple-minded — it's about removing friction that doesn't add precision."
+        "Microsoft Support documents both tests in [Get your document's readability and level statistics](https://support.microsoft.com/en-us/office/get-your-document-s-readability-and-level-statistics-85b4969e-e80a-4777-8dd3-f7fc3c8b3fd2) (retrieved 2 November 2026). Flesch Reading Ease \"rates text on a 100-point scale. The higher the score, the easier it is to understand the document.\" Its formula: \"206.835 – (1.015 x ASL) – (84.6 x ASW)\", where ASL is \"the number of words divided by the number of sentences\" and ASW is \"the number of syllables divided by the number of words\". The page adds: \"For most standard files, you want the score to be between 60 and 70.\""
       ),
       p(
-        "Cut throat-clearing openers. Phrases like \"It is important to note that\" or \"In order to\" add syllables and sentence length without adding information. Deleting them almost always improves both readability and pace."
+        "Flesch-Kincaid Grade Level, from the same page: \"(.39 x ASL) + (11.8 x ASW) – 15.59\". It \"rates text on a U.S. school grade level\", and \"For most documents, the recommended score is around 7.0 to 8.0.\""
+      ),
+      h(
+        "How our checker computes it"
       ),
       p(
-        "Break up list-like sentences into actual bullet points. A sentence trying to hold four examples separated by commas reads as one long, syllable-heavy unit to the formula, even though a bulleted list conveys the same information more clearly to a human reader."
+        "Our [Readability Checker](/tools/readability-checker) uses the same Reading Ease constants. It counts words by spaces and sentences by . ! and ?, and estimates syllables with a vowel-group rule rather than a dictionary, so its score can differ a little from Word's for the same text. It shows Reading Ease and a descriptive band, not the grade-level number."
+      ),
+      h(
+        "Worked example"
       ),
       p(
-        "Read the piece aloud. Sentences that make you run out of breath before the period are usually the ones dragging the score down — this catches issues the formula measures indirectly but a human ear catches immediately."
+        "Before: \"It is important to note that in order to facilitate the subsequent utilization of the documentation, administrators should carefully evaluate the configuration options, which are described comprehensively in the appendix, before implementing any modifications.\" The checker counts 34 words, 1 sentence and 80 syllables, for a score of -26.7. Grade level from the same counts, by the formula above: 25.4."
       ),
-      h("Where a lower score is actually fine"),
       p(
-        "Technical documentation, legal content, and academic or scientific writing for a specialist audience will naturally score lower, and forcing them into an easy-reading register can strip out necessary precision. Readability targets make the most sense for general-audience blog content, marketing copy, and anything meant to be skimmed rather than studied."
+        "After: \"Before you change any settings, read the options in the appendix. They explain what each one does. This makes the guide easier to use later.\" 25 words, 3 sentences, 33 syllables: a score of 86.7, and a grade level of 3.2. The edits were the ones below: cut the opener, split the sentence, and swap long words for short ones."
+      ),
+      h(
+        "Edits that raise the score"
+      ),
+      p(
+        "These follow directly from the formula. Split long sentences, which lowers words per sentence. Swap long words for short ones that mean the same: use for utilize, help for facilitate, then for subsequently. Cut openers like \"It is important to note that\" and \"in order to\", which add words and syllables without information. Turn a sentence listing several items into a list."
+      ),
+      h(
+        "When a lower score is fine"
+      ),
+      p(
+        "Our judgment: technical, legal and specialist writing often needs precise long terms, and forcing them out can make the text less clear. Use the score to find sentences worth a second look, not as a target to hit at any cost. We found no Google documentation saying readability scores affect rankings, so don't edit for one on that basis."
       ),
     ],
   },
@@ -343,29 +355,44 @@ export const blogPosts: BlogPost[] = [
     slug: "word-count-without-padding",
     title: "How to Hit an Exact Word Count Without Padding",
     description:
-      "Practical ways to add real length to a piece of writing without resorting to filler phrases that pad the count but weaken the writing.",
+      "Close a word-count gap with content a reader needs, not filler. What padding looks like, where real length comes from, and a worked example with counts.",
     category: "Text Tools",
     publishedAt: "2026-08-03",
-    readTime: "5 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/word-counter", label: "Word Counter" },
     content: [
       p(
-        "A word-count target from a client, professor, or publication brief is meant as a proxy for depth — the assumption is that covering a topic properly takes roughly that many words. The problem shows up when a draft comes in short: the fastest fix, adding filler phrases and redundant sentences, is also the one that makes the writing worse, not just longer."
+        "If a draft is short, add what a reader is missing: a concrete example, a specific detail, an objection you haven't answered, or a whole missing section. Filler phrases raise the count and make the text worse. For web pages, Google says outright that it has no preferred word count."
       ),
-      h("What padding actually looks like"),
-      p(
-        "Padding tends to fall into a few recognizable patterns: restating a point in slightly different words a paragraph after making it, adding qualifying phrases like \"it is worth noting that\" or \"in today's world\" that carry no information, and expanding a single example into three near-identical ones. All three technically raise the word count while making the piece slower and less useful to read — a reader who's paying attention notices the repetition even if a word counter doesn't."
-      ),
-      h("Where real length actually comes from"),
-      p(
-        "Short drafts are usually short because they're missing a layer, not because the sentences are too terse. Adding a concrete example, a counterargument you haven't addressed, a specific number or data point in place of a vague claim, or a brief explanation of why something matters — not just what it is — all add genuine length because they add genuine content."
+      h(
+        "What Google says about word count"
       ),
       p(
-        "A useful test: read back any paragraph you're considering expanding and ask whether a reader would learn something new from the addition, or whether they'd just be reading the same idea a second time in different words. If it's the latter, that paragraph isn't the place to add length."
+        "Google Search Central's [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) (retrieved 2 November 2026) lists this among its warning-sign questions: \"Are you writing to a particular word count because you've heard or read that Google has a preferred word count? (No, we don't.)\" A word target from a client, teacher or editor is a real constraint; a target based on what Google supposedly wants isn't."
       ),
-      h("When you're structurally short, not just light on detail"),
+      h(
+        "What padding looks like"
+      ),
       p(
-        "Sometimes a draft is short because it's missing an entire section a thorough treatment of the topic would include — a setup, a limitations discussion, a practical example section. In that case, the fix isn't padding individual sentences; it's identifying the missing section and writing it properly, which tends to close a length gap faster and more naturally than sentence-level expansion ever does."
+        "Our judgment of the common patterns: restating a point a paragraph after making it; phrases that carry no information, like \"it is worth noting that\" or \"in today's world\"; and stretching one example into three near-identical ones. Each raises the count and slows the reader down."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "In our [Word Counter](/tools/word-counter), \"It is worth noting that, in today's world, a good example is one of the best ways to explain an idea. Examples help readers understand.\" is 25 words. Its content fits in 10: \"A good example explains an idea faster than a definition.\" Adding an actual example instead gives 31 words: \"A good example explains an idea faster than a definition. Instead of saying a meta description is a summary, show one: a 144-character draft, and the 179-character version our checker flags.\" Both long versions are about the same length; only the second gives the reader something new."
+      ),
+      h(
+        "Where real length comes from"
+      ),
+      p(
+        "Our judgment: short drafts are usually missing a layer, not words. Add a worked example, a number in place of a vague claim, the reason something matters, or a limitation. If the draft is missing a whole section, such as setup, limits or a practical example, write that section rather than stretching sentences."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Repeating the introduction in the conclusion to add words. Padding every paragraph a little instead of adding one real section. Writing to a length you believe Google prefers. Cutting a needed example to come in under a limit."
       ),
     ],
   },
@@ -373,26 +400,41 @@ export const blogPosts: BlogPost[] = [
     slug: "title-case-vs-sentence-case",
     title: "Title Case vs. Sentence Case: When Each One Actually Matters",
     description:
-      "The difference isn't just style — title case and sentence case signal different things about formality and where text will appear.",
+      "What title case and sentence case are, what Microsoft's and Google's style guides say about headings, and why a case converter needs a final check by hand.",
     category: "Text Tools",
     publishedAt: "2026-08-03",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: { href: "/tools/text-case-converter", label: "Text Case Converter" },
     content: [
       p(
-        "Title Case capitalizes the first letter of most words in a phrase; Sentence case capitalizes only the first word (and proper nouns). Both are correct in different contexts, and mixing them inconsistently within the same piece of content is one of the more common small polish issues in published writing."
+        "Title case capitalizes most words (\"A Home to Go Back To\"); sentence case capitalizes the first word and proper nouns (\"A home to go back to\"). Two major freely published style guides, Microsoft's and Google's developer guide, default to sentence case for headings. Whichever you pick, use it consistently for each kind of text."
       ),
-      h("Where Title Case is the convention"),
-      p(
-        "Headlines, book and movie titles, and navigation labels traditionally use Title Case — it's a visual signal that a phrase is a title or label rather than a full sentence. Style guides differ on whether to capitalize short connecting words like \"a,\" \"the,\" or \"of,\" which is why two publications can format the same headline slightly differently and both be internally consistent."
+      h(
+        "What the style guides say"
       ),
-      h("Where Sentence case has become the norm"),
       p(
-        "Interface design and a growing share of web content has shifted toward Sentence case for headings and buttons — \"Save your changes\" instead of \"Save Your Changes.\" It reads as less formal and less shouty, which is why many product interfaces and blogs default to it even in places that would have used Title Case a decade ago."
+        "The [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/capitalization) (retrieved 2 November 2026): \"Use sentence-style capitalization in most titles and headings: capitalize the first word and lowercase the rest.\" It adds: \"Titles of blog posts, documentation articles, and press releases use sentence-style capitalization.\""
       ),
-      h("The practical rule"),
       p(
-        "Match the convention of the surrounding content rather than picking per-heading. A site that uses Sentence case for its navigation and buttons but Title Case for blog post headlines will read as inconsistent even if each individual choice is defensible on its own — pick one convention per content type and apply it uniformly."
+        "The [Google developer documentation style guide](https://developers.google.com/style/capitalization) (retrieved 2 November 2026): \"In document titles and headings, use sentence case.\" It also says to \"Capitalize product names as they officially appear\"."
+      ),
+      h(
+        "If you do use title case"
+      ),
+      p(
+        "Microsoft's guide, for \"the rare occasions when title-style capitalization is required\": \"Always capitalize the first and last words.\" \"Don't capitalize a, an, or the unless it's the first word.\" \"Don't capitalize prepositions of four or fewer letters (such as on, to, in, up, down, of, and for) unless the preposition is the first or last word.\" \"Don't capitalize and, but, or, nor, yet, or so unless it's the first word or the last word.\" Other guides keep their own lists of minor words, so follow the one your publication uses."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [Text Case Converter](/tools/text-case-converter) capitalizes every word in title case. \"a home to go back to\" becomes \"A Home To Go Back To\", while Microsoft's rules give \"A Home to Go Back To\" (its own example). \"the teaching tool you're looking for\" becomes \"The Teaching Tool You'Re Looking For\", with a capital R after the apostrophe. In sentence case, \"how to personalize Windows\" becomes \"How to personalize windows\", because the tool can't tell that Windows is a product name. Use the converter for the bulk change, then fix minor words, contractions and proper nouns by hand."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Mixing cases between headings on the same page. Lowercasing product and brand names in sentence case. Capitalizing every short word in title case. Trusting an automatic converter's output without a read-through."
       ),
     ],
   },
@@ -957,7 +999,7 @@ export const blogPosts: BlogPost[] = [
     slug: "youtube-channel-handle-vs-id",
     title: "YouTube Channel Handle vs. Channel ID: What's the Difference?",
     description:
-      "A channel's @handle and its underlying channel ID serve different purposes, and only one of them can change.",
+      "A handle is the readable @name that becomes a channel's URL and can be changed; the channel ID is what YouTube and its API use to identify the channel.",
     category: "YouTube Tools",
     publishedAt: "2026-08-10",
     readTime: "3 min read",
@@ -967,19 +1009,46 @@ export const blogPosts: BlogPost[] = [
     },
     content: [
       p(
-        "Every YouTube channel has two different identifiers that serve completely different purposes, and confusing them is a common source of broken integrations and dead links: the @handle, and the channel ID."
+        "A handle like @youtubecreators is the short, readable name people see, and it doubles as the channel's URL. The channel ID is the identifier YouTube's systems and Data API use. Use the handle in links people read; store the channel ID in anything that has to keep pointing at the same channel."
       ),
-      h("The @handle is the human-facing one"),
-      p(
-        "A handle — like @mkbhd — is the short, memorable identifier shown in a channel's URL and used for mentions and search. Channels can change their handle (within YouTube's rules on frequency), which makes it a reasonable thing to put on a business card, but not something to hardcode into a system that needs to keep working if the channel ever updates it."
+      h(
+        "What YouTube says a handle is"
       ),
-      h("The channel ID is the permanent, system-facing one"),
       p(
-        "A channel ID — a string starting with \"UC\" followed by 22 characters — is assigned once and never changes for the life of the channel, even if the handle, the display name, or the channel's entire branding is updated later. This is the identifier the YouTube Data API expects, and the one that should be used anywhere a link or integration needs to reliably point at the same channel indefinitely."
+        "From YouTube Help, [Learn about YouTube handles](https://support.google.com/youtube/answer/11585688) (retrieved 2 November 2026): \"Handles are short and unique channel identifiers that make it easier for you to find and connect with creators on Youtube.\" It adds: \"Your handle will also automatically become the new YouTube URL for your channel,\" giving the example youtube.com/@youtubecreators, and notes that \"Handles aren't case-sensitive.\""
       ),
-      h("Where each one actually matters"),
+      h(
+        "Handles can change"
+      ),
       p(
-        "For a link you're sharing casually — a video description, a social bio — the handle-based URL is fine and more readable. For anything programmatic — an API integration, a scraper, a database record meant to persist — the channel ID is the safer choice, precisely because it's the one part of a channel's identity that's guaranteed not to change."
+        "YouTube Help's [Change, view, or hide your handle](https://support.google.com/youtube/answer/15920820) (retrieved 2 November 2026) says: \"You can change your handle twice within a 14-day period.\" After a change, \"we hold your previous handle for 14 days in case you'd like to switch back.\" The handles page also says: \"YouTube reserves the right to change, reclaim, or remove a handle at any time.\" So a handle-based link can stop pointing where you expect."
+      ),
+      h(
+        "What the channel ID is"
+      ),
+      p(
+        "YouTube Help's [Find your YouTube user & channel IDs](https://support.google.com/youtube/answer/3250431) (retrieved 2 November 2026) says: \"Each YouTube channel has a unique user ID and channel ID,\" and \"You can see your channel's user and channel IDs in your advanced account settings on a computer or mobile browser.\" The Data API's [channels resource](https://developers.google.com/youtube/v3/docs/channels) describes the id field as \"The ID that YouTube uses to uniquely identify the channel.\""
+      ),
+      p(
+        "We found no official page that states the ID's exact format or promises it never changes. Channel IDs we've seen start with \"UC\", and our finder recognizes \"UC\" followed by 22 characters; that's our pattern, not a documented rule."
+      ),
+      h(
+        "Which one to use"
+      ),
+      p(
+        "Our judgment: use the handle URL where people read or type it, such as a bio, a video description or a slide. Use the channel ID in API calls, databases and integrations, because the handle can change and the ID is what the API identifies the channel by."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "Our [YouTube Channel ID Finder](/tools/youtube-channel-id-finder) reads the identifier out of what you paste. https://www.youtube.com/@youtubecreators and a bare @youtubecreators both come back as the handle @youtubecreators. youtube.com/@YouTubeCreators/videos comes back as @YouTubeCreators, which YouTube treats as the same handle since handles aren't case-sensitive. A /c/YouTubeCreators link is reported as a custom URL and a /user/ link as a legacy username. The tool doesn't look up the ID behind a handle; for your own channel, copy it from Advanced settings as the help page describes."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Hardcoding a handle URL into an integration. Assuming an old handle will keep redirecting after a change. Treating the display name as an identifier. Guessing a channel ID's format instead of copying it from Advanced settings or the API."
       ),
     ],
   },
@@ -987,32 +1056,44 @@ export const blogPosts: BlogPost[] = [
     slug: "reading-time-vs-word-count",
     title: "Reading Time vs. Word Count: Which Should You Actually Track?",
     description:
-      "A word count target and a reading time target measure different things, and mixing them up leads to the wrong edit.",
+      "Reading time is word count divided by an assumed reading speed. How Medium and our calculator compute it, and when each number is the right target.",
     category: "Text Tools",
     publishedAt: "2026-08-10",
-    readTime: "4 min read",
+    readTime: "2 min read",
     relatedTool: {
       href: "/tools/reading-time-calculator",
       label: "Reading Time Calculator",
     },
     content: [
       p(
-        "Word count and reading time are related but not interchangeable, and briefs that specify one when they actually mean the other lead writers to optimize for the wrong thing."
+        "Track word count when the brief is about length, and reading time only when the constraint is duration. Most reading-time figures, ours included, are just the word count divided by an assumed speed, so they tell you nothing about how dense or difficult the writing is."
       ),
-      h("Word count measures length; reading time measures density too"),
-      p(
-        "Two 1,000-word pieces can take very different amounts of time to read if one is packed with short, simple sentences and the other is dense with long sentences and technical vocabulary. Word count treats both as identical; reading time, calculated from actual reading-speed research, reflects the real difference in how long each one takes to get through."
-      ),
-      h("When word count is the right target"),
-      p(
-        "Publications with strict length requirements, academic submissions, and SEO briefs built around competitor content length are genuinely asking for a word count — the number itself is the constraint, regardless of how dense or light the writing is."
-      ),
-      h("When reading time is the right target"),
-      p(
-        "Video scripts, podcast outlines, and anything meant to fill a specific time slot are better measured in reading or speaking time, since the actual constraint is duration, not word count — a script that hits a word count target but runs long because of complex phrasing will blow through its time slot regardless of how well it matched the brief on paper."
+      h(
+        "How reading time is calculated"
       ),
       p(
-        "When in doubt about which a brief actually wants, checking both takes seconds and avoids the more expensive mistake of submitting work that technically meets a numeric target while missing the actual constraint the number was meant to represent."
+        "Medium documents its method in [Read time](https://help.medium.com/hc/en-us/articles/214991667-Read-time) (retrieved 2 November 2026): \"Read time is based on the average reading speed of an adult (roughly 265 WPM). We take the total word count of a post and translate it into minutes, with an adjustment made for images.\" For Chinese, Japanese and Korean posts, it's \"a function of number of characters (500 characters/min)\"."
+      ),
+      p(
+        "Our [Reading Time Calculator](/tools/reading-time-calculator) defaults to 200 words per minute, with 150 and 250 as alternatives. That 200 is our own assumption, not a figure from an official source, and the tool doesn't adjust for images, sentence length or vocabulary. Two 1,000-word pieces get the same reading time however hard they are to read."
+      ),
+      h(
+        "Worked example"
+      ),
+      p(
+        "For 1,000 words the calculator shows 5 min at 200 wpm, 6 min 40 sec at 150 and 4 min at 250. At Medium's roughly 265 wpm the same text is about 3.8 minutes. For 1,234 words: 6 min 10 sec at 200 wpm. The assumed speed changes the answer by minutes, which is why a reading time without its speed isn't a meaningful target."
+      ),
+      h(
+        "When each one is the right target"
+      ),
+      p(
+        "Our judgment: word count fits publications with length limits, assignments and briefs written in words, where the number itself is the constraint. A duration fits scripts and anything that fills a time slot, but there it's speaking time that matters, so time a read-aloud of the script rather than relying on a reading-speed estimate."
+      ),
+      h(
+        "Common mistakes"
+      ),
+      p(
+        "Quoting a reading time without saying what speed it assumes. Comparing reading times from different sites, which may use different speeds. Treating reading time as a measure of difficulty. Using a silent-reading estimate to time a video script."
       ),
     ],
   },
