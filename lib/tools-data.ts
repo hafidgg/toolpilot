@@ -103,7 +103,7 @@ export const categories: CategoryMeta[] = [
         slug: "youtube-title-checker",
         title: "YouTube Title Checker",
         shortDescription:
-          "See a live search-result preview and get warned before your title gets cut off.",
+          "Check titles against YouTube's 100-character limit and a length rule of thumb, with a live preview.",
       },
       {
         slug: "youtube-description-checker",

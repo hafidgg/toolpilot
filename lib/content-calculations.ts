@@ -52,35 +52,50 @@ export function charCount(text: string): number {
   return Array.from(text).length;
 }
 
+export const YOUTUBE_TITLE_LIMIT = 100;
+export const YOUTUBE_DESCRIPTION_LIMIT = 5000;
+/** Approximate preview before "show more"; YouTube documents no figure. */
+export const YOUTUBE_DESCRIPTION_PREVIEW = 157;
+export const UNDOCUMENTED_PREVIEW_LABEL = "approximate, varies by device (not documented by YouTube)";
+
 export interface YoutubeTitleResult {
   length: number;
-  status: "good" | "tight" | "too-long";
+  status: "good" | "tight" | "too-long" | "over-limit";
   message: string;
 }
 
+// The 60/70 tiers are a rule of thumb; only the 100-character limit is official
+// (https://support.google.com/youtube/answer/57404).
 export function checkYoutubeTitle(title: string): YoutubeTitleResult {
   const length = charCount(title);
   if (length === 0) {
     return { length, status: "good", message: "Start typing your title." };
   }
+  if (length > YOUTUBE_TITLE_LIMIT) {
+    return {
+      length,
+      status: "over-limit",
+      message: `Over YouTube's official 100-character title limit by ${length - YOUTUBE_TITLE_LIMIT}. Shorten it before uploading.`,
+    };
+  }
   if (length <= 60) {
     return {
       length,
       status: "good",
-      message: "Fits fully in search results and most thumbnails.",
+      message: "Short titles tend to be safer. How much shows varies by device and isn't documented by YouTube.",
     };
   }
   if (length <= 70) {
     return {
       length,
       status: "tight",
-      message: "May get truncated on mobile search results.",
+      message: "Rule of thumb: getting long. Some screens may shorten it; YouTube doesn't document where.",
     };
   }
   return {
     length,
     status: "too-long",
-    message: "Will be cut off in search results and suggested videos.",
+    message: "Within YouTube's 100-character limit, but long by our rule of thumb. Put the key words first.",
   };
 }
 
@@ -89,28 +104,33 @@ export interface YoutubeDescriptionResult {
   previewStatus: "good" | "tight" | "too-long";
   previewMessage: string;
   totalStatus: "good" | "too-long";
+  totalMessage: string;
 }
 
 export function checkYoutubeDescription(description: string): YoutubeDescriptionResult {
   const length = charCount(description);
   let previewStatus: "good" | "tight" | "too-long" = "good";
-  let previewMessage = "Fits fully before the \"show more\" cutoff.";
+  let previewMessage = `Within the ~${YOUTUBE_DESCRIPTION_PREVIEW}-character preview before "show more" — ${UNDOCUMENTED_PREVIEW_LABEL}.`;
 
-  if (length > 100 && length <= 157) {
+  if (length > 100 && length <= YOUTUBE_DESCRIPTION_PREVIEW) {
     previewStatus = "tight";
-    previewMessage = "Getting close to the ~157-character preview cutoff.";
-  } else if (length > 157) {
+    previewMessage = `Close to the ~${YOUTUBE_DESCRIPTION_PREVIEW}-character preview before "show more" — ${UNDOCUMENTED_PREVIEW_LABEL}.`;
+  } else if (length > YOUTUBE_DESCRIPTION_PREVIEW) {
     previewStatus = "too-long";
-    previewMessage = "Will be truncated behind \"show more\" in search and suggested results.";
+    previewMessage = `Past the ~${YOUTUBE_DESCRIPTION_PREVIEW}-character preview, so the rest may sit behind "show more" — ${UNDOCUMENTED_PREVIEW_LABEL}.`;
   } else if (length === 0) {
     previewMessage = "Start typing your description.";
   }
 
+  const over = length > YOUTUBE_DESCRIPTION_LIMIT;
   return {
     length,
     previewStatus,
     previewMessage,
-    totalStatus: length > 5000 ? "too-long" : "good",
+    totalStatus: over ? "too-long" : "good",
+    totalMessage: over
+      ? `Over YouTube's official 5,000-character description limit by ${(length - YOUTUBE_DESCRIPTION_LIMIT).toLocaleString("en-US")}.`
+      : "Within YouTube's official 5,000-character description limit.",
   };
 }
 

@@ -39,15 +39,15 @@ export default function YoutubeDescriptionChecker() {
 
           <div className="rounded-md border border-line-soft bg-raised p-4">
             <div className="text-[11px] uppercase tracking-wider text-faint mb-2">
-              Preview before &quot;show more&quot;
+              Approximate preview before &quot;show more&quot; (varies by device)
             </div>
             <p className="text-sm text-ink leading-relaxed line-clamp-2">
               {description || "Your description preview will appear here."}
             </p>
           </div>
 
-          <div className="text-xs text-faint">
-            Total limit: {result.length.toLocaleString()} / 5,000 characters
+          <div className={`text-xs ${result.totalStatus === "too-long" ? "text-loss font-semibold" : "text-faint"}`}>
+            Official limit: {result.length.toLocaleString()} / 5,000 characters. {result.totalMessage}
           </div>
         </div>
       </div>

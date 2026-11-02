@@ -7,25 +7,25 @@ import RelatedTools from "@/components/RelatedTools";
 export const metadata: Metadata = {
   title: "YouTube Description Checker — Preview & Character Limit",
   description:
-    "Check your YouTube description against the preview cutoff before \"show more\" and the 5,000-character total limit.",
+    "Check your YouTube description against the official 5,000-character limit and an approximate preview before \"show more\".",
   alternates: { canonical: "/tools/youtube-description-checker" },
   twitter: {
     card: "summary_large_image",
     title: "YouTube Description Checker — Preview & Character Limit",
-    description: "Check your YouTube description against the preview cutoff before \"show more\" and the 5,000-character total limit.",
+    description: "Check your YouTube description against the official 5,000-character limit and an approximate preview before \"show more\".",
   },
 };
 
 const faqItems = [
   {
-    question: "Why does the preview cut off so early?",
+    question: "How much of a description shows before \"show more\"?",
     answer:
-      "YouTube shows roughly the first 150–157 characters (approximate, varies by device) of a description before folding the rest behind a \"show more\" link. Put your most important information — links, key details — in that first stretch.",
+      "YouTube doesn't document a figure. This checker uses about 157 characters as an approximate preview, which varies by device. Put your most important information — links, key details — at the start either way.",
   },
   {
     question: "What's the actual maximum description length?",
     answer:
-      "YouTube allows up to 5,000 characters in a video description, far more than what's visible without clicking \"show more.\"",
+      "5,000 characters. YouTube Help states that \"Video descriptions have a character limit of 5,000 characters\", and the checker flags anything longer.",
   },
 ];
 
@@ -37,8 +37,8 @@ export default function YoutubeDescriptionCheckerPage() {
         categoryHref="/categories/youtube-tools"
         title="YouTube Description Checker"
       >
-        See exactly how much of your description shows before viewers have
-          to click &quot;show more.&quot;
+        Check your description against YouTube&apos;s 5,000-character limit
+          and an approximate preview before &quot;show more&quot; (varies by device).
       </ToolPageHeader>
 
       <div className="mt-10">

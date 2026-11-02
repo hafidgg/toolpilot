@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Our [YouTube Title Checker](/tools/youtube-title-checker) counts characters and applies a rule of thumb: up to 60 is marked good, 61 to 70 tight, and over 70 too long. Those thresholds are our heuristic, not YouTube's. \"How to Sharpen a Kitchen Knife\" is 30 characters (good). \"How to Sharpen a Kitchen Knife With a Whetstone (Beginner Guide, No Jig)\" is 72, flagged by the heuristic but well inside YouTube's limit. \"How to Sharpen a Kitchen Knife With a Whetstone: The Complete Beginner Guide to Angles, Grits and Stropping\" is 107, which YouTube won't accept."
+        "Our [YouTube Title Checker](/tools/youtube-title-checker) counts characters and applies a rule of thumb: up to 60 is marked good, 61 to 70 tight, and over 70 too long. Those thresholds are our heuristic, not YouTube's. \"How to Sharpen a Kitchen Knife\" is 30 characters, marked good. \"How to Sharpen a Kitchen Knife With a Whetstone (Beginner Guide, No Jig)\" is 72, marked too long with the message \"Within YouTube's 100-character limit, but long by our rule of thumb.\" \"How to Sharpen a Kitchen Knife With a Whetstone: The Complete Beginner Guide to Angles, Grits and Stropping\" is 107 and gets a separate over-limit status: \"Over YouTube's official 100-character title limit by 7.\""
       ),
       h(
         "Writing for an unknown cut-off"
@@ -420,7 +420,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Our [URL Slug Generator](/tools/url-slug-generator) turns \"Café Menu: 10 Best Crème Brûlée Recipes (2026)!\" into cafe-menu-10-best-creme-brulee-recipes-2026: lowercase, accents removed, punctuation dropped, spaces turned into hyphens. The [File Name Optimizer](/tools/file-name-optimizer) turns \"IMG_4821 Orange Tabby Cat.JPG\" into img4821-orange-tabby-cat.jpg. Note that it deletes underscores instead of converting them, so if an underscore separates real words (my_product_page), replace it with a space or hyphen before running the tool, or the words get glued together."
+        "Our [URL Slug Generator](/tools/url-slug-generator) turns \"Café Menu: 10 Best Crème Brûlée Recipes (2026)!\" into cafe-menu-10-best-creme-brulee-recipes-2026: lowercase, accents removed, punctuation dropped, spaces turned into hyphens. The [File Name Optimizer](/tools/file-name-optimizer) turns \"IMG_4821 Orange Tabby Cat.JPG\" into img-4821-orange-tabby-cat.jpg. Both tools treat underscores as word separators, the way Google recommends, so my_product_page becomes my-product-page."
       ),
       h(
         "Common mistakes, and when this doesn't apply"
@@ -707,7 +707,7 @@ export const blogPosts: BlogPost[] = [
         "Worked example"
       ),
       p(
-        "Our [YouTube Description Checker](/tools/youtube-description-checker) counts characters against the 5,000 limit and flags the opening against an approximate preview of about 157 characters, which is our heuristic, not a YouTube figure. \"Learn to sharpen a chef's knife on a whetstone in 10 minutes. Free angle guide: https://example.com/angles\" is 106 characters and is marked tight (over 100, under 157). Adding \" Below: chapters, the stones I use, and how to tell when an edge is actually sharp.\" brings it to 189, marked as likely truncated, and still far inside 5,000."
+        "Our [YouTube Description Checker](/tools/youtube-description-checker) counts characters against the 5,000 limit and flags the opening against an approximate preview of about 157 characters, which is our heuristic, not a YouTube figure. \"Learn to sharpen a chef's knife on a whetstone in 10 minutes. Free angle guide: https://example.com/angles\" is 106 characters and is marked tight (over 100, under 157). Adding \" Below: chapters, the stones I use, and how to tell when an edge is actually sharp.\" brings it to 189, marked as past the approximate preview, and the checker reports it is \"Within YouTube's official 5,000-character description limit.\" Every preview message carries the label \"approximate, varies by device (not documented by YouTube)\"."
       ),
       h(
         "A structure that works (our judgment)"

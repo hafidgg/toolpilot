@@ -43,7 +43,7 @@ const faqItems = [
   {
     question: "Why use hyphens instead of underscores?",
     answer:
-      "Google has confirmed it treats hyphens as word separators but generally treats underscores as joining words together. Hyphenated slugs are the accepted convention for SEO-friendly URLs.",
+      "Google's URL structure guidance says: \"we recommend using hyphens (-) instead of underscores (_) to separate words in your URLs.\" This tool treats underscores as word separators and turns them into hyphens, so my_product_page becomes my-product-page.",
   },
   {
     question: "Does this remove accented characters?",

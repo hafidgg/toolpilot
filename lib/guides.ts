@@ -28,14 +28,14 @@ export const guides: Guide[] = [
     categorySlug: "youtube-tools",
     publishedAt: "2026-08-02",
     intro: [
-      "A YouTube video succeeds or fails based on a handful of metadata decisions made before a single view happens: the title, the thumbnail, the first line of the description, and the tags attached behind the scenes. None of these are complicated on their own, but each has specific technical limits that are easy to get wrong without realizing it — a title that reads fine in the editor but gets truncated in search, a thumbnail that's the wrong resolution, a tag list that silently drops entries past the character limit.",
+      "A YouTube video succeeds or fails based on a handful of metadata decisions made before a single view happens: the title, the thumbnail, the first line of the description, and the tags attached behind the scenes. None of these are complicated on their own, but each has specific technical limits that are easy to get wrong without realizing it — a title that runs past the 100-character limit, a thumbnail that's the wrong resolution, a tag list that silently drops entries past the character limit.",
       "This guide walks through what each piece of metadata actually does, the limits that govern it, and the free tools on this site that check each one before you publish.",
     ],
     sections: [
       {
         heading: "Titles: written for a 60-character window",
         paragraphs: [
-          "YouTube allows up to 100 characters in a title, but search results and suggested-video placements typically show only 60 to 70 characters before truncating with an ellipsis — and mobile screens often show even less. The practical rule: put the part of the title that actually explains the video within the first 60 characters, and treat anything past that as a bonus some viewers will see and others won't.",
+          "YouTube allows up to 100 characters in a title. How many of them show in search, suggestions or on mobile isn't documented by YouTube and varies by device. A rule of thumb: put the part of the title that actually explains the video within the first 60 characters, so it still makes sense if the rest is cut.",
           "Check any draft title against this cutoff with the YouTube Title Checker, which shows a live search-result preview as you type.",
         ],
       },
@@ -159,7 +159,7 @@ export const guides: Guide[] = [
       {
         heading: "URLs and file names: small details that add up",
         paragraphs: [
-          "Search engines treat hyphens as word separators in URLs but generally don't treat underscores the same way, which is why hyphenated, lowercase slugs are the accepted convention. The URL Slug Generator converts any title into that format automatically. The same logic applies to image and video file names — a descriptive, hyphenated name gives search engines more context than a default camera export name, which the File Name Optimizer handles while preserving the original file extension.",
+          "Google recommends \"using hyphens (-) instead of underscores (_) to separate words in your URLs\", which is why hyphenated, lowercase slugs are the convention. The URL Slug Generator converts any title into that format automatically, turning underscores into hyphens. The same logic applies to image and video file names — a descriptive, hyphenated name gives search engines more context than a default camera export name, which the File Name Optimizer handles while preserving the original file extension.",
         ],
       },
       {

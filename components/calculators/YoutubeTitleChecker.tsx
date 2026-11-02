@@ -12,7 +12,9 @@ export default function YoutubeTitleChecker() {
       ? "text-gain"
       : result.status === "tight"
       ? "text-[#F5A623]"
-      : "text-loss";
+      : result.status === "too-long"
+      ? "text-loss"
+      : "text-loss font-bold";
 
   const barColor =
     result.status === "good"
@@ -44,10 +46,13 @@ export default function YoutubeTitleChecker() {
         <span className={`readout text-sm font-semibold ${statusColor}`}>
           {result.length} characters
         </span>
-        <span className="text-xs text-faint">Recommended: ≤ 60</span>
+        <span className="text-xs text-faint">Rule of thumb: ≤ 60 · YouTube limit: 100</span>
       </div>
 
-      <p className="mt-2 text-sm text-muted">{result.message}</p>
+      {result.status === "over-limit" && (
+        <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-loss">Over YouTube&apos;s limit</p>
+      )}
+      <p className={`mt-2 text-sm ${result.status === "over-limit" ? "text-loss" : "text-muted"}`}>{result.message}</p>
 
       <div className="mt-6 rounded-md border border-line-soft bg-raised p-4">
         <div className="text-[11px] uppercase tracking-wider text-faint mb-2">
