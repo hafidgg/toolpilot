@@ -7,12 +7,12 @@ import RelatedTools from "@/components/RelatedTools";
 export const metadata: Metadata = {
   title: "YouTube Channel ID Finder",
   description:
-    "Extract the handle, channel ID, or custom URL slug from any YouTube channel link.",
+    "Read the handle, channel ID, custom URL or username from a YouTube channel link. It doesn't look up the channel ID behind a handle.",
   alternates: { canonical: "/tools/youtube-channel-id-finder" },
   twitter: {
     card: "summary_large_image",
     title: "YouTube Channel ID Finder",
-    description: "Extract the handle, channel ID, or custom URL slug from any YouTube channel link.",
+    description: "Read the handle, channel ID, custom URL or username from a YouTube channel link. It doesn't look up the channel ID behind a handle.",
   },
 };
 
